@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfSequence xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+  <!-- LAVA FLOOR -->
+  <Sequence>
+    <config_type>CONFIG_tiles</config_type>
+    <frames>
+      <Frame>
+        <type>SPRITE</type>
+        <name>LOOP</name>
+        <value>LavaA1</value>
+        <stoppable>true</stoppable>
+        <xOffSet>0</xOffSet>
+        <yOffSet>0</yOffSet>
+      </Frame>
+      <Frame>
+        <type>COMMAND</type>
+        <name>GOTOFRAME</name>
+        <parameter>LOOP</parameter>
+        <stoppable>true</stoppable>
+      </Frame>
+    </frames>
+    <name>NORMAL</name>
+    <raised>false</raised>
+    <collision>Platform</collision>
+  </Sequence>
+
+  <!-- LAVA UP-->
+  <Sequence>
+    <config_type>CONFIG_tiles</config_type>
+    <frames>
+      <Frame>
+        <type>SPRITE</type>
+        <name></name>
+        <value>LavaA2</value>
+        <stoppable>true</stoppable>
+        <xOffSet>0</xOffSet>
+        <yOffSet>0</yOffSet>
+      </Frame>
+      <Frame>
+        <type>COMMAND</type>
+        <name>GOTOSEQUENCE</name>
+        <parameter>OPENED</parameter>
+        <stoppable>true</stoppable>
+      </Frame>
+    </frames>
+    <name>OPEN</name>
+    <raised>false</raised>
+    <collision>Platform</collision>
+  </Sequence>
+
+
+  <!-- LAVA DOWN-->
+  <Sequence>
+    <config_type>CONFIG_tiles</config_type>
+    <frames>
+      <Frame>
+        <type>SPRITE</type>
+        <name>LOOP</name>
+        <value>LavaA1</value>
+        <stoppable>true</stoppable>
+        <xOffSet>0</xOffSet>
+        <yOffSet>0</yOffSet>
+      </Frame>
+      <Frame>
+        <type>COMMAND</type>
+        <name>GOTOFRAME</name>
+        <parameter>LOOP</parameter>
+        <stoppable>true</stoppable>
+      </Frame>
+    </frames>
+    <name>OPENED</name>
+    <raised>false</raised>
+    <collision>Platform</collision>
+  </Sequence>
+
+
+
+</ArrayOfSequence>
+

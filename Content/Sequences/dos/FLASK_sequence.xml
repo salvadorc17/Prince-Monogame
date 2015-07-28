@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfSequence xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+  <!-- SMALL POTION-->
+  <Sequence>
+    <config_type>CONFIG_items</config_type>
+    <frames>
+      <Frame>
+        <type>SPRITE</type>
+        <name>LOOP</name>
+        <value>Flask_small_1</value>
+        <stoppable>true</stoppable>
+        <delay>0.2</delay>
+        <xOffSet>0</xOffSet>
+        <yOffSet>0</yOffSet>
+      </Frame>
+      <Frame>
+        <type>SPRITE</type>
+        <name></name>
+        <value>Flask_small_2</value>
+        <stoppable>true</stoppable>
+        <delay>0.2</delay>
+        <xOffSet>0</xOffSet>
+        <yOffSet>0</yOffSet>
+      </Frame>
+      <Frame>
+        <type>SPRITE</type>
+        <name></name>
+        <value>Flask_small_3</value>
+        <stoppable>true</stoppable>
+        <delay>0.2</delay>
+        <xOffSet>0</xOffSet>
+        <yOffSet>0</yOffSet>
+      </Frame>
+      <Frame>
+        <type>SPRITE</type>
+        <name></name>
+        <value>Flask_small_4</value>
+        <stoppable>true</stoppable>
+        <delay>0.2</delay>
+        <xOffSet>0</xOffSet>
+        <yOffSet>0</yOffSet>
+      </Frame>
+      <Frame>
+        <type>SPRITE</type>
+        <name></name>
+        <value>Flask_small_5</value>
+        <stoppable>true</stoppable>
+        <delay>0.2</delay>
+        <xOffSet>0</xOffSet>
+        <yOffSet>0</yOffSet>
+      </Frame>
+      <Frame>
+        <type>SPRITE</type>
+        <name></name>
+        <value>Flask_small_6</value>
+        <stoppable>true</stoppable>
+        <delay>0.2</delay>
+        <xOffSet>0</xOffSet>
+        <yOffSet>0</yOffSet>
+      </Frame>
+      <Frame>
+        <type>SPRITE</type>
+        <name></name>
+        <value>Flask_small_7</value>
+        <stoppable>true</stoppable>
+        <xOffSet>0</xOffSet>
+        <yOffSet>0</yOffSet>
+      </Frame>
+      <Frame>
+        <type>COMMAND</type>
+        <name>GOTOFRAME</name>
+        <parameter>LOOP</parameter>
+        <stoppable>false</stoppable>
+      </Frame>
+    </frames>
+    <name>NORMAL</name>
+    <raised>false</raised>
+    <collision>Passable</collision>
+  </Sequence>
+
+</ArrayOfSequence>
+

@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfSequence xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+  <!-- CHOMPER OR SLICER FLOOR -->
+  <Sequence>
+    <config_type>CONFIG_tiles</config_type>
+    <frames>
+      <Frame>
+        <type>SPRITE</type>
+        <name>LOOP</name>
+        <value>ChomperA_0</value>
+        <stoppable>true</stoppable>
+        <xOffSet>0</xOffSet>
+        <yOffSet>0</yOffSet>
+      </Frame>
+      <Frame>
+        <type>COMMAND</type>
+        <name>GOTOFRAME</name>
+        <parameter>LOOP</parameter>
+        <stoppable>true</stoppable>
+      </Frame>
+    </frames>
+    <name>normal</name>
+    <raised>false</raised>
+    <collision>Platform</collision>
+  </Sequence>
+
+  <!-- CLOSE CHOMPER -->
+  <Sequence>
+    <config_type>CONFIG_tiles</config_type>
+    <frames>
+      <Frame>
+        <type>SPRITE</type>
+        <name>OPEN</name>
+        <value>ChomperA_0</value>
+        <stoppable>true</stoppable>
+        <xOffSet>0</xOffSet>
+        <yOffSet>0</yOffSet>
+      </Frame>
+      <Frame>
+        <type>SPRITE</type>
+        <name>OPEN</name>
+        <value>ChomperA_1</value>
+        <stoppable>true</stoppable>
+        <xOffSet>0</xOffSet>
+        <yOffSet>0</yOffSet>
+      </Frame>
+      <Frame>
+        <type>SPRITE</type>
+        <name>KILL</name>
+        <value>ChomperA_2</value>
+        <stoppable>true</stoppable>
+        <xOffSet>0</xOffSet>
+        <yOffSet>0</yOffSet>
+      </Frame>
+      <Frame>
+        <type>SPRITE</type>
+        <name>KILL</name>
+        <value>ChomperA_3</value>
+        <stoppable>true</stoppable>
+        <xOffSet>0</xOffSet>
+        <yOffSet>0</yOffSet>
+      </Frame>      
+      <Frame>
+        <type>COMMAND</type>
+        <name>GOTOSEQUENCE</name>
+        <parameter>OPEN</parameter>
+        <stoppable>true</stoppable>
+      </Frame>
+    </frames>
+    <name>close</name>
+    <raised>false</raised>
+    <collision>Platform</collision>
+  </Sequence>
+
+  <!-- OPEN CHOMPER -->
+  <Sequence>
+    <config_type>CONFIG_tiles</config_type>
+    <frames>
+      <Frame>
+        <type>SPRITE</type>
+        <name>KILL</name>
+        <value>ChomperA_3</value>
+        <stoppable>true</stoppable>
+        <xOffSet>0</xOffSet>
+        <yOffSet>0</yOffSet>
+      </Frame>
+      <Frame>
+        <type>SPRITE</type>
+        <name>KILL</name>
+        <value>ChomperA_2</value>
+        <stoppable>true</stoppable>
+        <xOffSet>0</xOffSet>
+        <yOffSet>0</yOffSet>
+      </Frame>
+      <Frame>
+        <type>SPRITE</type>
+        <name>OPEN</name>
+        <value>ChomperA_1</value>
+        <stoppable>true</stoppable>
+        <xOffSet>0</xOffSet>
+        <yOffSet>0</yOffSet>
+      </Frame>
+      <Frame>
+        <type>SPRITE</type>
+        <name>OPEN</name>
+        <value>ChomperA_0</value>
+        <stoppable>true</stoppable>
+        <xOffSet>0</xOffSet>
+        <yOffSet>0</yOffSet>
+      </Frame>
+      <Frame>
+        <type>COMMAND</type>
+        <name>GOTOSEQUENCE</name>
+        <parameter>NORMAL</parameter>
+        <stoppable>true</stoppable>
+      </Frame>
+    </frames>
+    <name>open</name>
+    <raised>false</raised>
+    <collision>Platform</collision>
+  </Sequence>
+
+
+
+</ArrayOfSequence>
+
