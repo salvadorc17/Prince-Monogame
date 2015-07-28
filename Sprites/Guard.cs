@@ -210,9 +210,7 @@ namespace PrinceGame
             Energy = PrinceOfPersiaGame.CONFIG_KID_START_ENERGY;
 
             flip = spriteEffect;
-
             spriteState.Clear();
-
             Stand();
 
         }
