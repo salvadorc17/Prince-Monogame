@@ -84,6 +84,8 @@ public class Player : Sprite
         m_spriteRoom = room;
         LoadContent();
         Reset(startPosition, startFlip);
+        Sword = true;
+
     }
 
     public void Reset(SpriteEffects spriteeffect)

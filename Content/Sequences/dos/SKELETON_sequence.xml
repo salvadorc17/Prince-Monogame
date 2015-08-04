@@ -198,7 +198,7 @@
       </Frame>
       <Frame>
         <type>SPRITE</type>
-        <name></name>
+        <name>LOOP</name>
         <value>Skeleton_183</value>
         <sound>guard death 1</sound>
         <stoppable>false</stoppable>
@@ -217,7 +217,7 @@
 
   <!-- STRIKE -->
   <Sequence>
-    <config_type>CONFIG_sprite_guard</config_type>
+    <config_type>CONFIG_sprite_skeleton</config_type>
     <frames>
       <Frame>
         <type>SPRITE</type>
@@ -292,25 +292,25 @@
 
   <!-- STRIKE-RETREAT-->
   <Sequence>
-    <config_type>CONFIG_sprite_guard</config_type>
+    <config_type>CONFIG_sprite_skeleton</config_type>
     <frames>
       <Frame>
         <type>SPRITE</type>
-        <value>Guard_171</value>
+        <value>Skeleton_171</value>
         <stoppable>false</stoppable>
         <xOffSet>0</xOffSet>
         <yOffSet>0</yOffSet>
       </Frame>
       <Frame>
         <type>SPRITE</type>
-        <value>Guard_172</value>
+        <value>Skeleton_172</value>
         <stoppable>true</stoppable>
         <xOffSet>0</xOffSet>
         <yOffSet>0</yOffSet>
       </Frame>
       <Frame>
         <type>SPRITE</type>
-        <value>Guard_174</value>
+        <value>Skeleton_174</value>
         <stoppable>true</stoppable>
         <xOffSet>0</xOffSet>
         <yOffSet>0</yOffSet>
@@ -327,19 +327,19 @@
 
   <!-- RETREAT-->
   <Sequence>
-    <config_type>CONFIG_sprite_guard</config_type>
+    <config_type>CONFIG_sprite_skeleton</config_type>
     <frames>
       <Frame>
         <type>SPRITE</type>
         <name>ADVANCE</name>
-        <value>Guard_168</value>
+        <value>Skeleton_168</value>
         <stoppable>false</stoppable>
         <xOffSet>-4</xOffSet>
         <yOffSet>0</yOffSet>
       </Frame>
       <Frame>
         <type>SPRITE</type>
-        <value>Guard_170</value>
+        <value>Skeleton_170</value>
         <stoppable>true</stoppable>
         <xOffSet>-10</xOffSet>
         <yOffSet>0</yOffSet>

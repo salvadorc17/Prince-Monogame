@@ -85,7 +85,7 @@
       <Frame>
         <type>SPRITE</type>
         <name>READY</name>
-        <value>Guard_172</value> <!-- in the original macII not found sequence frame -->
+        <value>Guard_170</value>
         <stoppable>true</stoppable>
         <delay>0.5</delay>
         <xOffSet>0</xOffSet>
@@ -93,7 +93,7 @@
       </Frame>
       <Frame>
         <type>SPRITE</type>
-        <value>Guard_170</value>
+        <value>Guard_171</value>
         <stoppable>true</stoppable>
         <delay>0.9</delay>
         <xOffSet>0</xOffSet>
@@ -102,7 +102,7 @@
         <Frame>
           <type>SPRITE</type>
           <name>LOOP</name>
-          <value>Guard_171</value>
+          <value>Guard_172</value>
           <stoppable>true</stoppable>
           <delay>0.9</delay>
           <xOffSet>0</xOffSet>
@@ -148,14 +148,6 @@
         <yOffSet>0</yOffSet>
       </Frame>
       <Frame>
-        <type>SPRITE</type>
-        <name></name>
-        <value>Guard_165</value>
-        <stoppable>false</stoppable>
-        <xOffSet>10</xOffSet>
-        <yOffSet>0</yOffSet>
-      </Frame>
-      <Frame>
         <type>COMMAND</type>
         <name>GOTOSEQUENCE</name>
         <parameter>READY</parameter>
@@ -172,7 +164,7 @@
       <Frame>
         <type>SPRITE</type>
         <name>DROPDEAD</name>
-        <value>Guard_179</value>
+        <value>Guard_180</value>
         <stoppable>false</stoppable>
         <delay>0.8</delay>
         <xOffSet>0</xOffSet>
@@ -181,7 +173,7 @@
       <Frame>
         <type>SPRITE</type>
         <name></name>
-        <value>Guard_180</value>
+        <value>Guard_181</value>
         <stoppable>false</stoppable>
         <delay>0.4</delay>
         <xOffSet>0</xOffSet>
@@ -190,7 +182,7 @@
       <Frame>
         <type>SPRITE</type>
         <name></name>
-        <value>Guard_181</value>
+        <value>Guard_182</value>
         <stoppable>false</stoppable>
         <delay>0.2</delay>
         <xOffSet>0</xOffSet>
@@ -199,16 +191,7 @@
       <Frame>
         <type>SPRITE</type>
         <name></name>
-        <value>Guard_182</value>
-        <stoppable>false</stoppable>
-        <xOffSet>0</xOffSet>
-        <yOffSet>0</yOffSet>
-      </Frame>
-      <Frame>
-        <type>SPRITE</type>
-        <name></name>
         <value>Guard_183</value>
-        <sound>guard death 1</sound>
         <stoppable>false</stoppable>
         <xOffSet>0</xOffSet>
         <yOffSet>0</yOffSet>
@@ -217,6 +200,7 @@
         <type>SPRITE</type>
         <name>LOOP</name>
         <value>Guard_185</value>
+        <sound>guard death 1</sound>
         <stoppable>false</stoppable>
         <xOffSet>0</xOffSet>
         <yOffSet>0</yOffSet>
@@ -246,7 +230,7 @@
       </Frame>
       <Frame>
         <type>SPRITE</type>
-        <value>Guard_151</value>
+        <value>Guard_152</value>
         <stoppable>false</stoppable>
         <name>READYBLOCK</name>
         <delay>0.3</delay>
@@ -255,7 +239,7 @@
       </Frame>
       <Frame>
         <type>SPRITE</type>
-        <value>Guard_152</value>
+        <value>Guard_151</value>
         <stoppable>false</stoppable>
         <name>READYBLOCK</name><!-- THIS NAME IS USEFULL FOR BLOCK ATTACK-->
         <delay>0.2</delay>
@@ -272,7 +256,7 @@
       </Frame>
       <Frame>
         <type>SPRITE</type>
-        <value>Guard_154</value>
+        <value>Guard_158</value>
         <name>STRIKE</name><!-- THIS NAME IS USEFULL FOR TAKE THE HIT FRAME IF TOUCH ..LOOSES ENERGY -->
         <stoppable>false</stoppable>
         <xOffSet>10</xOffSet>
@@ -288,29 +272,12 @@
       </Frame>
       <Frame>
         <type>SPRITE</type>
-        <value>Guard_155</value>
+        <value>Guard_157</value>
         <name>READYBLOCK</name>
         <stoppable>false</stoppable>
         <xOffSet>-10</xOffSet>
         <yOffSet>0</yOffSet>
       </Frame>
-      <Frame>
-        <type>SPRITE</type>
-        <value>Guard_156</value>
-        <stoppable>false</stoppable>
-        <name>READYBLOCK</name>
-        <xOffSet>-5</xOffSet>
-        <yOffSet>0</yOffSet>
-      </Frame>
-      <Frame>
-        <type>SPRITE</type>
-        <value>Guard_157</value>
-        <stoppable>false</stoppable>
-        <name>READYBLOCK</name>
-        <xOffSet>0</xOffSet>
-        <yOffSet>0</yOffSet>
-      </Frame>
-
       <Frame>
         <type>COMMAND</type>
         <name>GOTOSEQUENCE</name>
@@ -329,28 +296,21 @@
     <frames>
       <Frame>
         <type>SPRITE</type>
-        <value>Guard_155</value>
+        <value>Guard_171</value>
         <stoppable>false</stoppable>
         <xOffSet>0</xOffSet>
         <yOffSet>0</yOffSet>
       </Frame>
       <Frame>
         <type>SPRITE</type>
-        <value>Guard_156</value>
-        <stoppable>false</stoppable>
-        <xOffSet>0</xOffSet>
-        <yOffSet>0</yOffSet>
-      </Frame>
-      <Frame>
-        <type>SPRITE</type>
-        <value>Guard_157</value>
+        <value>Guard_172</value>
         <stoppable>true</stoppable>
         <xOffSet>0</xOffSet>
         <yOffSet>0</yOffSet>
       </Frame>
       <Frame>
         <type>SPRITE</type>
-        <value>Guard_158</value>
+        <value>Guard_164</value>
         <stoppable>true</stoppable>
         <xOffSet>0</xOffSet>
         <yOffSet>0</yOffSet>
@@ -372,14 +332,14 @@
       <Frame>
         <type>SPRITE</type>
         <name>ADVANCE</name>
-        <value>Guard_160</value>
+        <value>Guard_168</value>
         <stoppable>false</stoppable>
         <xOffSet>-4</xOffSet>
         <yOffSet>0</yOffSet>
       </Frame>
       <Frame>
         <type>SPRITE</type>
-        <value>Guard_157</value>
+        <value>Guard_170</value>
         <stoppable>true</stoppable>
         <xOffSet>-10</xOffSet>
         <yOffSet>0</yOffSet>
