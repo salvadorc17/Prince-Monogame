@@ -69,6 +69,7 @@ namespace PrinceGame
         public static float CONFIG_FRAMERATE = 0.09f;
         public static string CONFIG_SPRITE_KID;
         public static string CONFIG_SPRITE_GUARD;
+        public static string CONFIG_SPRITE_SKELETON;
         public static string CONFIG_SPRITE_SERPENT;
         public static string CONFIG_SPRITE_EFFECTS;
         public static string CONFIG_SONGS;
@@ -119,6 +120,7 @@ namespace PrinceGame
             //READ CONTENT RESOURCES PATH
             CONFIG_SPRITE_KID = System.Configuration.ConfigurationManager.AppSettings["CONFIG_sprite_kid"].ToString().ToUpper();
             CONFIG_SPRITE_GUARD = System.Configuration.ConfigurationManager.AppSettings["CONFIG_sprite_guard"].ToString().ToUpper();
+            CONFIG_SPRITE_SKELETON = System.Configuration.ConfigurationManager.AppSettings["CONFIG_sprite_skeleton"].ToString().ToUpper();
             CONFIG_SPRITE_SERPENT = System.Configuration.ConfigurationManager.AppSettings["CONFIG_sprite_serpent"].ToString().ToUpper();
             CONFIG_SOUNDS = System.Configuration.ConfigurationManager.AppSettings["CONFIG_sound"].ToString().ToUpper();
             CONFIG_SONGS = System.Configuration.ConfigurationManager.AppSettings["CONFIG_songs"].ToString().ToUpper();
@@ -263,26 +265,35 @@ namespace PrinceGame
                         if (true)
                         {
                             ((Guard)s).Update(gameTime, keyboardState, gamePadState, touchState, accelerometerState, Microsoft.Xna.Framework.DisplayOrientation.Default);
-                            break; // TODO: might not be correct. Was : Exit Select
+                            break; 
+                        }
+
+                    case "Skeleton":
+                        if (true)
+                        {
+                            ((Skeleton)s).Update(gameTime, keyboardState, gamePadState, touchState, accelerometerState, Microsoft.Xna.Framework.DisplayOrientation.Default);
+                            break;
                         }
 
                     case "Serpent":
                         if (true)
                         {
                             ((Serpent)s).Update(gameTime, keyboardState, gamePadState, touchState, accelerometerState, Microsoft.Xna.Framework.DisplayOrientation.Default);
-                            break; // TODO: might not be correct. Was : Exit Select
+                            break; 
                         }
+
+                    
 
                     case "Splash":
                         if (true)
                         {
                             ((Splash)s).Update(gameTime, keyboardState, gamePadState, touchState, accelerometerState, Microsoft.Xna.Framework.DisplayOrientation.Default);
-                            break; // TODO: might not be correct. Was : Exit Select
+                            break; 
                         }
                         
                     default:
 
-                        break; // TODO: might not be correct. Was : Exit Select
+                        break; 
 
                 }
                 //delete object in state == delete
@@ -448,7 +459,32 @@ namespace PrinceGame
                                 spriteBatch.Draw(enemy_triangle, hudLocation, source, Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0);
                                 offset += enemy_livePoints.Width + 1;
                             }
-                            break; // TODO: might not be correct. Was : Exit Select
+                            break; 
+                        }
+
+                    case "Skeleton":
+                        if (true)
+                        {
+                            offset = enemy_livePoints.Width + 1;
+                            Texture2D enemy_triangle = enemy_livePoints;
+                            for (int x = 1; x <= maze.player.LivePoints; x++)
+                            {
+                                hudLocation = new Vector2(CONFIG_SCREEN_WIDTH - offset, CONFIG_SCREEN_HEIGHT - RoomNew.BOTTOM_BORDER);
+
+                                if (x <= s.Energy)
+                                {
+                                    enemy_triangle = enemy_energy;
+                                }
+                                else
+                                {
+                                    enemy_triangle = enemy_livePoints;
+                                }
+
+                                // Draw the current tile.
+                                spriteBatch.Draw(enemy_triangle, hudLocation, source, Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0);
+                                offset += enemy_livePoints.Width + 1;
+                            }
+                            break;
                         }
                         
                     case "Serpent":
@@ -473,11 +509,11 @@ namespace PrinceGame
                                 spriteBatch.Draw(enemy_triangle, hudLocation, source, Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0);
                                 offset += enemy_livePoints.Width + 1;
                             }
-                            break; // TODO: might not be correct. Was : Exit Select
+                            break; 
                         }
                         
                     default:
-                        break; // TODO: might not be correct. Was : Exit Select
+                        break; 
 
 
                 }

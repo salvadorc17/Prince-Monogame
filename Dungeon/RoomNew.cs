@@ -164,7 +164,7 @@ namespace PrinceGame
                             int xPlayer = (x - 1) * Tile.WIDTH + Player.SPRITE_SIZE_X;
                             int yPlayer = ((y + 1) * (Tile.HEIGHT)) - Sprite.SPRITE_SIZE_Y + RoomNew.TOP_BORDER;
                             maze.player = new Player(this, new Vector2(xPlayer, yPlayer), maze.graphicsDevice, r.columns[ix].spriteEffect);
-                            break; // TODO: might not be correct. Was : Exit Select
+                            break; 
 
                         case Enumeration.SpriteType.guard:
                             int xGuard = (x - 1) * Tile.WIDTH + Player.SPRITE_SIZE_X;
@@ -172,21 +172,29 @@ namespace PrinceGame
                             int yGuard = ((y + 1) * (Tile.HEIGHT)) - Sprite.SPRITE_SIZE_Y + RoomNew.TOP_BORDER;
                             Guard g = new Guard(this, new Vector2(xGuard, yGuard), maze.graphicsDevice, r.columns[ix].spriteEffect);
                             maze.sprites.Add(g);
-                            break; // TODO: might not be correct. Was : Exit Select
-
+                            break;
 
                         case Enumeration.SpriteType.skeleton:
+                            int xSkel = (x - 1) * Tile.WIDTH + Player.SPRITE_SIZE_X;
+                            //int yGuard = (y + 1) * (Tile.HEIGHT - Sprite.PLAYER_STAND_FLOOR_PEN - RoomNew.BOTTOM_BORDER + RoomNew.TOP_BORDER);
+                            int ySkel = ((y + 1) * (Tile.HEIGHT)) - Sprite.SPRITE_SIZE_Y + RoomNew.TOP_BORDER;
+                            Skeleton h = new Skeleton(this, new Vector2(xSkel, ySkel), maze.graphicsDevice, r.columns[ix].spriteEffect);
+                            maze.sprites.Add(h);
+                            break; 
+
+
+                        case Enumeration.SpriteType.serpent:
                             int xSerp = (x - 1) * Tile.WIDTH + Player.SPRITE_SIZE_X;
                             //int yGuard = (y + 1) * (Tile.HEIGHT - Sprite.PLAYER_STAND_FLOOR_PEN - RoomNew.BOTTOM_BORDER + RoomNew.TOP_BORDER);
                             int ySerp = ((y + 1) * (Tile.HEIGHT)) - Sprite.SPRITE_SIZE_Y + RoomNew.TOP_BORDER;
                             Serpent s = new Serpent(this, new Vector2(xSerp, ySerp), maze.graphicsDevice, r.columns[ix].spriteEffect);
                             maze.sprites.Add(s);
-                            break; // TODO: might not be correct. Was : Exit Select
+                            break; 
 
                         default:
 
 
-                            break; // TODO: might not be correct. Was : Exit Select
+                            break; 
                     }
 
 
@@ -536,21 +544,24 @@ namespace PrinceGame
                 {
                     case "Guard":
                         ((Guard)s).Draw(gameTime, spriteBatch);
-                        break; // TODO: might not be correct. Was : Exit Select
+                        break;
 
+                    case "Skeleton":
+                        ((Skeleton)s).Draw(gameTime, spriteBatch);
+                        break; 
 
                     case "Serpent":
                         ((Serpent)s).Draw(gameTime, spriteBatch);
-                        break; // TODO: might not be correct. Was : Exit Select
+                        break;
 
 
                     case "Splash":
                         ((Splash)s).Draw(gameTime, spriteBatch);
-                        break; // TODO: might not be correct. Was : Exit Select
+                        break;
 
                     default:
 
-                        break; // TODO: might not be correct. Was : Exit Select
+                        break; 
 
                 }
             }
@@ -613,12 +624,16 @@ namespace PrinceGame
                 {
                     case "Guard":
                         ((Guard)s).Update(gameTime, keyboardState, gamePadState, touchState, accelState, orientation);
-                        break; // TODO: might not be correct. Was : Exit Select
+                        break;
+
+                    case "Skeleton":
+                        ((Skeleton)s).Update(gameTime, keyboardState, gamePadState, touchState, accelState, orientation);
+                        break;
 
 
                     case "Serpent":
                         ((Serpent)s).Update(gameTime, keyboardState, gamePadState, touchState, accelState, orientation);
-                        break; // TODO: might not be correct. Was : Exit Select
+                        break; 
 
 
                 }

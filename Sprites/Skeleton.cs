@@ -18,13 +18,13 @@ namespace PrinceGame
 {
 
 
-public class Serpent : Sprite
+public class Skeleton : Sprite
 {
 
     /// <summary>
     /// Constructors a new player.
     /// </summary>
-    public Serpent(RoomNew room, Vector2 position, GraphicsDevice GraphicsDevice__1, SpriteEffects spriteEffect)
+    public Skeleton(RoomNew room, Vector2 position, GraphicsDevice GraphicsDevice__1, SpriteEffects spriteEffect)
     {
         graphicsDevice = GraphicsDevice__1;
         m_spriteRoom = room;
@@ -46,7 +46,7 @@ public class Serpent : Sprite
         spriteSequence = new List<Sequence>();
         System.Xml.Serialization.XmlSerializer ax = new System.Xml.Serialization.XmlSerializer(spriteSequence.GetType());
 
-        Stream txtReader = Microsoft.Xna.Framework.TitleContainer.OpenStream(PrinceOfPersiaGame.CONFIG_PATH_CONTENT + PrinceOfPersiaGame.CONFIG_PATH_SEQUENCES + "SERPENT_sequence.xml");
+        Stream txtReader = Microsoft.Xna.Framework.TitleContainer.OpenStream(PrinceOfPersiaGame.CONFIG_PATH_CONTENT + PrinceOfPersiaGame.CONFIG_PATH_SEQUENCES + "SKELETON_sequence.xml");
 
 
         //TextReader txtReader = File.OpenText(PrinceOfPersiaGame.CONFIG_PATH_CONTENT + PrinceOfPersiaGame.CONFIG_PATH_SEQUENCES + "KID_sequence.xml");
@@ -245,7 +245,7 @@ public class Serpent : Sprite
     }
 
 
-    //?? the original Serpent engarde is used?
+    //?? the original Skeleton engarde is used?
     public void Engarde()
     {
         Engarde(Enumeration.PriorityState.Normal, null);
@@ -263,11 +263,11 @@ public class Serpent : Sprite
     }
 
 
-    public void SerpentEngarde()
+    public void SkeletonEngarde()
     {
-        SerpentEngarde(Enumeration.PriorityState.Normal, null);
+        SkeletonEngarde(Enumeration.PriorityState.Normal, null);
     }
-    public void SerpentEngarde(Enumeration.PriorityState priority, System.Nullable<bool> stoppable)
+    public void SkeletonEngarde(Enumeration.PriorityState priority, System.Nullable<bool> stoppable)
     {
         if (priority == Enumeration.PriorityState.Normal & sprite.IsStoppable == stoppable)
         {
@@ -391,7 +391,7 @@ public class Serpent : Sprite
 
                         if (flip == SpriteEffects.FlipHorizontally)
                         {
-                            if (depth.X < 10 & depth.Y >= Serpent.SPRITE_SIZE_Y)
+                            if (depth.X < 10 & depth.Y >= Skeleton.SPRITE_SIZE_Y)
                             {
                                 ((Lava)SpriteRoom.GetTile(x, y)).Open();
 
@@ -401,7 +401,7 @@ public class Serpent : Sprite
                         }
                         else
                         {
-                            if (depth.X > -10 & depth.Y >= Serpent.SPRITE_SIZE_Y)
+                            if (depth.X > -10 & depth.Y >= Skeleton.SPRITE_SIZE_Y)
                             {
                                 ((Lava)SpriteRoom.GetTile(x, y)).Open();
 

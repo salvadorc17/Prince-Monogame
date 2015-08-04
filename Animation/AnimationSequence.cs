@@ -141,7 +141,7 @@ namespace PrinceGame
             }
 
             //cloning for avoid reverse pemanently...
-            sequence = result.DeepClone();
+            sequence = result;
 
             if (stateElement.Stoppable != null)
             {
@@ -611,6 +611,8 @@ namespace PrinceGame
         public void DrawSprite(GameTime gameTime, SpriteBatch spriteBatch, Vector2 position, SpriteEffects spriteEffects, float depth)
         {
             // Calculate the source rectangle of the current frame.
+
+            //Texture2D value = (Texture2D)Maze.dContentRes[System.Configuration.ConfigurationManager.AppSettings[sequence.config_type].ToString().ToUpper() + sequence.frames[m_frameIndex].value.ToUpper()];
  
             Rectangle source = new Rectangle(0, 0, sequence.frames[m_frameIndex].texture.Height, sequence.frames[m_frameIndex].texture.Height);
 

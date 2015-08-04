@@ -26,7 +26,7 @@ namespace PrinceGame
         public Guard(RoomNew room, Vector2 position, GraphicsDevice GraphicsDevice__1, SpriteEffects spriteEffect)
         {
             graphicsDevice = GraphicsDevice__1;
-            SpriteRoom = room;
+            m_spriteRoom = room;
             LoadContent();
 
 
@@ -210,7 +210,9 @@ namespace PrinceGame
             Energy = PrinceOfPersiaGame.CONFIG_KID_START_ENERGY;
 
             flip = spriteEffect;
+
             spriteState.Clear();
+
             Stand();
 
         }

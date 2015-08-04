@@ -15,7 +15,7 @@ namespace PrinceGame
         private const int FRAME_WIDTH = 114;
         private const int FRAME_HEIGHT = 114;
         //public const float FRAME_TIME = 0.1f;
-
+        private ContentManager Content;
 
         public string config_type;
         public List<Frame> frames = new List<Frame>();
@@ -54,21 +54,25 @@ namespace PrinceGame
 
         public void Initialize(ContentManager Content)
         {
+            this.Content = Content;
+
             foreach (Frame f in frames)
             {
                 try
                 {
+
+                    path = System.Configuration.ConfigurationManager.AppSettings[config_type].ToString();
                     //loading texture
                     if (f.value != null)
                     {
-                         
-                       path = System.Configuration.ConfigurationManager.AppSettings[config_type].ToString().ToUpper();
+
+                        
                        Texture2D t = (Texture2D)Maze.dContentRes[System.Configuration.ConfigurationManager.AppSettings[config_type].ToString().ToUpper() + f.value.ToUpper()];
 
 
                        if (t == null)
                        {
-                           f.SetTexture(Content.Load<Texture2D>(path + f.value));
+                           f.SetTexture(Content.Load<Texture2D>(@"Content/" + path + f.value));
                        }
                         else
                         {
@@ -97,12 +101,13 @@ namespace PrinceGame
             newSequence.raised = this.raised;
             newSequence.collision = this.collision;
             newSequence.tileType = this.tileType;
+            newSequence.path = this.path;
             newSequence.config_type = this.config_type;
 
             //newSequence.frameTime = this.frameTime;
             foreach (Frame f in this.frames)
             {
-                newSequence.frames.Add(f.DeepCopy());
+                newSequence.frames.Add(f);
             }
             return newSequence;
 

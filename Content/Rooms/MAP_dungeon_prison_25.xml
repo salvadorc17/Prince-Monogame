@@ -94,7 +94,7 @@
           <tileType>block</tileType>
         </Column>
         <Column>
-		  <sprite>guard</sprite>
+		      <sprite>guard</sprite>
           <tileType>floor</tileType>
         </Column>
         <Column>
