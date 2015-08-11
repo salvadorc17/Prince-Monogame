@@ -1894,7 +1894,7 @@ public class Player : Sprite
                 x = x + 1;
             }
             tileCollision = SpriteRoom.GetCollision(x, y - 1);
-            //tileType = _room.GetType(x, y - 1);
+            tileType = SpriteRoom.GetType(x, y - 1);
             //if (tileType != Enumeration.TileType.space)
             if (tileCollision != Enumeration.TileCollision.Passable)
             {
@@ -1998,7 +1998,7 @@ public class Player : Sprite
         //Vector2 depth = RectangleExtensions.GetIntersectionDepth(playerBounds, tileBounds);
         Enumeration.TileCollision tileCollision = SpriteRoom.GetCollision(x, y - 1);
         Enumeration.TileType tileType = default(Enumeration.TileType);
-        // = _room.GetType(x, y - 1);
+        tileType = SpriteRoom.GetType(x, y - 1);
 
         //if (tileType == Enumeration.TileType.floor | tileType == Enumeration.TileType.gate)
         if (tileCollision == Enumeration.TileCollision.Platform)

@@ -99,21 +99,21 @@ namespace PrinceGame
         }
 
 
-        //public void Close()
-        //{
-        //    elapsedTimeOpen = timeOpen;
-        //    if (tileState.Value().state == Enumeration.StateTile.close)
-        //        return;
-        //    if (tileState.Value().state == Enumeration.StateTile.closed)
-        //        return;
+        public void Close()
+        {
+            elapsedTimeOpen = timeOpen;
+            if (tileState.Value().state == Enumeration.StateTile.close)
+                return;
+            if (tileState.Value().state == Enumeration.StateTile.closed)
+                return;
 
-        //    if (tileState.Value().state == Enumeration.StateTile.open)
-        //        tileState.Add(Enumeration.StateTile.close, Enumeration.PriorityState.Normal, Enumeration.SequenceReverse.Reverse);
-        //    else
-        //        tileState.Add(Enumeration.StateTile.close);
+           if (tileState.Value().state == Enumeration.StateTile.open)
+                tileState.Add(Enumeration.StateTile.close, Enumeration.PriorityState.Normal, Enumeration.SequenceReverse.Reverse);
+           else
+               tileState.Add(Enumeration.StateTile.close);
 
-        //    tileAnimation.PlayAnimation(tileSequence, tileState.Value());
-        //}
+           tileAnimation.PlayAnimation(tileSequence, tileState.Value());
+        }
 
         public void Open()
         {

@@ -125,7 +125,7 @@ namespace PrinceGame
 
 
 
-	        dynamic fls = (from file in Directory.EnumerateFiles(contentManager.RootDirectory + "/" + contentFolder, "*.xnb", SearchOption.AllDirectories)
+	        object fls = (from file in Directory.EnumerateFiles(contentManager.RootDirectory + "/" + contentFolder, "*.xnb", SearchOption.AllDirectories)
                                 select file);
 
             var files = Directory
@@ -135,7 +135,7 @@ namespace PrinceGame
 
 
 
-            foreach (dynamic f in fls)
+            foreach (var f in files)
             {
 		     key = string.Empty;
 		     string fileName = f.ToString().Replace('\\', '/');

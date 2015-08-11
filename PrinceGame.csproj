@@ -74,8 +74,9 @@
     <Compile Include="Screens\MessageBoxScreen.cs" />
     <Compile Include="Screens\OptionsMenuScreen.cs" />
     <Compile Include="Screens\PlayerIndexEventArgs.cs" />
+    <Compile Include="Sprites\Gaurd.cs" />
     <Compile Include="Sprites\Skeleton.cs" />
-    <Compile Include="Sprites\Guard.cs" />
+    <Compile Include="Sprites\Guard1.cs" />
     <Compile Include="Sprites\Player.cs" />
     <Compile Include="Sprites\PlayerState.cs" />
     <Compile Include="Sprites\Serpent.cs" />
@@ -97,14 +98,19 @@
     <Compile Include="TouchCollectionExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="MonoGame.Framework">
-      <HintPath>$(MSBuildProgramFiles32)\MonoGame\v3.0\Assemblies\Windows\MonoGame.Framework.dll</HintPath>
+    <Reference Include="MonoGame.Framework, Version=3.1.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Windows\Debug\MonoGame.Framework.dll</HintPath>
     </Reference>
+    <Reference Include="OpenTK, Version=1.1.0.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
+    <Reference Include="Tao.Sdl, Version=1.2.13.0, Culture=neutral, PublicKeyToken=9c7a200e36c0094e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Windows\Debug\Tao.Sdl.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Levels\LEVEL_dungeon_cave.xml" />
@@ -136,12 +142,12 @@
     <Content Include="Content\Rooms\MAP_dungeon_prison_9.xml" />
     <Content Include="Content\Sequences\dos\BLOCK_sequence.xml" />
     <Content Include="Content\Sequences\dos\CHOMPER_sequence.xml" />
+    <Content Include="Content\Sequences\dos\GUARD_sequence.xml" />
     <Content Include="Content\Sequences\dos\EXIT_sequence.xml" />
     <Content Include="Content\Sequences\dos\FLASKBIG_sequence.xml" />
     <Content Include="Content\Sequences\dos\FLASK_sequence.xml" />
     <Content Include="Content\Sequences\dos\FLOOR_sequence.xml" />
     <Content Include="Content\Sequences\dos\GATE_sequence.xml" />
-    <Content Include="Content\Sequences\dos\GUARD_sequence.xml" />
     <Content Include="Content\Sequences\dos\KID_sequence.xml" />
     <Content Include="Content\Sequences\dos\LAVA_sequence.xml" />
     <Content Include="Content\Sequences\dos\LEVEL_dungeon_prison.xml" />
