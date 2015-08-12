@@ -22,6 +22,7 @@ namespace PrinceGame
         public const int PLAYER_STAND_BORDER_FRAME = 47;
         //47+20player+47=114
         public const int PLAYER_STAND_FRAME = 20;
+        public const int PLAYER_STAND_FEET = 4;
         public const int PLAYER_STAND_WALL_PEN = 30;
         //wall penetration
         public const int PLAYER_STAND_FLOOR_PEN = 26;

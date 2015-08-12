@@ -230,37 +230,37 @@ namespace PrinceGame
             {
                 case Enumeration.TileType.spikes:
                     return new Spikes(this, content, tiletype, state, nextTileType);
-                     // TODO: might not be correct. Was : Exit Select
+                    
 
 
                 case Enumeration.TileType.lava:
                     return new Lava(this, content, tiletype, state, nextTileType);
-                   // TODO: might not be correct. Was : Exit Select
+                  
 
 
                 case Enumeration.TileType.pressplate:
                     return new PressPlate(this, content, tiletype, state, switchButton, nextTileType);
-                     // TODO: might not be correct. Was : Exit Select
+                     
 
 
                 case Enumeration.TileType.gate:
                     return new Gate(this, content, tiletype, state, switchButton, nextTileType, timeOpen);
-                     // TODO: might not be correct. Was : Exit Select
+                    
 
 
                 case Enumeration.TileType.loose:
                     return new Loose(this, content, tiletype, state, nextTileType);
-                    // TODO: might not be correct. Was : Exit Select
+                 
 
 
                 case Enumeration.TileType.block:
                     return new Block(this, content, tiletype, state, nextTileType);
-                     // TODO: might not be correct. Was : Exit Select
+                     
 
 
                 case Enumeration.TileType.chomper:
                     return new Chomper(this, content, tiletype, state, nextTileType);
-                    // TODO: might not be correct. Was : Exit Select
+                   
 
                 default:
 

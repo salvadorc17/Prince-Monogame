@@ -37,7 +37,8 @@ namespace PrinceGame
             }
 
             //Search in the sequence the right type
-            Sequence result = tileSequence.Find((Sequence s) => s.name.ToUpper() == state.ToString().ToUpper());
+            //Sequence result = tileSequence.Find((Sequence s) => s.name.ToUpper() == state.ToString().ToUpper());
+            Sequence result = tileSequence.Find((Sequence s) => s.name == state.ToString().ToUpper());
 
             if (result != null)
             {

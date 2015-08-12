@@ -1318,26 +1318,28 @@ public class Player : Sprite
 
                         if (flip == SpriteEffects.FlipHorizontally)
                         {
-                            if (depth.X < -(SPRITE_SIZE_X / 2 + Player.PLAYER_STAND_FRAME - PLAYER_R_PENETRATION) && (depth.X < -(SPRITE_SIZE_X / 2 + Player.PLAYER_STAND_FRAME - PLAYER_R_PENETRATION)))
+                            if (depth.X < -(SPRITE_SIZE_X / 2 + Player.PLAYER_STAND_FEET - Tile.CHOMPER_DISTANCE_PENETRATION_L) && (depth.X < -(SPRITE_SIZE_X / 2 + Player.PLAYER_STAND_FEET - Tile.CHOMPER_DISTANCE_PENETRATION_L)))
                             {
                                 if (SpriteRoom.GetTile(x, y).tileState.Value().Name == Enumeration.StateTile.kill.ToString())
                                 {
-                                    Impale(Enumeration.PriorityState.Normal);
+                                    DeadFall();
+                                    //Impale(Enumeration.PriorityState.Normal);
                                 }
                             }
                         }
 
                         if (flip == SpriteEffects.None)
                         {
-                            if (depth.X < 0 && (depth.X > -(SPRITE_SIZE_X / 2 + Player.PLAYER_STAND_FRAME + PLAYER_R_PENETRATION)))
+                            if (depth.X < 0 && (depth.X > -(SPRITE_SIZE_X / 2 + Player.PLAYER_STAND_FEET + Tile.CHOMPER_DISTANCE_PENETRATION_L)))
                             {
                                 if (SpriteRoom.GetTile(x, y).tileState.Value().Name == Enumeration.StateTile.kill.ToString())
                                 {
-                                    Impale(Enumeration.PriorityState.Normal);
+                                    DeadFall();
+                                    //Impale(Enumeration.PriorityState.Normal);
                                 }
                             }
                         }
-                        break; // TODO: might not be correct. Was : Exit Select
+                        break; 
 
 
                     case Enumeration.TileType.lava:
@@ -1354,7 +1356,7 @@ public class Player : Sprite
                         }
                         else if (depth.X > (Tile.PERSPECTIVE + PLAYER_L_PENETRATION - Player.PLAYER_STAND_FRAME))
                         {
-                            //45
+                            
                             ((Lava)SpriteRoom.GetTile(x, y)).Open();
                         }
 

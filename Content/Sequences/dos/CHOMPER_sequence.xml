@@ -20,7 +20,7 @@
         <stoppable>true</stoppable>
       </Frame>
     </frames>
-    <name>normal</name>
+    <name>NORMAL</name>
     <raised>false</raised>
     <collision>Platform</collision>
   </Sequence>
@@ -68,7 +68,7 @@
         <stoppable>true</stoppable>
       </Frame>
     </frames>
-    <name>close</name>
+    <name>CLOSE</name>
     <raised>false</raised>
     <collision>Platform</collision>
   </Sequence>
@@ -116,7 +116,7 @@
         <stoppable>true</stoppable>
       </Frame>
     </frames>
-    <name>open</name>
+    <name>OPEN</name>
     <raised>false</raised>
     <collision>Platform</collision>
   </Sequence>
