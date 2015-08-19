@@ -32,6 +32,7 @@ namespace PrinceGame
         public int roomType;
         // Physical structure of the level.
         private Tile[,] tiles;
+        public Exit ExitTile;
         //private Tile[,] tilesMask;
 
         private const int pWidth = 10;
@@ -260,6 +261,10 @@ namespace PrinceGame
 
                 case Enumeration.TileType.chomper:
                     return new Chomper(this, content, tiletype, state, nextTileType);
+
+                case Enumeration.TileType.exit:
+                    return new Exit(this, content, tiletype, state, 0, nextTileType);
+
                    
 
                 default:
@@ -410,6 +415,39 @@ namespace PrinceGame
                 return maze.UpRoom(this).tiles[x, Height - 1];
             }
             return tiles[x, y];
+        }
+
+        public Exit GetExit(int x, int y)
+        {
+            ExitTile = (Exit)tiles[x, y];
+
+            if (x < 0)
+            {
+                ExitTile = (Exit)maze.LeftRoom(this).tiles[Width - 1, y];
+                return ExitTile;
+            }
+ 
+            if (x >= Width)
+            {
+                ExitTile = (Exit)maze.RightRoom(this).tiles[0, y];
+                return ExitTile;
+            }
+
+            if (y >= Height)
+            {
+                ExitTile = (Exit)maze.DownRoom(this).tiles[x, 0];
+                return ExitTile;
+            }
+
+            if (y < 0)
+            {
+                ExitTile = (Exit)maze.UpRoom(this).tiles[x, Height - 1];
+                return ExitTile;
+            }
+
+            
+            return ExitTile;
+
         }
 
         public List<Tile> GetTiles(Enumeration.TileType tileType)

@@ -1442,17 +1442,17 @@ public class Player : Sprite
 
                         if (depth.X < (-Tile.PERSPECTIVE - PLAYER_R_PENETRATION))
                         {
-                            if (((Exits)SpriteRoom.GetTile(x, y)).State == Enumeration.StateTile.opened)
+                            if ((SpriteRoom.GetExit(x, y)).State != Enumeration.StateTile.closed)
                             {
-                                ((Exits)SpriteRoom.GetTile(x, y)).ExitLevel();
+                                //((Exit)SpriteRoom.GetTile(x, y)).ExitLevel();
                                 Maze.NextLevel();
                             }
                             else if (depth.X > (Tile.PERSPECTIVE + PLAYER_L_PENETRATION))
                             {
                                 //45
-                                if (((Exits)SpriteRoom.GetTile(x, y)).State == Enumeration.StateTile.opened)
+                                if ((SpriteRoom.GetExit(x, y)).State != Enumeration.StateTile.closed)
                                 {
-                                    ((Exits)SpriteRoom.GetTile(x, y)).ExitLevel();
+                                    //((Exit)SpriteRoom.GetTile(x, y)).ExitLevel();
                                     Maze.NextLevel();
                                 }
                             }

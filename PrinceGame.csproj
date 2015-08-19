@@ -34,7 +34,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Icon.ico</ApplicationIcon>
+    <ApplicationIcon>PoPicon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Animation\Accelerometer.cs" />
@@ -163,7 +163,7 @@
     <Content Include="Content\Sequences\dos\SWORD_sequence.xml" />
     <Content Include="Content\Sequences\dos\TORCH_sequence.xml" />
     <Content Include="Content\Sounds\dos\main theme.wma" />
-    <Content Include="Icon.ico" />
+    <Content Include="PoPicon.ico" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

@@ -307,7 +307,9 @@ namespace PrinceGame
             exit_close_right,
             exit_close_right_up,
 
-            exits
+            exit,
+
+            exit2
         }
 
 

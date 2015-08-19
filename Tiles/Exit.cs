@@ -31,7 +31,7 @@ using Microsoft.Xna.Framework.Input.Touch;
 
 namespace PrinceGame
 {
-    public class Exits : Tile
+    public class Exit : Tile
     {
         private static List<Sequence> tileSequence = new List<Sequence>();
         public List<int> switchButtons = new List<int>();
@@ -48,7 +48,7 @@ namespace PrinceGame
 
 
 
-        public Exits(RoomNew room, ContentManager Content, Enumeration.TileType tileType, Enumeration.StateTile state, int switchButton, Enumeration.TileType NextTileType__1)
+        public Exit(RoomNew room, ContentManager Content, Enumeration.TileType tileType, Enumeration.StateTile state, int switchButton, Enumeration.TileType NextTileType__1)
         {
             collision = Enumeration.TileCollision.Platform;
             base.room = room;
@@ -107,18 +107,18 @@ namespace PrinceGame
             if (tileState.Value().state == Enumeration.StateTile.closed)
                 return;
 
-           if (tileState.Value().state == Enumeration.StateTile.open)
+            if (tileState.Value().state == Enumeration.StateTile.open)
                 tileState.Add(Enumeration.StateTile.close, Enumeration.PriorityState.Normal, Enumeration.SequenceReverse.Reverse);
-           else
-               tileState.Add(Enumeration.StateTile.close);
+            else
+                tileState.Add(Enumeration.StateTile.close);
 
-           tileAnimation.PlayAnimation(tileSequence, tileState.Value());
+            tileAnimation.PlayAnimation(tileSequence, tileState.Value());
         }
 
         public void Open()
         {
             //anim only the exit2 the dx room's portion
-            if (tileState.Value().state == Enumeration.StateTile.exits)
+            if (tileState.Value().state == Enumeration.StateTile.exit)
             {
                 return;
             }
