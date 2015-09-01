@@ -50,6 +50,7 @@ namespace PrinceGame
         public static Rectangle MASK_DOOR = new Rectangle(50, 0, 13, 148);
         //door
         public static int CHOMPER_DISTANCE_PENETRATION_L = 14;
+        public static int CHOMPER_DISTANCE_PENETRATION_R = 10;
         //chomper
         //(0, 128, 62, 20);
 

@@ -5,7 +5,7 @@
       <columns>
         <Column>
 		  <spriteType>kid</spriteType>
-          <tileType>space</tileType>		  
+          <tileType>floor</tileType>		  
         </Column>
         <Column>
           <spriteType>nothing</spriteType>

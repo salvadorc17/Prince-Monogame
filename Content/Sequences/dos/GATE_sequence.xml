@@ -329,36 +329,11 @@
   <Sequence>
     <config_type>CONFIG_tiles</config_type>
     <frames>
-      <!--<Frame>
-        <type>SPRITE</type>
-        <name>CLOSE</name>
-        <value>DoorA_1</value>
-        <stoppable>false</stoppable>
-        <xOffSet>0</xOffSet>
-        <yOffSet>0</yOffSet>
-        
-      </Frame>-->
       <Frame>
         <type>SPRITE</type>
         <name></name>
         <value>DoorA_2</value>
-        <stoppable>true</stoppable>
-        <xOffSet>0</xOffSet>
-        <yOffSet>0</yOffSet>
-      </Frame>
-      <Frame>
-        <type>SPRITE</type>
-        <name></name>
-        <value>DoorA_3</value>
-        <stoppable>true</stoppable>
-        <xOffSet>0</xOffSet>
-        <yOffSet>0</yOffSet>
-      </Frame>
-      <Frame>
-        <type>SPRITE</type>
-        <name></name>
-        <value>DoorA_4</value>
-        <stoppable>true</stoppable>
+        <stoppable>false</stoppable>
         <xOffSet>0</xOffSet>
         <yOffSet>0</yOffSet>
       </Frame>
@@ -366,31 +341,7 @@
         <type>SPRITE</type>
         <name></name>
         <value>DoorA_5</value>
-        <stoppable>true</stoppable>
-        <xOffSet>0</xOffSet>
-        <yOffSet>0</yOffSet>
-      </Frame>
-      <Frame>
-        <type>SPRITE</type>
-        <name></name>
-        <value>DoorA_6</value>
-        <stoppable>true</stoppable>
-        <xOffSet>0</xOffSet>
-        <yOffSet>0</yOffSet>
-      </Frame>
-      <Frame>
-        <type>SPRITE</type>
-        <name></name>
-        <value>DoorA_7</value>
-        <stoppable>true</stoppable>
-        <xOffSet>0</xOffSet>
-        <yOffSet>0</yOffSet>
-      </Frame>
-      <Frame>
-        <type>SPRITE</type>
-        <name></name>
-        <value>DoorA_8</value>
-        <stoppable>true</stoppable>
+        <stoppable>false</stoppable>
         <xOffSet>0</xOffSet>
         <yOffSet>0</yOffSet>
       </Frame>
@@ -398,23 +349,7 @@
         <type>SPRITE</type>
         <name></name>
         <value>DoorA_9</value>
-        <stoppable>true</stoppable>
-        <xOffSet>0</xOffSet>
-        <yOffSet>0</yOffSet>
-      </Frame>
-      <Frame>
-        <type>SPRITE</type>
-        <name></name>
-        <value>DoorA_10</value>
-        <stoppable>true</stoppable>
-        <xOffSet>0</xOffSet>
-        <yOffSet>0</yOffSet>
-      </Frame>
-      <Frame>
-        <type>SPRITE</type>
-        <name></name>
-        <value>DoorA_11</value>
-        <stoppable>true</stoppable>
+        <stoppable>false</stoppable>
         <xOffSet>0</xOffSet>
         <yOffSet>0</yOffSet>
       </Frame>
@@ -422,7 +357,7 @@
         <type>SPRITE</type>
         <name></name>
         <value>DoorA_12</value>
-        <stoppable>true</stoppable>
+        <stoppable>false</stoppable>
         <sound>door gate closing fast</sound>
         <xOffSet>0</xOffSet>
         <yOffSet>0</yOffSet>
@@ -431,7 +366,7 @@
         <type>COMMAND</type>
         <name>GOTOSEQUENCE</name>
         <parameter>CLOSED</parameter>
-        <stoppable>true</stoppable>
+        <stoppable>false</stoppable>
       </Frame>
     </frames>
     <name>CLOSEFAST</name>

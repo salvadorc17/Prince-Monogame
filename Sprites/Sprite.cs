@@ -42,7 +42,7 @@ namespace PrinceGame
         protected Vector2 m_velocity;
         protected bool m_isOnGround;
         protected Rectangle localBounds;
-
+        public Point RealPosition;
         protected RoomNew m_spriteRoom = null;
         private bool m_alert = false;
         //set true when there is a enemy in the room or near

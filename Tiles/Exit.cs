@@ -34,11 +34,10 @@ namespace PrinceGame
     public class Exit : Tile
     {
         private static List<Sequence> tileSequence = new List<Sequence>();
-        public List<int> switchButtons = new List<int>();
+        public int switchButton = 0;
         public float elapsedTimeOpen = 0;
         public float timeOpen = 6;
 
-        private int xSwitchButton = 0;
         public Enumeration.StateTile State
         {
             get { return tileState.Value().state; }
@@ -55,7 +54,7 @@ namespace PrinceGame
             nextTileType = NextTileType__1;
 
 
-            switchButtons.Add(switchButton);
+            this.switchButton = switchButton;
             System.Xml.Serialization.XmlSerializer ax = new System.Xml.Serialization.XmlSerializer(tileSequence.GetType());
             Stream txtReader = Microsoft.Xna.Framework.TitleContainer.OpenStream(PrinceOfPersiaGame.CONFIG_PATH_CONTENT + PrinceOfPersiaGame.CONFIG_PATH_SEQUENCES + tileType.ToString() + "_sequence.xml");
 

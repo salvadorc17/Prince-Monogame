@@ -1,12 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Level xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <levelName>dungeon_cave</levelName>
-  <levelIndex>1</levelIndex>
-  <startroom>1</startroom>
+  <levelIndex>3</levelIndex>
+  <startroom>22</startroom>
   <rows>
     <RoomRow>
       <columns>
         <RoomColumn>
+          <RoomStart>true</RoomStart>
           <RoomIndex>22</RoomIndex>
           <roomType>0</roomType>
           <FilePath>MAP_dungeon_prison_22.xml</FilePath>
@@ -37,9 +38,8 @@
           <FilePath>MAP_dungeon_prison_5.xml</FilePath>
         </RoomColumn>
         <RoomColumn>
-          <RoomStart>true</RoomStart>
           <RoomIndex>1</RoomIndex>
-          <roomType>1</roomType>
+          <roomType>0</roomType>
           <FilePath>MAP_dungeon_prison_1.xml</FilePath>
         </RoomColumn>
         <RoomColumn>

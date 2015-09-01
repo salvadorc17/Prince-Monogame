@@ -1239,6 +1239,7 @@ public class Player : Sprite
         {
             for (int x = Convert.ToInt32(Math.Truncate(v4.X)); x <= Convert.ToInt32(Math.Truncate(v4.Y)); x++)
             {
+                RealPosition = new Point(x, y);
                 Rectangle tileBounds = SpriteRoom.GetBounds(x, y);
                 Vector2 depth = RectangleExtensions.GetIntersectionDepth(playerBounds, tileBounds);
                 Enumeration.TileCollision tileCollision = SpriteRoom.GetCollision(x, y);
@@ -1306,7 +1307,7 @@ public class Player : Sprite
                         //    }
                         //}
 
-                        break; // TODO: might not be correct. Was : Exit Select
+                        break;
 
 
                     case Enumeration.TileType.chomper:
@@ -1316,28 +1317,29 @@ public class Player : Sprite
                             return;
                         }
 
-                        if (flip == SpriteEffects.FlipHorizontally)
-                        {
-                            if (depth.X < -(SPRITE_SIZE_X / 2 + Player.PLAYER_STAND_FEET - Tile.CHOMPER_DISTANCE_PENETRATION_L) && (depth.X < -(SPRITE_SIZE_X / 2 + Player.PLAYER_STAND_FEET - Tile.CHOMPER_DISTANCE_PENETRATION_L)))
-                            {
-                                if (SpriteRoom.GetTile(x, y).tileState.Value().Name == Enumeration.StateTile.kill.ToString())
-                                {
-                                    DeadFall();
-                                    //Impale(Enumeration.PriorityState.Normal);
-                                }
-                            }
-                        }
 
-                        if (flip == SpriteEffects.None)
+                        if (depth.Y >= 0)
                         {
-                            if (depth.X < 0 && (depth.X > -(SPRITE_SIZE_X / 2 + Player.PLAYER_STAND_FEET + Tile.CHOMPER_DISTANCE_PENETRATION_L)))
-                            {
-                                if (SpriteRoom.GetTile(x, y).tileState.Value().Name == Enumeration.StateTile.kill.ToString())
+
+                          if (depth.X < -(SPRITE_SIZE_X / 2 - Tile.CHOMPER_DISTANCE_PENETRATION_L))
                                 {
-                                    DeadFall();
-                                    //Impale(Enumeration.PriorityState.Normal);
+                                    if (SpriteRoom.GetTile(x, y).tileState.Value().Name == Enumeration.StateTile.kill.ToString())
+                                    {
+                                        
+                                        Impale(Enumeration.PriorityState.Normal);
+                                    }
                                 }
-                            }
+
+
+                          else if (depth.X > -(SPRITE_SIZE_X / 2 + Tile.CHOMPER_DISTANCE_PENETRATION_R))
+                                {
+                                    if (SpriteRoom.GetTile(x, y).tileState.Value().Name == Enumeration.StateTile.kill.ToString())
+                                    {
+                                        
+                                        Impale(Enumeration.PriorityState.Normal);
+                                    }
+                                }
+                            
                         }
                         break; 
 
@@ -1435,7 +1437,29 @@ public class Player : Sprite
                         //    if (depth.X > (Tile.PERSPECTIVE + PLAYER_L_PENETRATION)) //45
                         //         ((PressPlate)SpriteRoom.GetTile(x, y)).Press();
                         //}
-                        break; // TODO: might not be correct. Was : Exit Select
+                        break; 
+
+                    case Enumeration.TileType.closeplate:
+                        //if (flip == SpriteEffects.FlipHorizontally)
+                        //{
+                        if (depth.X < (-Tile.PERSPECTIVE - PLAYER_R_PENETRATION))
+                        {
+                            ((ClosePlate)SpriteRoom.GetTile(x, y)).Press();
+                        }
+                        else if (depth.X > (Tile.PERSPECTIVE + PLAYER_L_PENETRATION))
+                        {
+                            //45
+                            ((ClosePlate)SpriteRoom.GetTile(x, y)).Press();
+                        }
+                        //}
+                        //else
+                        //{
+                        //    if (depth.X > (Tile.PERSPECTIVE + PLAYER_L_PENETRATION)) //45
+                        //        ((PressPlate)SpriteRoom.GetTile(x, y)).Press();
+                        //    if (depth.X > (Tile.PERSPECTIVE + PLAYER_L_PENETRATION)) //45
+                        //         ((PressPlate)SpriteRoom.GetTile(x, y)).Press();
+                        //}
+                        break; 
 
 
                     case Enumeration.TileType.exit:
@@ -1465,7 +1489,7 @@ public class Player : Sprite
                         {
                             if (((Gate)SpriteRoom.GetTile(x, y)).State == Enumeration.StateTile.opened)
                             {
-                                break; // TODO: might not be correct. Was : Exit Select
+                                break;
                             }
                         }
                         //if player are raised then not collide..
