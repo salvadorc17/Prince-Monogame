@@ -8,9 +8,9 @@ namespace PrinceGame
 {
     public class Column
 {
-	public Enumeration.TileType tileType = Enumeration.TileType.block;
+	public Enumeration.TileType tileType;
 	public Enumeration.SpriteType spriteType;
-	public Enumeration.StateTile state = Enumeration.StateTile.normal;
+	public Enumeration.StateTile state;
 	public int switchButton = 0;
 	public float timeOpen = 0;
 

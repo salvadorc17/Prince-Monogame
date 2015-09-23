@@ -49,6 +49,7 @@
     <Compile Include="Dungeon\Column.cs" />
     <Compile Include="Dungeon\Level.cs" />
     <Compile Include="Dungeon\Map.cs" />
+    <Compile Include="Dungeon\Room.cs" />
     <Compile Include="Dungeon\RoomColumn.cs" />
     <Compile Include="Dungeon\RoomRow.cs" />
     <Compile Include="Dungeon\Row.cs" />
