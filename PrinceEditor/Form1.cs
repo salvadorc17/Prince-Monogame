@@ -24,20 +24,15 @@ namespace PrinceEditor
         private string[,] switche = new string[10, 10];
         private XDocument xml;
         private StreamWriter xmlwriter;
-        public int rowcount, columncount, roomcount;
+        public int rowcount, columncount, roomcount, guardcount;
         private int selectedtile;
         private int selectedsprite;
         private int selecteditem;
         private Graphics graphics, BBG;
-        private Rectangle srect, drect, playerrec;
+        private Rectangle srect, drect;
         private Bitmap bb;
         private DirectoryInfo directory;
-        private Rectangle[] guardrect = new Rectangle[31];
-        private int guards;
-        private int playerx;
-        private int playery;
-        private int[] guardx = new int[30];
-        private int[] guardy = new int[30];
+        public Sprite Player, Guard;
         private Map map;
         public List<Room> rooms;
         private Room currentroom;
@@ -80,7 +75,7 @@ namespace PrinceEditor
                 {
                     block[x, y] = "space";
                     sprite[x, y] = "nothing";
-                    item[x, y] = "none";
+                    item[x, y] = "nothing";
                     switche[x, y] = "normal";
 
                 }
@@ -91,7 +86,7 @@ namespace PrinceEditor
             selectedsprite = 0;
             selecteditem = 0;
 
-
+            //guards = new List<Sprite>();
         }
 
         private void LoadFiles()
@@ -116,7 +111,7 @@ namespace PrinceEditor
 
         private void LoadLevel(string path)
         {
-
+            ComboBox1.Items.Clear();
             rowcount = 0;
             columncount = 0;
             roomcount = 0;
@@ -218,7 +213,7 @@ namespace PrinceEditor
                 for (int y = 0; y <= 2; y++)
                 {
 
-                    srect = new Rectangle(x * 64 - y * 26, x * 74 - y * 18, 64, 74);
+                    srect = new Rectangle(x * 64, y * 74, 64, 74);
 
 
                     switch (block[x, y])
@@ -238,7 +233,7 @@ namespace PrinceEditor
 
 
                             drect = new Rectangle((x * 64), (y * 74), 64, 74);
-                            graphics.DrawImage(Properties.Resources.FloorA, drect);
+                            graphics.DrawImage(Properties.Resources.FloorA, srect);
 
                             break;
 
@@ -339,19 +334,24 @@ namespace PrinceEditor
 
                         case "kid":
 
-                            playerrec = new Rectangle(playerx * 64, playery * 74, 64, 74);
-                            graphics.DrawImage(Properties.Resources.Kid_1, playerrec);
+                            Player.Bounds = new Rectangle(Player.X * 64, Player.Y * 74, 64, 74);
+                            graphics.DrawImage(Properties.Resources.Kid_1, Player.Bounds);
 
                             break;
                         case "guard":
 
 
-                            for (int i = 0; i <= guards - 1; i++)
-                            {
-                                guardrect[i] = new Rectangle(guardx[i] * 64, guardy[i] * 74, 64, 74);
-                                graphics.DrawImage(Properties.Resources.Guard, guardrect[i]);
-                            }
+                            Guard.Bounds = new Rectangle(Guard.X * 64, Guard.Y * 74, 64, 74);
+                            graphics.DrawImage(Properties.Resources.Guard, Guard.Bounds);
+                                
 
+
+                            break;
+
+                        case "skeleton":
+
+                            Guard.Bounds = new Rectangle(Guard.X * 64, Guard.Y * 74, 64, 74);
+                            graphics.DrawImage(Properties.Resources.Skeleton, Guard.Bounds);
 
                             break;
 
@@ -392,7 +392,8 @@ namespace PrinceEditor
 
                     }
 
-                    graphics.DrawRectangle(Pens.Red, (mouseX * 64), (mouseY * 74), 64, 74);
+                    graphics.DrawImage(Properties.Resources.Selection2, (mouseX * 64), (mouseY * 74), 64, 74);
+                    //graphics.DrawRectangle(Pens.Red, );
                 }
             }
             // COPY BACKBUFFER TO GRAPHICS OBJECT
@@ -536,19 +537,20 @@ namespace PrinceEditor
                         sprite[mMapX, mMapY] = "nothing";
 
                         break;
-                    case 1:
+                    case 1: //Kid
 
+                        
 
-                        if (playerx != 0 & playery != 0)
+                        if (Player.X != 0 & Player.Y != 0)
                         {
-                            sprite[playerx, playery] = "nothing";
+                            sprite[Player.X, Player.Y] = "nothing";
 
                             TextBox28.Text = mMapX.ToString();
                             TextBox29.Text = mMapY.ToString();
 
 
-                            playerx = Convert.ToInt32(TextBox28.Text);
-                            playery = Convert.ToInt32(TextBox29.Text);
+                            Player.X = Convert.ToInt32(TextBox28.Text);
+                            Player.Y = Convert.ToInt32(TextBox29.Text);
 
                             sprite[mMapX, mMapY] = "kid";
 
@@ -556,15 +558,18 @@ namespace PrinceEditor
                         }
                         else
                         {
-                            sprite[playerx, playery] = "nothing";
+
+                            Player = new Sprite(1, Enumeration.SpriteType.kid, 0, 0);
+
+                            sprite[Player.X, Player.Y] = "nothing";
 
                             TextBox28.Text = mMapX.ToString();
                             TextBox29.Text = mMapY.ToString();
 
 
 
-                            playerx = Convert.ToInt32(TextBox28.Text);
-                            playery = Convert.ToInt32(TextBox29.Text);
+                            Player.X = Convert.ToInt32(TextBox28.Text);
+                            Player.Y = Convert.ToInt32(TextBox29.Text);
 
                             sprite[mMapX, mMapY] = "kid";
 
@@ -572,45 +577,122 @@ namespace PrinceEditor
                         }
 
                         break;
-                    case 2:
-
-                        guards += 1;
+                    case 2: //Guard
 
 
-                        for (int i = 0; i <= guards - 1; i++)
+
+
+                        if (Guard != null)
+                        {
+                            sprite[Player.X, Guard.Y] = "nothing";
+
+                            TextBox28.Text = mMapX.ToString();
+                            TextBox29.Text = mMapY.ToString();
+
+
+                            Guard.X = Convert.ToInt32(TextBox28.Text);
+                            Guard.Y = Convert.ToInt32(TextBox29.Text);
+
+                            sprite[mMapX, mMapY] = "guard";
+
+
+                        }
+                        else
                         {
 
+                            Guard = new Sprite(guardcount, Enumeration.SpriteType.guard, 0, 0);
 
-                            if (guardx[i] >= 0 & guardy[i]  >= 0)
-                            {
+                            sprite[Guard.X, Guard.Y] = "nothing";
 
-                                sprite[guardx[i], guardy[i]] = "nothing";
-
-                                TextBox30.Text = mMapX.ToString();
-                                TextBox31.Text = mMapY.ToString();
-
-                                guardx[i] = Convert.ToInt32(TextBox30.Text);
-                                guardy[i] = Convert.ToInt32(TextBox31.Text);
-
-                                sprite[guardx[i], guardy[i]] = "guard";
- 
+                            TextBox28.Text = mMapX.ToString();
+                            TextBox29.Text = mMapY.ToString();
 
 
-                            }
-                            else
-                            {
-                                sprite[guardx[i], guardy[i]] = "nothing";
 
-                                TextBox30.Text = mMapX.ToString();
-                                TextBox31.Text = mMapY.ToString();
+                            Guard.X = Convert.ToInt32(TextBox28.Text);
+                            Guard.Y = Convert.ToInt32(TextBox29.Text);
 
-                                guardx[i] = Convert.ToInt32(TextBox30.Text);
-                                guardy[i] = Convert.ToInt32(TextBox31.Text);
-
-                                sprite[guardx[i], guardy[i]] = "guard";
+                            sprite[mMapX, mMapY] = "guard";
 
 
-                            }
+                        }
+                         
+
+
+                        break;
+
+                    case 3: //Skeleton
+                        if (Guard != null)
+                        {
+                            sprite[Guard.X, Guard.Y] = "nothing";
+
+                            TextBox28.Text = mMapX.ToString();
+                            TextBox29.Text = mMapY.ToString();
+
+
+                            Guard.X = Convert.ToInt32(TextBox28.Text);
+                            Guard.Y = Convert.ToInt32(TextBox29.Text);
+
+                            sprite[mMapX, mMapY] = "skeleton";
+
+
+                        }
+                        else
+                        {
+
+                            Guard = new Sprite(guardcount, Enumeration.SpriteType.skeleton, 0, 0);
+
+                            sprite[Guard.X, Guard.Y] = "nothing";
+
+                            TextBox28.Text = mMapX.ToString();
+                            TextBox29.Text = mMapY.ToString();
+
+
+
+                            Guard.X = Convert.ToInt32(TextBox28.Text);
+                            Guard.Y = Convert.ToInt32(TextBox29.Text);
+
+                            sprite[mMapX, mMapY] = "skeleton";
+
+
+                        }
+
+
+                        break;
+
+                    case 4: //Serpent
+                        if (Guard != null)
+                        {
+                            sprite[Guard.X, Guard.Y] = "nothing";
+
+                            TextBox28.Text = mMapX.ToString();
+                            TextBox29.Text = mMapY.ToString();
+
+
+                            Guard.X = Convert.ToInt32(TextBox28.Text);
+                            Guard.Y = Convert.ToInt32(TextBox29.Text);
+
+                            sprite[mMapX, mMapY] = "serpent";
+
+
+                        }
+                        else
+                        {
+
+                            Guard = new Sprite(guardcount, Enumeration.SpriteType.kid, 0, 0);
+
+                            sprite[Guard.X, Guard.Y] = "nothing";
+
+                            TextBox28.Text = mMapX.ToString();
+                            TextBox29.Text = mMapY.ToString();
+
+
+
+                            Guard.X = Convert.ToInt32(TextBox28.Text);
+                            Guard.Y = Convert.ToInt32(TextBox29.Text);
+
+                            sprite[mMapX, mMapY] = "serpent";
+
 
                         }
 
@@ -659,6 +741,12 @@ namespace PrinceEditor
 
             double X = e.X;
             double Y = e.Y;
+
+            if (X > 0)
+                X = X - 26;
+
+            if (Y > 0)
+                Y = Y - 18;
 
             mouseX = (int)Math.Floor(X / 64);
 
@@ -818,16 +906,16 @@ namespace PrinceEditor
                     sprite[i, r] = Enum.GetName(typeof(Enumeration.SpriteType), map.rows[r].columns[i].spriteType);
                     if (sprite[i, r] == "kid")
                          {
-                             playerx = i;
-                             playery = r;
+                             Player = new Sprite(0, Enumeration.SpriteType.kid, i, r);
+                             
 
                          }
                     else if (sprite[i, r] == "guard")
                         {
-                            
-                            guardx[guards] = i;
-                            guardy[guards] = r;
-                            guards += 1;
+                           
+                        Guard = new Sprite(guardcount, Enumeration.SpriteType.guard, i, r);
+                        guardcount += 1;
+
                         }
 
 
@@ -865,11 +953,31 @@ namespace PrinceEditor
 
         }
 
+        private void LoadStartRoom()
+         {
+            
+            if (currentroom != null)
+                currentroom = level.StartRoom(rooms, currentroom, level);
+
+            string current = currentroom.roomIndex.ToString();
+            //MessageBox.Show(currentroom.roomIndex + "," + currentroom.roomName + "x=" + currentroom.roomX + " y=" + currentroom.roomY);
+
+            string path = AppDomain.CurrentDomain.BaseDirectory + "Content/Rooms/MAP_dungeon_prison_" + current + ".xml";
+
+            ComboBox1.SelectedIndex = currentroom.roomIndex;
+
+            if (File.Exists(path))
+                LoadRoom(path);
+             
+
+         }
+
         private void SaveRoom(string path)
         {
 
             Map map = new Map();
 
+            if (rooms.Count > 0)
 
             for (int r = 0; r <= map.rows.Count() - 1; r++)
             {
@@ -923,6 +1031,9 @@ namespace PrinceEditor
             this.TextBox2.Text = path + currenti;
 
             LoadLevel(path + currenti);
+
+            if (level != null)
+                LoadStartRoom();
 
                 }
 
@@ -1040,6 +1151,9 @@ namespace PrinceEditor
             {
 
                 LoadLevel(openFileDialog1.FileName);
+
+                if (level != null)
+                    LoadStartRoom();
                
             }
         }
@@ -1135,25 +1249,14 @@ namespace PrinceEditor
         {
             
             if (level != null)
-             {
-            if (currentroom != null)
-                currentroom = level.StartRoom(rooms, currentroom, level);
-
-            string current = currentroom.roomIndex.ToString();
-            //MessageBox.Show(currentroom.roomIndex + "," + currentroom.roomName + "x=" + currentroom.roomX + " y=" + currentroom.roomY);
-
-            string path = AppDomain.CurrentDomain.BaseDirectory + "Content/Rooms/MAP_dungeon_prison_" + current + ".xml";
-
-            ComboBox1.SelectedIndex = currentroom.roomIndex;
-
-            if (File.Exists(path))
-                LoadRoom(path);
-             }
+             
+            
+                LoadStartRoom();
             else
-             {
+             
 
                  MessageBox.Show("No level has been loaded");
-             }
+             
         }
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1184,6 +1287,22 @@ namespace PrinceEditor
                 SaveRoom(saveFileDialog1.FileName);
 
             }
+        }
+
+        private void pictureBox23_Click(object sender, EventArgs e)
+        {
+            selectedsprite = 3;
+            selectedtile = 1;
+            selecteditem = 0;
+            this.TextBox3.Text = "Skeleton";
+        }
+
+        private void pictureBox24_Click(object sender, EventArgs e)
+        {
+            selectedsprite = 4;
+            selectedtile = 1;
+            selecteditem = 0;
+            this.TextBox3.Text = "Serpent";
         }
 
 

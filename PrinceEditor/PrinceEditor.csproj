@@ -53,6 +53,7 @@
     <Compile Include="Dungeon\RoomColumn.cs" />
     <Compile Include="Dungeon\RoomRow.cs" />
     <Compile Include="Dungeon\Row.cs" />
+    <Compile Include="Dungeon\Sprite.cs" />
     <Compile Include="Enumeration.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -147,6 +148,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\ExitA_Right.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Skeleton.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Serpent.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Selection.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Selection2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
