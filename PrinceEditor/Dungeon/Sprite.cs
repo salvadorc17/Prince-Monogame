@@ -12,7 +12,7 @@ namespace PrinceGame
        public int Id;
        public string Name;
        public Enumeration.SpriteType Type;
-
+       public bool Flip;
        public int X, Y;
        public Rectangle Bounds;
 
@@ -24,6 +24,7 @@ namespace PrinceGame
            X = x;
            Y = y;
            Bounds = new Rectangle(x, y, 64, 74);
+           Flip = false;
 
        }
     }

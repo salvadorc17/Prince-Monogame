@@ -15,15 +15,12 @@ namespace PrinceEditor
 {
     public partial class Form1 : Form
     {
-        private Stream reader;
-        private string line;
+
         private string[,] levelmap = new string[10, 10];
         private string[,] block = new string[10, 10];
         private string[,] sprite = new string[10, 10];
         private string[,] item = new string[10, 10];
         private string[,] switche = new string[10, 10];
-        private XDocument xml;
-        private StreamWriter xmlwriter;
         public int rowcount, columncount, roomcount, guardcount;
         private int selectedtile;
         private int selectedsprite;
@@ -37,6 +34,7 @@ namespace PrinceEditor
         public List<Room> rooms;
         private Room currentroom;
         private Level level;
+        private bool Roomselected, tileselected;
         public static int mouseX;
         public static int mouseY;
         public static int mMapX;
@@ -65,8 +63,46 @@ namespace PrinceEditor
 
         }
 
+        private void ClearLevel()
+        {
+            level = null;
+
+            this.TextBox4.Text = "";
+            this.TextBox5.Text = "";
+            this.TextBox6.Text = "";
+            this.TextBox7.Text = "";
+            this.TextBox8.Text = "";
+            this.TextBox9.Text = "";
+            this.TextBox10.Text = "";
+            this.TextBox11.Text = "";
+
+            //Row 2nd
+
+            this.TextBox12.Text = "";
+            this.TextBox13.Text = "";
+            this.TextBox14.Text = "";
+            this.TextBox15.Text = "";
+            this.TextBox16.Text = "";
+            this.TextBox17.Text = "";
+            this.TextBox18.Text = "";
+            this.TextBox19.Text = "";
+
+            //Row 3rd
+
+            this.TextBox20.Text = "";
+            this.TextBox21.Text = "";
+            this.TextBox22.Text = "";
+            this.TextBox23.Text = "";
+            this.TextBox24.Text = "";
+            this.TextBox25.Text = "";
+            this.TextBox26.Text = "";
+            this.TextBox27.Text = "";
+
+        }
+
         private void GenerateNewMap()
         {
+            
 
             for (int y = 0; y <= 2; y++)
             {
@@ -82,11 +118,18 @@ namespace PrinceEditor
 
             }
 
-            selectedtile = 0;
-            selectedsprite = 0;
-            selecteditem = 0;
+            Roomselected = false;
 
-            //guards = new List<Sprite>();
+            if (tileselected == false)
+            {
+                selectedtile = 0;
+                selectedsprite = 0;
+                selecteditem = 0;
+
+            }
+
+
+            
         }
 
         private void LoadFiles()
@@ -98,14 +141,9 @@ namespace PrinceEditor
 
               label2.Text = directory.GetFiles().Count().ToString();
 
-	         foreach (FileInfo file in directory.GetFiles()) {
+	         foreach (FileInfo file in directory.GetFiles()) 
 		        if (file.Extension == ".xml")
                     listBox1.Items.Add(file.Name);
-
-		
-
-	     }
-
 
         }
 
@@ -205,7 +243,7 @@ namespace PrinceEditor
 
         private void DrawBlocks()
         {
-
+          
 
             for (int x = 0; x <= 9; x++)
             {
@@ -335,15 +373,20 @@ namespace PrinceEditor
                         case "kid":
 
                             Player.Bounds = new Rectangle(Player.X * 64, Player.Y * 74, 64, 74);
-                            graphics.DrawImage(Properties.Resources.Kid_1, Player.Bounds);
+                            if (Player.Flip == true)
+                                graphics.DrawImage(Properties.Resources.Kid_2, Player.Bounds);
+                            else
+                                graphics.DrawImage(Properties.Resources.Kid_1, Player.Bounds);
 
                             break;
                         case "guard":
 
 
                             Guard.Bounds = new Rectangle(Guard.X * 64, Guard.Y * 74, 64, 74);
-                            graphics.DrawImage(Properties.Resources.Guard, Guard.Bounds);
-                                
+                            if (Guard.Flip == true)
+                                graphics.DrawImage(Properties.Resources.Guard2, Guard.Bounds);
+                            else
+                                graphics.DrawImage(Properties.Resources.Guard, Guard.Bounds); 
 
 
                             break;
@@ -351,7 +394,20 @@ namespace PrinceEditor
                         case "skeleton":
 
                             Guard.Bounds = new Rectangle(Guard.X * 64, Guard.Y * 74, 64, 74);
-                            graphics.DrawImage(Properties.Resources.Skeleton, Guard.Bounds);
+                            if (Guard.Flip == true)
+                                graphics.DrawImage(Properties.Resources.Skeleton2, Guard.Bounds);
+                            else
+                                graphics.DrawImage(Properties.Resources.Skeleton, Guard.Bounds); 
+
+                            break;
+
+                        case "serpent":
+
+                            Guard.Bounds = new Rectangle(Guard.X * 64, Guard.Y * 74, 64, 74);
+                            if (Guard.Flip == true)
+                                graphics.DrawImage(Properties.Resources.Serpent2, Guard.Bounds);
+                            else
+                                graphics.DrawImage(Properties.Resources.Serpent, Guard.Bounds); 
 
                             break;
 
@@ -409,6 +465,8 @@ namespace PrinceEditor
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+
+            if (Roomselected == true)
             DrawBlocks();
 
         }
@@ -540,8 +598,8 @@ namespace PrinceEditor
                     case 1: //Kid
 
                         
-
-                        if (Player.X != 0 & Player.Y != 0)
+                       
+                        if (Player != null)
                         {
                             sprite[Player.X, Player.Y] = "nothing";
 
@@ -584,7 +642,7 @@ namespace PrinceEditor
 
                         if (Guard != null)
                         {
-                            sprite[Player.X, Guard.Y] = "nothing";
+                            sprite[Guard.X, Guard.Y] = "nothing";
 
                             TextBox28.Text = mMapX.ToString();
                             TextBox29.Text = mMapY.ToString();
@@ -760,6 +818,7 @@ namespace PrinceEditor
 
         private void PictureBox3_Click(object sender, EventArgs e)
         {
+            tileselected = false;
             selectedtile = 0;
             selectedsprite = 0;
             selecteditem = 0;
@@ -768,6 +827,7 @@ namespace PrinceEditor
 
         private void PictureBox2_Click(object sender, EventArgs e)
         {
+            tileselected = true;
             selectedtile = 1;
             selectedsprite = 0;
             selecteditem = 0;
@@ -776,6 +836,7 @@ namespace PrinceEditor
 
         private void PictureBox6_Click(object sender, EventArgs e)
         {
+            tileselected = true;
             selectedtile = 2;
             selectedsprite = 0;
             selecteditem = 0;
@@ -784,6 +845,7 @@ namespace PrinceEditor
 
         private void PictureBox7_Click(object sender, EventArgs e)
         {
+            tileselected = true;
             selectedtile = 3;
             selectedsprite = 0;
             selecteditem = 0;
@@ -792,14 +854,16 @@ namespace PrinceEditor
 
         private void PictureBox8_Click(object sender, EventArgs e)
         {
+            tileselected = true;
             selectedtile = 4;
             selectedsprite = 0;
             selecteditem = 0;
             this.TextBox3.Text = "Spikes";
         }
 
-        private void PictureBox9_Click(object sender, EventArgs e)
+        private void PictureBox9_Click(object sender, EventArgs e)      
         {
+            tileselected = true;
             selectedtile = 5;
             selectedsprite = 0;
             selecteditem = 0;
@@ -808,6 +872,7 @@ namespace PrinceEditor
 
         private void PictureBox10_Click(object sender, EventArgs e)
         {
+            tileselected = true;
             selectedtile = 6;
             selectedsprite = 0;
             selecteditem = 0;
@@ -816,6 +881,7 @@ namespace PrinceEditor
 
         private void PictureBox11_Click(object sender, EventArgs e)
         {
+            tileselected = true;
             selectedtile = 7;
             selectedsprite = 0;
             selecteditem = 0;
@@ -842,7 +908,7 @@ namespace PrinceEditor
         {
             selecteditem = 1;
             selectedsprite = 0;
-            selectedtile = 0;
+            selectedtile = 1;
             this.TextBox3.Text = "Flask big";
         }
 
@@ -850,7 +916,7 @@ namespace PrinceEditor
         {
             selecteditem = 2;
             selectedsprite = 0;
-            selectedtile = 0;
+            selectedtile = 1;
             this.TextBox3.Text = "Flask";
         }
 
@@ -858,7 +924,7 @@ namespace PrinceEditor
         {
             selecteditem = 3;
             selectedsprite = 0;
-            selectedtile = 0;
+            selectedtile = 1;
             this.TextBox3.Text = "Sword";
         }
 
@@ -907,13 +973,16 @@ namespace PrinceEditor
                     if (sprite[i, r] == "kid")
                          {
                              Player = new Sprite(0, Enumeration.SpriteType.kid, i, r);
-                             
+                             TextBox28.Text = Player.X.ToString();
+                             TextBox29.Text = Player.Y.ToString();
 
                          }
                     else if (sprite[i, r] == "guard")
                         {
                            
                         Guard = new Sprite(guardcount, Enumeration.SpriteType.guard, i, r);
+                        TextBox30.Text = Guard.X.ToString();
+                        TextBox31.Text = Guard.Y.ToString();
                         guardcount += 1;
 
                         }
@@ -948,8 +1017,9 @@ namespace PrinceEditor
             richTextBox1.AppendText("</columns>" + Environment.NewLine);
             richTextBox1.AppendText("</Row>" + Environment.NewLine);
             richTextBox1.AppendText("</rows>" + Environment.NewLine);
-
             richTextBox1.AppendText("</Map>" + Environment.NewLine);
+
+            Roomselected = true;
 
         }
 
@@ -1013,6 +1083,7 @@ namespace PrinceEditor
         {
             ComboBox2.Items.Clear();
             ComboBox1.Items.Clear();
+            ClearLevel();
 
             if (listBox1.SelectedItem != null)
                 {
@@ -1027,6 +1098,8 @@ namespace PrinceEditor
 
             }
 
+            levelToolStripMenuItem.Visible = true;
+            roomToolStripMenuItem.Visible = true;
 
             this.TextBox2.Text = path + currenti;
 
@@ -1068,6 +1141,7 @@ namespace PrinceEditor
 
         private void pictureBox21_Click(object sender, EventArgs e)
         {
+            tileselected = true;
             selectedtile = 8;
             selectedsprite = 0;
             selecteditem = 0;
@@ -1076,6 +1150,7 @@ namespace PrinceEditor
 
         private void pictureBox22_Click(object sender, EventArgs e)
         {
+            tileselected = true;
             selectedtile = 9;
             selectedsprite = 0;
             selecteditem = 0;
@@ -1084,6 +1159,7 @@ namespace PrinceEditor
 
         private void pictureBox20_Click(object sender, EventArgs e)
         {
+            tileselected = true;
             selectedtile = 10;
             selectedsprite = 0;
             selecteditem = 0;
@@ -1092,6 +1168,7 @@ namespace PrinceEditor
 
         private void pictureBox19_Click(object sender, EventArgs e)
         {
+            tileselected = true;
             selectedtile = 11;
             selectedsprite = 0;
             selecteditem = 0;
@@ -1100,6 +1177,7 @@ namespace PrinceEditor
 
         private void pictureBox18_Click(object sender, EventArgs e)
         {
+            tileselected = true;
             selectedtile = 12;
             selectedsprite = 0;
             selecteditem = 0;
@@ -1108,6 +1186,7 @@ namespace PrinceEditor
 
         private void pictureBox17_Click(object sender, EventArgs e)
         {
+            tileselected = true;
             selectedtile = 13;
             selectedsprite = 0;
             selecteditem = 0;
@@ -1116,6 +1195,7 @@ namespace PrinceEditor
 
         private void pictureBox16_Click(object sender, EventArgs e)
         {
+            tileselected = true;
             selectedtile = 14;
             selectedsprite = 0;
             selecteditem = 0;
@@ -1124,6 +1204,7 @@ namespace PrinceEditor
 
         private void pictureBox15_Click(object sender, EventArgs e)
         {
+            tileselected = true;
             selectedtile = 15;
             selectedsprite = 0;
             selecteditem = 0;
@@ -1134,10 +1215,11 @@ namespace PrinceEditor
         {
             DialogResult result = MessageBox.Show("Do you want to create new map?", "New Map", MessageBoxButtons.YesNo);
             if(result == DialogResult.Yes)
+                 {
                GenerateNewMap();
- 
-    
-            
+               ClearLevel();
+
+                 }
         }
 
         private void loadToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1149,8 +1231,9 @@ namespace PrinceEditor
 
             if ((this.openFileDialog1.ShowDialog() == DialogResult.OK))
             {
-
-                LoadLevel(openFileDialog1.FileName);
+                string name = openFileDialog1.FileName;
+                if (!name.Contains("MAP"))
+                LoadLevel(name);
 
                 if (level != null)
                     LoadStartRoom();
@@ -1304,6 +1387,43 @@ namespace PrinceEditor
             selecteditem = 0;
             this.TextBox3.Text = "Serpent";
         }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            if (Player != null)
+                Player.Flip = !Player.Flip;
+
+
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            if (Guard != null)
+                Guard.Flip = !Guard.Flip;
+        }
+
+        private void clearToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //Clear level
+            if (level != null)
+                ClearLevel();
+        }
+
+        private void clearToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            //Clear room
+            if (currentroom != null)
+                {
+
+                    currentroom = null;
+                    GenerateNewMap();
+
+                }
+        }
+
+
+
+
 
 
                
