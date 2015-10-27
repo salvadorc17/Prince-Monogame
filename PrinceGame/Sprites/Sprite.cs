@@ -38,6 +38,7 @@ namespace PrinceGame
         protected GraphicsDevice graphicsDevice;
         public SpriteEffects flip = SpriteEffects.None;
         protected Position _position = null;
+        protected Point _roomcord;
         //protected Maze _maze;
         protected Vector2 m_velocity;
         protected bool m_isOnGround;
@@ -75,6 +76,7 @@ namespace PrinceGame
             get { return m_spriteRoom; }
             set { m_spriteRoom = value; }
         }
+
 
         // Physics state, used by calculate falldrop distance
         public Vector2 PositionFall
@@ -129,6 +131,14 @@ namespace PrinceGame
         public Position Position
         {
             get { return _position; }
+
+        }
+
+        public Point RoomCoord
+        {
+            get { return _roomcord; }
+            set { _roomcord = value; }
+
         }
 
         public Vector2 Velocity
@@ -263,8 +273,10 @@ namespace PrinceGame
             //IS ON GROUND!
             if (spriteState.Value().state == Enumeration.State.freefall)
             {
+                
                 //Align to tile x
                 _position.Y = tileBounds.Bottom - _position._spriteRealSize.Y;
+                
                 //CHECK IF LOOSE ENERGY...
                 int Rem = 0;
                 Rem = Convert.ToInt32(Math.Truncate(Math.Abs(Position.Y - PositionFall.Y))) / Tile.REALHEIGHT;

@@ -19,14 +19,14 @@ namespace PrinceGame
 public class Player : Sprite
 {
 
-    ///Dim joy As New AForge.Controls.Joystick(0)
     /// <summary>
     /// Constructors a new player.
     /// </summary>
-    public Player(RoomNew room, Vector2 position, GraphicsDevice GraphicsDevice__1, SpriteEffects spriteEffect)
+    public Player(RoomNew room, Vector2 position, Point roomcoords, GraphicsDevice GraphicsDevice__1, SpriteEffects spriteEffect)
     {
         graphicsDevice = GraphicsDevice__1;
         SpriteRoom = room;
+        _roomcord = roomcoords;
         LoadContent();
 
         //TAKE PLAYER Position
@@ -159,6 +159,7 @@ public class Player : Sprite
 
         //ApplyPhysicsNew(gameTime);
         HandleCollisionsNew();
+
 
 
         float elapsed = Convert.ToSingle(gameTime.ElapsedGameTime.TotalSeconds);
@@ -1323,7 +1324,8 @@ public class Player : Sprite
 
                           if (depth.X < -(SPRITE_SIZE_X / 2 - Tile.CHOMPER_DISTANCE_PENETRATION_L))
                                 {
-                                    if (SpriteRoom.GetTile(x, y).tileState.Value().Name == Enumeration.StateTile.kill.ToString())
+                                    if (SpriteRoom.GetTile(x, y).tileState.Value().state == Enumeration.StateTile.open)
+                                    if (SpriteRoom.GetTile(x, y).tileState.Value().Name == Enumeration.StateTile.kill.ToString().ToUpper())
                                     {
                                         
                                         Impale(Enumeration.PriorityState.Normal);
@@ -1333,7 +1335,8 @@ public class Player : Sprite
 
                           else if (depth.X > -(SPRITE_SIZE_X / 2 + Tile.CHOMPER_DISTANCE_PENETRATION_R))
                                 {
-                                    if (SpriteRoom.GetTile(x, y).tileState.Value().Name == Enumeration.StateTile.kill.ToString())
+                                    if (SpriteRoom.GetTile(x, y).tileState.Value().state == Enumeration.StateTile.open)
+                                    if (SpriteRoom.GetTile(x, y).tileState.Value().Name == Enumeration.StateTile.kill.ToString().ToUpper())
                                     {
                                         
                                         Impale(Enumeration.PriorityState.Normal);

@@ -587,17 +587,33 @@ namespace PrinceGame
             DrawShadowedString(hudFont, "LEVEL NAME=" + maze.CurrentLevel().levelIndex + "-" + maze.CurrentLevel().levelName + "-" + maze.levelindex, hudLocation, Color.White);
             hudLocation.Y = hudLocation.Y + 10;
 
-            DrawShadowedString(hudFont, "ROOM NAME=" + maze.player.SpriteRoom.roomName, hudLocation, Color.White);
-            hudLocation.Y = hudLocation.Y + 10;
+            
+            //DrawShadowedString(hudFont, "FRAME RATE=" + AnimationSequence.frameRate.ToString(), hudLocation, Color.White);
 
-            DrawShadowedString(hudFont, "POSTION X=" + maze.player.Position.X.ToString() + " Y=" + maze.player.Position.Y.ToString(), hudLocation, Color.White);
-            hudLocation.Y = hudLocation.Y + 10;
-            DrawShadowedString(hudFont, "FRAME RATE=" + AnimationSequence.frameRate.ToString(), hudLocation, Color.White);
+            //hudLocation.Y = hudLocation.Y + 10;
+
+            if (maze.player != null)
+                {
+
+                    int CoordX = maze.player.RoomCoord.X;
+                    int CoordY = maze.player.RoomCoord.Y;
+
+                    DrawShadowedString(hudFont, "ROOM NAME=" + maze.player.SpriteRoom.roomName, hudLocation, Color.White);
+                    hudLocation.Y = hudLocation.Y + 10;
+
+                    DrawShadowedString(hudFont, "POSTION X=" + maze.player.Position.X + " Y=" + maze.player.Position.Y + " TILE= " + maze.player.SpriteRoom.GetTile(CoordX, CoordY).Type.ToString(), hudLocation, Color.White);
+                    hudLocation.Y = hudLocation.Y + 10;
+                
+                Rectangle playerBound = maze.player.Position.Bounding;
+                Rectangle tileBounds = maze.player.SpriteRoom.GetBounds(maze.player.RealPosition.X, maze.player.RealPosition.Y);
+                Vector2 depth = RectangleExtensions.GetIntersectionDepth(playerBound, tileBounds);
+                DrawShadowedString(hudFont, "PLAYER BOUNDS =" + "X = " + depth.X.ToString() + " Y = " + depth.Y.ToString(), hudLocation, Color.White);
+
+                }
 
             hudLocation.Y = hudLocation.Y + 10;
-
             if (maze.player.sprite.sequence != null)
-            DrawShadowedString(hudFont, "PLAYER STATE=" + Convert.ToString(maze.player.spriteState.Value().state) + " SEQUENCE CountOffset=" + Convert.ToString(maze.player.sprite.sequence.CountOffSet), hudLocation, Color.White);
+                DrawShadowedString(hudFont, "PLAYER STATE=" + Convert.ToString(maze.player.spriteState.Value().state) + " SEQUENCE CountOffset=" + Convert.ToString(maze.player.sprite.sequence.CountOffSet), hudLocation, Color.White);
 
 
 

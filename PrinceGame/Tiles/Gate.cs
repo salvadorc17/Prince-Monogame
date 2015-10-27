@@ -137,7 +137,7 @@ class Gate : Tile
 
         if (tileState.Value().state == Enumeration.StateTile.open)
         {
-            tileState.Add(Enumeration.StateTile.closefast, Enumeration.PriorityState.Normal, Enumeration.SequenceReverse.FixFrame);
+            tileState.Add(Enumeration.StateTile.closefast, Enumeration.PriorityState.Normal, Enumeration.SequenceReverse.Normal);
         }
         else
         {
@@ -167,7 +167,23 @@ class Gate : Tile
             tileState.Add(Enumeration.StateTile.open);
         }
 
-        tileAnimation.PlayAnimation(tileSequence, tileState.Value());
+        
     }
+
+    public void Opened()
+     {
+
+         elapsedTimeOpen = 0;
+         if (tileState.Value().state != Enumeration.StateTile.opened)
+         {
+             return;
+
+         }
+
+         tileAnimation.PlayAnimation(tileSequence, tileState.Value());
+
+     }
+
+
   }
 }

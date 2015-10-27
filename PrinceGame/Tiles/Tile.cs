@@ -206,7 +206,12 @@ namespace PrinceGame
             if (object.ReferenceEquals(this.GetType(), typeof(Gate)))
             {
                 ((Gate)this).elapsedTimeOpen += Convert.ToSingle(gameTime.ElapsedGameTime.TotalSeconds);
-                if (((Gate)this).elapsedTimeOpen > ((Gate)this).timeOpen)
+                if (((Gate)this).timeOpen == 0 && ((Gate)this).tileState.Value().state == Enumeration.StateTile.opened)
+                {
+                    ((Gate)this).Opened();
+                }
+                
+                else if (((Gate)this).elapsedTimeOpen > ((Gate)this).timeOpen)
                 {
                     ((Gate)this).Close();
                 }
