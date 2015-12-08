@@ -1486,8 +1486,9 @@ public class Player : Sprite
                         }
 
                         break;
-                    case Enumeration.TileType.gate:
+                    case Enumeration.TileType.gate:  
                     case Enumeration.TileType.block:
+                    
                         if (tileType == Enumeration.TileType.gate)
                         {
                             if (((Gate)SpriteRoom.GetTile(x, y)).State == Enumeration.StateTile.opened)
@@ -1496,7 +1497,7 @@ public class Player : Sprite
                             }
                         }
                         //if player are raised then not collide..
-
+                        
 
                         //if sx wall i will penetrate..for perspective design
                         if (flip == SpriteEffects.FlipHorizontally)
@@ -1537,7 +1538,8 @@ public class Player : Sprite
                                 //45
                                 //if(sprite.sequence.raised == false)
 
-                                if (spriteState.Value().state != Enumeration.State.freefall & spriteState.Value().state != Enumeration.State.highjump & spriteState.Value().state != Enumeration.State.hang & spriteState.Value().state != Enumeration.State.hangstraight & spriteState.Value().state != Enumeration.State.hangdrop & spriteState.Value().state != Enumeration.State.hangfall & spriteState.Value().state != Enumeration.State.jumphangMed & spriteState.Value().state != Enumeration.State.jumphangLong & spriteState.Value().state != Enumeration.State.climbup & spriteState.Value().state != Enumeration.State.climbdown)
+                                if (spriteState.Value().state != Enumeration.State.freefall & spriteState.Value().state != Enumeration.State.highjump & spriteState.Value().state != Enumeration.State.hang & spriteState.Value().state != Enumeration.State.hangstraight & 
+                                    spriteState.Value().state != Enumeration.State.hangdrop & spriteState.Value().state != Enumeration.State.hangfall & spriteState.Value().state != Enumeration.State.jumphangMed & spriteState.Value().state != Enumeration.State.jumphangLong & spriteState.Value().state != Enumeration.State.climbup & spriteState.Value().state != Enumeration.State.climbdown)
                                 {
                                     _position.Value = new Vector2(_position.X + (depth.X - (Tile.PERSPECTIVE + PLAYER_L_PENETRATION)), _position.Y);
                                     Bump(Enumeration.PriorityState.Force);
@@ -1554,12 +1556,80 @@ public class Player : Sprite
                             }
                         }
                         playerBounds = BoundingRectangle;
-                        break; // TODO: might not be correct. Was : Exit Select
+                        break;
 
+                    case Enumeration.TileType.mirror:
+
+                            if (((Mirror)SpriteRoom.GetTile(x, y)).State == Enumeration.StateTile.opened)
+                            {
+                                break;
+                            }
+
+                        if (flip == SpriteEffects.FlipHorizontally)
+                        {
+                            //only for x pixel 
+                            if (depth.X < (-Tile.PERSPECTIVE - PLAYER_R_PENETRATION))
+                            {
+                                if (spriteState.Value().state != Enumeration.State.freefall & spriteState.Value().state != Enumeration.State.highjump & spriteState.Value().state != Enumeration.State.hang & spriteState.Value().state != Enumeration.State.hangstraight & 
+                                    spriteState.Value().state != Enumeration.State.hangdrop & spriteState.Value().state != Enumeration.State.hangfall & spriteState.Value().state != Enumeration.State.jumphangMed & spriteState.Value().state != Enumeration.State.jumphangLong & spriteState.Value().state != Enumeration.State.climbup & spriteState.Value().state != Enumeration.State.climbdown)
+                                {
+                                    _position.Value = new Vector2(_position.X + (depth.X - (-Tile.PERSPECTIVE - PLAYER_R_PENETRATION)), _position.Y);
+                                    if (sprite.sequence.raised == false)
+                                    {
+                                        Bump(Enumeration.PriorityState.Force);
+                                    }
+                                    else
+                                    {
+                                        RJumpFall(Enumeration.PriorityState.Force);
+                                    }
+                                    
+                                    return;
+                                }
+                            }
+                            else
+                            {
+                                if (sprite.sequence.raised == true)
+                                {
+                                    _position.Value = new Vector2(_position.X, _position.Y);
+                                }
+                                else
+                                {
+                                    _position.Value = new Vector2(_position.X, _position.Y);
+                                }
+                            }
+                        }
+                        else
+                        {
+                            if (depth.X > (Tile.PERSPECTIVE + PLAYER_L_PENETRATION))
+                            {
+                                //45
+                                //if(sprite.sequence.raised == false)
+
+                                if (spriteState.Value().state != Enumeration.State.freefall & spriteState.Value().state != Enumeration.State.highjump & spriteState.Value().state != Enumeration.State.hang & spriteState.Value().state != Enumeration.State.hangstraight & spriteState.Value().state != Enumeration.State.hangdrop & 
+                                    spriteState.Value().state != Enumeration.State.hangfall & spriteState.Value().state != Enumeration.State.jumphangMed & spriteState.Value().state != Enumeration.State.jumphangLong & spriteState.Value().state != Enumeration.State.climbup & spriteState.Value().state != Enumeration.State.climbdown)
+                                {
+                                    _position.Value = new Vector2(_position.X + (depth.X - (Tile.PERSPECTIVE + PLAYER_L_PENETRATION)), _position.Y);
+                                    Bump(Enumeration.PriorityState.Force);
+                                    
+                                    return;
+                                }
+                            }
+                            else if (sprite.sequence.raised == true)
+                            {
+                                _position.Value = new Vector2(_position.X, _position.Y);
+                            }
+                            else
+                            {
+                                _position.Value = new Vector2(_position.X, _position.Y);
+                            }
+                        }
+                        playerBounds = BoundingRectangle;
+                        ((Mirror)SpriteRoom.GetTile(x, y)).Open();
+                        break;
                     //default:
-                    //    _position.Value = new Vector2(_position.X, tileBounds.Bottom);
-                    //    playerBounds = BoundingRectangle;
-                    //    break;
+                       //_position.Value = new Vector2(_position.X, tileBounds.Bottom);
+                       //playerBounds = BoundingRectangle;
+                       //break;
 
                 }
             }

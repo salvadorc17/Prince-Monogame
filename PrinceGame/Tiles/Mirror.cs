@@ -1,5 +1,5 @@
 ﻿	//-----------------------------------------------------------------------//
-	// <copyright file="PressPlate.cs" company="A.D.F.Software">
+	// <copyright file="Gate.cs" company="A.D.F.Software">
 	// Copyright "A.D.F.Software" (c) 2014 All Rights Reserved
 	// <author>Andrea M. Falappi</author>
 	// <date>Wednesday, September 24, 2014 11:36:49 AM</date>
@@ -33,27 +33,32 @@ using Microsoft.Xna.Framework.Input.Touch;
 
 namespace PrinceGame
 {
-
-class PressPlate : Tile
+class Mirror : Tile
 {
     private static List<Sequence> tileSequence = new List<Sequence>();
     public int switchButton = 0;
     public float elapsedTimeOpen = 0;
 
-    public float timeOpen = 0.3f;
+    public float timeOpen = 6;
+
     public Enumeration.StateTile State
     {
         get { return tileState.Value().state; }
     }
 
-    public PressPlate(RoomNew room, ContentManager Content, Enumeration.TileType tileType, Enumeration.StateTile state, int switchButton, Enumeration.TileType NextTileType__1)
+
+
+    public Mirror(RoomNew room, ContentManager Content, Enumeration.TileType tileType, Enumeration.StateTile state, int switchButton, Enumeration.TileType NextTileType__1, float TimeOpen__2)
     {
+        collision = Enumeration.TileCollision.Platform;
         base.room = room;
         nextTileType = NextTileType__1;
+        timeOpen = TimeOpen__2;
+
         this.switchButton = switchButton;
         System.Xml.Serialization.XmlSerializer ax = new System.Xml.Serialization.XmlSerializer(tileSequence.GetType());
-
         Stream txtReader = Microsoft.Xna.Framework.TitleContainer.OpenStream(PrinceOfPersiaGame.CONFIG_PATH_CONTENT + PrinceOfPersiaGame.CONFIG_PATH_SEQUENCES + tileType.ToString().ToUpper() + "_sequence.xml");
+
         //TextReader txtReader = File.OpenText(PrinceOfPersiaGame.CONFIG_PATH_CONTENT + PrinceOfPersiaGame.CONFIG_PATH_SEQUENCES + tileType.ToString().ToUpper() + "_sequence.xml");
 
         tileSequence = (List<Sequence>)ax.Deserialize(txtReader);
@@ -61,6 +66,11 @@ class PressPlate : Tile
         foreach (Sequence s in tileSequence)
         {
             s.Initialize(Content);
+        }
+
+        if (state == Enumeration.StateTile.normal)
+        {
+            state = Enumeration.StateTile.closed;
         }
 
         //Search in the sequence the right type
@@ -84,62 +94,73 @@ class PressPlate : Tile
 
     public void Normal()
     {
-        if (tileState.Value().state == Enumeration.StateTile.normal)
-        {
-            return;
-        }
-
-        tileState.Add(Enumeration.StateTile.normal);
+        tileState.Value().state = Enumeration.StateTile.normal;
         tileAnimation.PlayAnimation(tileSequence, tileState.Value());
     }
 
-    public void DePress()
+
+    public void Close()
     {
-        if (tileState.Value().state == Enumeration.StateTile.pressplate)
+        elapsedTimeOpen = timeOpen;
+        if (tileState.Value().state == Enumeration.StateTile.close)
+        {
+            return;
+        }
+        if (tileState.Value().state == Enumeration.StateTile.closed)
         {
             return;
         }
 
-        tileState.Add(Enumeration.StateTile.pressplate);
+        if (tileState.Value().state == Enumeration.StateTile.open)
+        {
+            tileState.Add(Enumeration.StateTile.close, Enumeration.PriorityState.Normal, Enumeration.SequenceReverse.Reverse);
+        }
+        else
+        {
+            tileState.Add(Enumeration.StateTile.close);
+        }
+
         tileAnimation.PlayAnimation(tileSequence, tileState.Value());
     }
 
-    public void Press()
+
+    public void Open()
     {
         elapsedTimeOpen = 0;
-        if (tileState.Value().state == Enumeration.StateTile.dpressplate)
+        if (tileState.Value().state == Enumeration.StateTile.open)
         {
-            List<Tile> listNew = room.maze.GetTiles(Enumeration.TileType.gate);
-            foreach (Tile t in listNew)
-            {
-                if (((Gate)t).switchButton == this.switchButton)
-                {
-                    ((Gate)t).Open();
-                }
-            }
-
-
             return;
         }
-
-
-
-        tileState.Value().state = Enumeration.StateTile.dpressplate;
-        tileAnimation.PlayAnimation(tileSequence, tileState.Value());
-
-        //Open all door with the correct switchButton
-        List<Tile> list = room.maze.GetTiles(Enumeration.TileType.gate);
-        foreach (Tile t in list)
+        if (tileState.Value().state == Enumeration.StateTile.opened)
         {
-            if (((Gate)t).switchButton == this.switchButton)
-            {
-                ((Gate)t).Open();
-            }
+            return;
+        }
+        if (tileState.Value().state == Enumeration.StateTile.close)
+        {
+            tileState.Add(Enumeration.StateTile.open, Enumeration.PriorityState.Normal, Enumeration.SequenceReverse.FixFrame);
+        }
+        else
+        {
+            tileState.Add(Enumeration.StateTile.open);
         }
 
-
+        
     }
+
+    public void Opened()
+     {
+
+         elapsedTimeOpen = 0;
+         if (tileState.Value().state != Enumeration.StateTile.opened)
+         {
+             return;
+
+         }
+
+         tileAnimation.PlayAnimation(tileSequence, tileState.Value());
+
+     }
+
 
   }
 }
-

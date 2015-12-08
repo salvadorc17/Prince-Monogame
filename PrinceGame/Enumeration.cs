@@ -100,7 +100,7 @@ namespace PrinceGame
             //;down
             pressplate = 6,
             // ;up
-            panelwif = 7,
+            closeplate = 7,
             // ;w/floor  //AMF when loose shake?!?!!?!?
             pillarbottom = 8,
             pillartop = 9,
@@ -171,8 +171,8 @@ namespace PrinceGame
 
             pressplate_25 = 0x60000,
 
-            panelwif_26 = 0x70000,
-            panelwif_27 = 0x70001,
+            closeplate_26 = 0x70000,
+            dcloseplate_27 = 0x70001,
             panelwif_28 = 0x70002,
             panelwif_29 = 0x70003,
 
@@ -283,6 +283,10 @@ namespace PrinceGame
             dpressplate,
             //;down
             pressplate,
+
+            closeplate,
+
+            dcloseplate,
             // ;up
             loose,
             //loose floor

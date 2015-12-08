@@ -53,7 +53,7 @@ class ClosePlate : Tile
         this.switchButton = switchButton;
         System.Xml.Serialization.XmlSerializer ax = new System.Xml.Serialization.XmlSerializer(tileSequence.GetType());
 
-        Stream txtReader = Microsoft.Xna.Framework.TitleContainer.OpenStream(PrinceOfPersiaGame.CONFIG_PATH_CONTENT + PrinceOfPersiaGame.CONFIG_PATH_SEQUENCES + "PRESSPLATE_sequence.xml");
+        Stream txtReader = Microsoft.Xna.Framework.TitleContainer.OpenStream(PrinceOfPersiaGame.CONFIG_PATH_CONTENT + PrinceOfPersiaGame.CONFIG_PATH_SEQUENCES + tileType.ToString().ToUpper() + "_sequence.xml");
         //TextReader txtReader = File.OpenText(PrinceOfPersiaGame.CONFIG_PATH_CONTENT + PrinceOfPersiaGame.CONFIG_PATH_SEQUENCES + tileType.ToString().ToUpper() + "_sequence.xml");
 
         tileSequence = (List<Sequence>)ax.Deserialize(txtReader);
@@ -95,19 +95,19 @@ class ClosePlate : Tile
 
     public void DePress()
     {
-        if (tileState.Value().state == Enumeration.StateTile.pressplate)
+        if (tileState.Value().state == Enumeration.StateTile.closeplate)
         {
             return;
         }
 
-        tileState.Add(Enumeration.StateTile.pressplate);
+        tileState.Add(Enumeration.StateTile.closeplate);
         tileAnimation.PlayAnimation(tileSequence, tileState.Value());
     }
 
     public void Press()
     {
         elapsedTimeOpen = 0;
-        if (tileState.Value().state == Enumeration.StateTile.dpressplate)
+        if (tileState.Value().state == Enumeration.StateTile.dcloseplate)
         {
             List<Tile> listNew = room.maze.GetTiles(Enumeration.TileType.gate);
             foreach (Tile t in listNew)
@@ -124,7 +124,7 @@ class ClosePlate : Tile
 
 
 
-        tileState.Value().state = Enumeration.StateTile.dpressplate;
+        tileState.Value().state = Enumeration.StateTile.dcloseplate;
         tileAnimation.PlayAnimation(tileSequence, tileState.Value());
 
         //Close all door with the correct switchButton

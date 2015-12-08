@@ -158,6 +158,10 @@ class Gate : Tile
         {
             return;
         }
+        if (tileState.Value().state == Enumeration.StateTile.closefast)
+        {
+            return;
+        }
         if (tileState.Value().state == Enumeration.StateTile.close)
         {
             tileState.Add(Enumeration.StateTile.open, Enumeration.PriorityState.Normal, Enumeration.SequenceReverse.FixFrame);

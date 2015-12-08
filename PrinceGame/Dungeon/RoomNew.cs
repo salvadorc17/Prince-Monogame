@@ -164,7 +164,7 @@ namespace PrinceGame
                         case Enumeration.SpriteType.kid:
                             int xPlayer = (x - 1) * Tile.WIDTH + Player.SPRITE_SIZE_X;
                             int yPlayer = ((y + 1) * (Tile.HEIGHT)) - Sprite.SPRITE_SIZE_Y + RoomNew.TOP_BORDER;
-                            maze.player = new Player(this, new Vector2(xPlayer, yPlayer), maze.graphicsDevice, r.columns[ix].spriteEffect);
+                            maze.player = new Player(this, new Vector2(xPlayer, yPlayer), new Point(x, y), maze.graphicsDevice, r.columns[ix].spriteEffect);
                             break; 
 
                         case Enumeration.SpriteType.guard:
@@ -241,13 +241,16 @@ namespace PrinceGame
 
                 case Enumeration.TileType.pressplate:
                     return new PressPlate(this, content, tiletype, state, switchButton, nextTileType);
-                     
 
+
+                case Enumeration.TileType.closeplate:
+                    return new ClosePlate(this, content, tiletype, state, switchButton, nextTileType);
 
                 case Enumeration.TileType.gate:
                     return new Gate(this, content, tiletype, state, switchButton, nextTileType, timeOpen);
-                    
 
+                case Enumeration.TileType.mirror:
+                    return new Mirror(this, content, tiletype, state, switchButton, nextTileType, timeOpen);
 
                 case Enumeration.TileType.loose:
                     return new Loose(this, content, tiletype, state, nextTileType);
@@ -943,24 +946,28 @@ namespace PrinceGame
                     {
                         case Enumeration.TileType.posts:
                             rectangleMask = Tile.MASK_POSTS;
-                            break; // TODO: might not be correct. Was : Exit Select
+                            break; 
 
                            
                         case Enumeration.TileType.gate:
                             position.X = position.X + 50;
                             rectangleMask = Tile.MASK_DOOR;
-                            break; // TODO: might not be correct. Was : Exit Select
+                            break;
 
+                        case Enumeration.TileType.mirror:
+                            position.X = position.X + 50;
+                            rectangleMask = Tile.MASK_DOOR;
+                            break; 
                             
                         case Enumeration.TileType.block:
                             rectangleMask = Tile.MASK_BLOCK;
-                            break; // TODO: might not be correct. Was : Exit Select
+                            break; 
 
                            
                         default:
                             position.Y = position.Y + 128;
                             rectangleMask = Tile.MASK_FLOOR;
-                            break; // TODO: might not be correct. Was : Exit Select
+                            break; 
 
                          
                     }
@@ -984,8 +991,7 @@ namespace PrinceGame
         {
 
             maze.LeftRoom(this).DrawTilesLeft(gametime, spriteBatch);
-            //RoomLeft().DrawTilesLeft(spriteBatch);
-
+          
 
 
             Vector2 position = new Vector2(0, 0);
@@ -1006,7 +1012,7 @@ namespace PrinceGame
                     tiles[x, y].tileAnimation.DrawTile(gametime, spriteBatch, position, SpriteEffects.None, 0.1f);
                 }
             }
-            //RoomUp().DrawTilesUp(spriteBatch);
+            //maze.RoomUp(this).DrawTilesUp(spriteBatch);
             maze.DownRoom(this).DrawTilesDown(gametime, spriteBatch);
 
             lock (tilesTemporaney)

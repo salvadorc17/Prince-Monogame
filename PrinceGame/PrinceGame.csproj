@@ -85,6 +85,8 @@
     <Compile Include="Sprites\StatePlayerElement.cs" />
     <Compile Include="Tiles\Block.cs" />
     <Compile Include="Tiles\Chomper.cs" />
+    <Compile Include="Tiles\ClosePlate.cs" />
+    <Compile Include="Tiles\Mirror.cs" />
     <Compile Include="Tiles\Exit.cs" />
     <Compile Include="Tiles\Gate.cs" />
     <Compile Include="Tiles\Lava.cs" />
@@ -142,6 +144,7 @@
     <Content Include="Content\Rooms\MAP_dungeon_prison_9.xml" />
     <Content Include="Content\Sequences\dos\BLOCK_sequence.xml" />
     <Content Include="Content\Sequences\dos\CHOMPER_sequence.xml" />
+    <Content Include="Content\Sequences\dos\CLOSEPLATE_sequence.xml" />
     <Content Include="Content\Sequences\dos\GUARD_sequence.xml" />
     <Content Include="Content\Sequences\dos\EXIT_sequence.xml" />
     <Content Include="Content\Sequences\dos\FLASKBIG_sequence.xml" />
@@ -152,6 +155,7 @@
     <Content Include="Content\Sequences\dos\LAVA_sequence.xml" />
     <Content Include="Content\Sequences\dos\LEVEL_dungeon_prison.xml" />
     <Content Include="Content\Sequences\dos\LOOSE_sequence.xml" />
+    <Content Include="Content\Sequences\dos\MIRROR_sequence.xml" />
     <Content Include="Content\Sequences\dos\POSTS_sequence.xml" />
     <Content Include="Content\Sequences\dos\PRESSPLATE_sequence.xml" />
     <Content Include="Content\Sequences\dos\RUBBLE_sequence.xml" />
@@ -665,10 +669,15 @@
     <None Include="Content\Tiles\main\FloorD.xnb" />
     <None Include="Content\Tiles\main\FloorE.xnb" />
     <None Include="Content\Tiles\main\FloorF.xnb" />
+    <None Include="Content\Tiles\main\FloorG.xnb" />
     <None Include="Content\Tiles\main\FloorLooseA_1.xnb" />
     <None Include="Content\Tiles\main\FloorLooseA_2.xnb" />
     <None Include="Content\Tiles\main\LavaA1.xnb" />
     <None Include="Content\Tiles\main\LavaA2.xnb" />
+    <None Include="Content\Tiles\main\LavaA3.xnb" />
+    <None Include="Content\Tiles\main\MirrorA.xnb" />
+    <None Include="Content\Tiles\main\MirrorB.xnb" />
+    <None Include="Content\Tiles\main\MirrorC.xnb" />
     <None Include="Content\Tiles\main\PostsA.xnb" />
     <None Include="Content\Tiles\main\PostsA_mask.xnb" />
     <None Include="Content\Tiles\main\space.xnb" />

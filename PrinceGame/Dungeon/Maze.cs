@@ -101,13 +101,6 @@ namespace PrinceGame
             LoadContent();
 
             //dEffect = content.Load<Effect>(@"Effects\SwapColor");
-
-            //if (PrinceOfPersiaGame.CONFIG_PATH_APOPLEXY != string.Empty)
-            //    Apoplexy();
-            //else
-
-
-
             PopNet();
         }
 
