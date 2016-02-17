@@ -129,7 +129,7 @@ namespace PrinceGame
 
     }
 
-    public Room StartRoom(List<Room> rooms, Room current, Level level)
+    public Room StartRoom(List<Room> rooms, Room current)
     {
 
         foreach (Room r in rooms)
@@ -141,6 +141,21 @@ namespace PrinceGame
         }
 
         return current;
+
+    }
+
+    public Room SelectRoom(List<Room> rooms, int id)
+    {
+
+        foreach (Room r in rooms)
+        {
+            if (r.roomIndex == id)
+            {
+                return r;
+            }
+        }
+
+        return rooms[0];
 
     }
 

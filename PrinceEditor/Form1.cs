@@ -32,7 +32,7 @@ namespace PrinceEditor
         public Sprite Player, Guard;
         private Map map;
         public List<Room> rooms;
-        private Room currentroom;
+        private Room currentRoom, copyRoom;
         private Level level;
         private bool Roomselected, tileselected;
         public static int mouseX;
@@ -187,7 +187,7 @@ namespace PrinceEditor
                             level.rows[r].columns[i].RoomStart));
                         rooms[roomcount - 1].AssignRoomPosition(i, r, 0);
                         if (level.rows[r].columns[i].RoomStart == true)
-                            currentroom = rooms[roomcount - 1];
+                            currentRoom = rooms[roomcount - 1];
                          }
                     //Row 1st
 
@@ -1026,15 +1026,15 @@ namespace PrinceEditor
         private void LoadStartRoom()
          {
             
-            if (currentroom != null)
-                currentroom = level.StartRoom(rooms, currentroom, level);
+            if (currentRoom != null)
+                currentRoom = level.StartRoom(rooms, currentRoom);
 
-            string current = currentroom.roomIndex.ToString();
-            //MessageBox.Show(currentroom.roomIndex + "," + currentroom.roomName + "x=" + currentroom.roomX + " y=" + currentroom.roomY);
+            string current = currentRoom.roomIndex.ToString();
+            //MessageBox.Show(currentRoom.roomIndex + "," + currentRoom.roomName + "x=" + currentRoom.roomX + " y=" + currentRoom.roomY);
 
             string path = AppDomain.CurrentDomain.BaseDirectory + "Content/Rooms/MAP_dungeon_prison_" + current + ".xml";
 
-            ComboBox1.SelectedIndex = currentroom.roomIndex;
+            ComboBox1.SelectedIndex = currentRoom.roomIndex;
 
             if (File.Exists(path))
                 LoadRoom(path);
@@ -1130,7 +1130,7 @@ namespace PrinceEditor
 
             foreach (Room r in rooms)
                 if (r.roomIndex == x)
-                    currentroom = r;
+                    currentRoom = r;
 
             string path = AppDomain.CurrentDomain.BaseDirectory + "Content/Rooms/MAP_dungeon_prison_" + current + ".xml";
 
@@ -1245,15 +1245,15 @@ namespace PrinceEditor
         {
             if (level != null)
             {
-            if (currentroom != null)
-                currentroom = level.UpRoom(rooms, currentroom, level);
+            if (currentRoom != null)
+                currentRoom = level.UpRoom(rooms, currentRoom, level);
 
-            string current = currentroom.roomIndex.ToString();
-            //MessageBox.Show(currentroom.roomIndex + "," + currentroom.roomName + "x=" + currentroom.roomX + " y=" + currentroom.roomY);
+            string current = currentRoom.roomIndex.ToString();
+            //MessageBox.Show(currentRoom.roomIndex + "," + currentRoom.roomName + "x=" + currentRoom.roomX + " y=" + currentRoom.roomY);
 
             string path = AppDomain.CurrentDomain.BaseDirectory + "Content/Rooms/MAP_dungeon_prison_" + current + ".xml";
 
-            ComboBox1.SelectedIndex = currentroom.roomIndex;
+            ComboBox1.SelectedIndex = currentRoom.roomIndex;
 
             if (File.Exists(path))
                 LoadRoom(path);
@@ -1268,15 +1268,15 @@ namespace PrinceEditor
 
             if (level != null)
             {
-            if (currentroom != null)
-               currentroom = level.DownRoom(rooms, currentroom, level);
+            if (currentRoom != null)
+               currentRoom = level.DownRoom(rooms, currentRoom, level);
 
-            string current = currentroom.roomIndex.ToString();
-            //MessageBox.Show(currentroom.roomIndex + "," + currentroom.roomName + "x=" + currentroom.roomX + " y=" + currentroom.roomY);
+            string current = currentRoom.roomIndex.ToString();
+            //MessageBox.Show(currentRoom.roomIndex + "," + currentRoom.roomName + "x=" + currentRoom.roomX + " y=" + currentRoom.roomY);
 
             string path = AppDomain.CurrentDomain.BaseDirectory + "Content/Rooms/MAP_dungeon_prison_" + current + ".xml";
 
-            ComboBox1.SelectedIndex = currentroom.roomIndex;
+            ComboBox1.SelectedIndex = currentRoom.roomIndex;
 
             if (File.Exists(path))
                 LoadRoom(path);
@@ -1290,15 +1290,15 @@ namespace PrinceEditor
         {
             if (level != null)
              {
-            if (currentroom != null)
-                currentroom = level.RightRoom(rooms, currentroom, level);
+            if (currentRoom != null)
+                currentRoom = level.RightRoom(rooms, currentRoom, level);
 
-            string current = currentroom.roomIndex.ToString();
-            //MessageBox.Show(currentroom.roomIndex + "," + currentroom.roomName + "x=" + currentroom.roomX + " y=" + currentroom.roomY);
+            string current = currentRoom.roomIndex.ToString();
+            //MessageBox.Show(currentRoom.roomIndex + "," + currentRoom.roomName + "x=" + currentRoom.roomX + " y=" + currentRoom.roomY);
 
             string path = AppDomain.CurrentDomain.BaseDirectory + "Content/Rooms/MAP_dungeon_prison_" + current + ".xml";
 
-            ComboBox1.SelectedIndex = currentroom.roomIndex;
+            ComboBox1.SelectedIndex = currentRoom.roomIndex;
 
             if (File.Exists(path))
                 LoadRoom(path);
@@ -1311,15 +1311,15 @@ namespace PrinceEditor
         {
             if (level != null)
              {
-            if (currentroom != null)
-                currentroom = level.LeftRoom(rooms, currentroom, level);
+            if (currentRoom != null)
+                currentRoom = level.LeftRoom(rooms, currentRoom, level);
 
-            string current = currentroom.roomIndex.ToString();
-            //MessageBox.Show(currentroom.roomIndex + "," + currentroom.roomName + "x=" + currentroom.roomX + " y=" + currentroom.roomY);
+            string current = currentRoom.roomIndex.ToString();
+            //MessageBox.Show(currentRoom.roomIndex + "," + currentRoom.roomName + "x=" + currentRoom.roomX + " y=" + currentRoom.roomY);
 
             string path = AppDomain.CurrentDomain.BaseDirectory + "Content/Rooms/MAP_dungeon_prison_" + current + ".xml";
 
-            ComboBox1.SelectedIndex = currentroom.roomIndex;
+            ComboBox1.SelectedIndex = currentRoom.roomIndex;
 
             if (File.Exists(path))
                 LoadRoom(path);
@@ -1346,10 +1346,10 @@ namespace PrinceEditor
         {
              if (level != null)
              
-            if (currentroom != null)
+            if (currentRoom != null)
                 {
 
-            string current = currentroom.roomIndex.ToString();
+            string current = currentRoom.roomIndex.ToString();
             string path = AppDomain.CurrentDomain.BaseDirectory + "Content/Rooms/MAP_dungeon_prison_" + current + ".xml";
 
             SaveRoom(path);
@@ -1412,13 +1412,57 @@ namespace PrinceEditor
         private void clearToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             //Clear room
-            if (currentroom != null)
+            if (currentRoom != null)
                 {
 
-                    currentroom = null;
+                    currentRoom = null;
                     GenerateNewMap();
 
                 }
+        }
+
+        private void changeTypeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+
+            if (level.levelIndex != 0)
+                level.levelIndex = 0;
+
+
+        }
+
+        private void copyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            if (ComboBox1.SelectedItem != null)
+                 {
+
+
+                int id = ComboBox1.SelectedIndex;
+                currentRoom = level.SelectRoom(rooms, id);
+                copyRoom = currentRoom;
+                        
+                }
+        }
+
+        private void pasteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (ComboBox1.SelectedItem != null && copyRoom != null)
+                 {
+
+                     currentRoom = copyRoom;
+
+                     string path = AppDomain.CurrentDomain.BaseDirectory + "Content/Rooms/MAP_dungeon_prison_" + currentRoom.roomIndex + ".xml";
+
+                     if (File.Exists(path))
+                         LoadRoom(path);
+
+                 }
+        }
+
+        private void testGameToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
 
 

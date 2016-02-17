@@ -261,15 +261,16 @@
             // clearToolStripMenuItem
             // 
             this.clearToolStripMenuItem.Name = "clearToolStripMenuItem";
-            this.clearToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.clearToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
             this.clearToolStripMenuItem.Text = "Clear";
             this.clearToolStripMenuItem.Click += new System.EventHandler(this.clearToolStripMenuItem_Click);
             // 
             // changeTypeToolStripMenuItem
             // 
             this.changeTypeToolStripMenuItem.Name = "changeTypeToolStripMenuItem";
-            this.changeTypeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.changeTypeToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
             this.changeTypeToolStripMenuItem.Text = "Change Type";
+            this.changeTypeToolStripMenuItem.Click += new System.EventHandler(this.changeTypeToolStripMenuItem_Click);
             // 
             // roomToolStripMenuItem
             // 
@@ -295,12 +296,14 @@
             this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
             this.copyToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.copyToolStripMenuItem.Text = "Copy";
+            this.copyToolStripMenuItem.Click += new System.EventHandler(this.copyToolStripMenuItem_Click);
             // 
             // pasteToolStripMenuItem
             // 
             this.pasteToolStripMenuItem.Name = "pasteToolStripMenuItem";
             this.pasteToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.pasteToolStripMenuItem.Text = "Paste";
+            this.pasteToolStripMenuItem.Click += new System.EventHandler(this.pasteToolStripMenuItem_Click);
             // 
             // exportToolStripMenuItem
             // 
@@ -320,6 +323,7 @@
             this.testGameToolStripMenuItem.Name = "testGameToolStripMenuItem";
             this.testGameToolStripMenuItem.Size = new System.Drawing.Size(75, 20);
             this.testGameToolStripMenuItem.Text = "Test Game";
+            this.testGameToolStripMenuItem.Click += new System.EventHandler(this.testGameToolStripMenuItem_Click);
             // 
             // tabControl1
             // 
@@ -1532,10 +1536,6 @@
             this.toolTip1.AutoPopDelay = 5000;
             this.toolTip1.InitialDelay = 100;
             this.toolTip1.ReshowDelay = 100;
-            // 
-            // openFileDialog1
-            // 
-            this.openFileDialog1.FileName = "openFileDialog1";
             // 
             // Form1
             // 
