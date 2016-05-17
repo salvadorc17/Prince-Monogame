@@ -1345,14 +1345,15 @@ namespace PrinceEditor
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
              if (level != null)
-             
-            if (currentRoom != null)
                 {
 
-            string current = currentRoom.roomIndex.ToString();
-            string path = AppDomain.CurrentDomain.BaseDirectory + "Content/Rooms/MAP_dungeon_prison_" + current + ".xml";
+                string path = AppDomain.CurrentDomain.BaseDirectory + "Content/Rooms/";
 
-            SaveRoom(path);
+
+                foreach (Room rm in rooms)
+                    if (rm.roomIndex != 0)
+
+                        SaveRoom(path + rm.roomName + ".xml");
 
                  }
 
