@@ -11,6 +11,7 @@ using System.Xml.Linq;
 using PrinceGame;
 using System.Xml.Serialization;
 
+
 namespace PrinceEditor
 {
     public partial class Form1 : Form
@@ -30,11 +31,15 @@ namespace PrinceEditor
         private Bitmap bb;
         private DirectoryInfo directory;
         public Sprite Player, Guard;
+        public Image Space, Floor, Wall, Spikes, Loose, DoorA, Torch, DoorB, Mirror, 
+            ClosePlate, PressPlate, Chomper, ExitLeft, ExitRight, Lava, Posts,
+            Kid, Kid2, GuardA1, GuardA2, Skeleton1, Skeleton2, Potion, SmallPotion;
         private Map map;
         public List<Room> rooms;
         private Room currentRoom, copyRoom;
         private Level level;
-        private bool Roomselected, tileselected;
+        private BinaryReader reader;
+        private bool Roomselected, tileselected, AlternateGraphics;
         public static int mouseX;
         public static int mouseY;
         public static int mMapX;
@@ -58,8 +63,16 @@ namespace PrinceEditor
 
             LoadFiles();
 
+            AlternateGraphics = false;
+
             if (graphics != null)
                 timer1.Enabled = true;
+
+            for (int i = 0; i <= 25; i++)
+            {
+                ComboBox1.Items.Add(i.ToString());
+
+            }
 
         }
 
@@ -128,6 +141,7 @@ namespace PrinceEditor
 
             }
 
+           
 
             
         }
@@ -147,9 +161,158 @@ namespace PrinceEditor
 
         }
 
+        private void LoadImages()
+        {
+            
+            Space = Properties.Resources.Space;
+
+           
+            Floor = Properties.Resources.FloorA;
+
+
+            Wall = Properties.Resources.Block_single;
+ 
+
+            Loose = Properties.Resources.FloorLoose;
+
+
+            Posts = Properties.Resources.PostsA;
+
+
+            Torch = Properties.Resources.FloorB;
+
+
+            Spikes = Properties.Resources.SpikeA;
+
+
+            Mirror = Properties.Resources.MirrorA;
+
+
+            DoorA = Properties.Resources.DoorA;
+
+            DoorB = Properties.Resources.DoorB;
+
+            PressPlate = Properties.Resources.FloorC;
+
+            ClosePlate = Properties.Resources.FloorD;
+
+            ExitLeft = Properties.Resources.ExitA_Left;
+
+            ExitRight = Properties.Resources.ExitA_Right;
+
+            Chomper = Properties.Resources.ChomperA;
+
+            Lava = Properties.Resources.LavaA1;
+
+            Kid = Properties.Resources.KidA;
+
+            Kid2 = Properties.Resources.KidB;
+
+
+            GuardA1 = Properties.Resources.GuardA;
+
+            GuardA2 = Properties.Resources.GuardB;
+
+            Skeleton1 = Properties.Resources.Skeleton;
+
+            Skeleton2 = Properties.Resources.Skeleton2;
+
+            Potion = Properties.Resources.Flask_big;
+
+            SmallPotion = Properties.Resources.Flask_small;
+
+            if (AlternateGraphics)
+                {
+
+                    Floor = Properties.Resources.FloorA2;
+
+                    Wall = Properties.Resources.Block_single2;
+
+                    Posts = Properties.Resources.PostsA2;
+
+                    Loose = Properties.Resources.FloorLoose2;
+
+                    Torch = Properties.Resources.FloorB2;
+
+                    Spikes = Properties.Resources.SpikeA2;
+
+                    Mirror = Properties.Resources.MirrorA2;
+
+                    DoorA = Properties.Resources.DoorA2;
+
+                    DoorB = Properties.Resources.DoorB2;
+
+                    PressPlate = Properties.Resources.FloorC2;
+
+                    ClosePlate = Properties.Resources.FloorD2;
+
+                    ExitLeft = Properties.Resources.ExitA_Left2;
+
+                    ExitRight = Properties.Resources.ExitA_Right2;
+
+                    Chomper = Properties.Resources.ChomperA2;
+
+                    Lava = Properties.Resources.LavaA2;
+
+
+                    Kid = Properties.Resources.KidA2;
+
+                    Kid2 = Properties.Resources.KidB2;
+
+
+                    GuardA1 = Properties.Resources.GuardA2;
+
+                    GuardA2 = Properties.Resources.GuardB2;
+
+                }
+
+
+            PictureBox2.BackgroundImage = Floor;
+
+            PictureBox10.BackgroundImage = Wall;
+
+            PictureBox7.BackgroundImage = Loose;
+
+
+            PictureBox9.BackgroundImage = Posts;
+
+            PictureBox6.BackgroundImage = Torch;
+
+            PictureBox8.BackgroundImage = Spikes;
+
+            PictureBox11.BackgroundImage = Mirror;
+
+
+            pictureBox22.BackgroundImage = PressPlate;
+
+            pictureBox21.BackgroundImage = ClosePlate;
+
+            pictureBox20.BackgroundImage = DoorA;
+
+            pictureBox19.BackgroundImage = DoorB;
+
+            pictureBox18.BackgroundImage = Chomper;
+
+            pictureBox17.BackgroundImage = Lava;
+
+            pictureBox16.BackgroundImage = ExitLeft;
+
+            pictureBox15.BackgroundImage = ExitRight;
+
+
+            PictureBox4.BackgroundImage = Kid;
+
+            PictureBox5.BackgroundImage = GuardA1;
+
+            PictureBox12.BackgroundImage = Potion;
+
+            PictureBox13.BackgroundImage = SmallPotion;
+
+        }
+
+
         private void LoadLevel(string path)
         {
-            ComboBox1.Items.Clear();
             rowcount = 0;
             columncount = 0;
             roomcount = 0;
@@ -232,12 +395,7 @@ namespace PrinceEditor
             TextBox33.Text = columncount.ToString();
             Label16.Text = roomcount.ToString();
 
-            for (int i = 0; i <= 25; i++)
-            {
-                ComboBox1.Items.Add(i);
-
-            }
-
+            
 
         }
 
@@ -262,7 +420,7 @@ namespace PrinceEditor
 
 
                             drect = new Rectangle((x * 64), (y * 74), 64, 74);
-                            graphics.DrawImage(Properties.Resources.Space, drect);
+                            graphics.DrawImage(Space, drect);
 
                             break;
 
@@ -271,51 +429,58 @@ namespace PrinceEditor
 
 
                             drect = new Rectangle((x * 64), (y * 74), 64, 74);
-                            graphics.DrawImage(Properties.Resources.FloorA, srect);
+                            graphics.DrawImage(Floor, srect);
 
                             break;
 
                         case "torch":
 
                             drect = new Rectangle((x * 64), (y * 74), 64, 74);
-                            graphics.DrawImage(Properties.Resources.FloorB_1, drect);
+                            graphics.DrawImage(Torch, drect);
 
                             break;
                         case "loose":
 
                             drect = new Rectangle((x * 64), (y * 74), 64, 74);
-                            graphics.DrawImage(Properties.Resources.FloorLooseA_1, drect);
+                            graphics.DrawImage(Loose, drect);
 
                             break;
                         case "spikes":
 
                             drect = new Rectangle((x * 64), (y * 74), 64, 74);
-                            graphics.DrawImage(Properties.Resources.SpikeA_5b, drect);
+                            graphics.DrawImage(Spikes, drect);
 
                             break;
                         case "posts":
 
                             drect = new Rectangle((x * 64), (y * 74), 64, 74);
-                            graphics.DrawImage(Properties.Resources.PostsA, drect);
+                            graphics.DrawImage(Posts, drect);
 
                             break;
                         case "block":
 
                             drect = new Rectangle((x * 64), (y * 74), 64, 74);
-                            graphics.DrawImage(Properties.Resources.Block_single, drect);
+                            graphics.DrawImage(Wall, drect);
+
+                            break;
+
+                        case "mirror":
+
+                            drect = new Rectangle((x * 64), (y * 74), 64, 74);
+                            graphics.DrawImage(Mirror, drect);
 
                             break;
                         case "pressplate":
 
                             drect = new Rectangle((x * 64), (y * 74), 64, 74);
-                            graphics.DrawImage(Properties.Resources.FloorC1, drect);
+                            graphics.DrawImage(PressPlate, drect);
 
                             break;
 
                         case "closeplate":
 
                             drect = new Rectangle((x * 64), (y * 74), 64, 74);
-                            graphics.DrawImage(Properties.Resources.FloorC2, drect);
+                            graphics.DrawImage(ClosePlate, drect);
                             break;
 
                         case "gate":
@@ -323,19 +488,35 @@ namespace PrinceEditor
                             if (switche[x, y] == "open")
                                 {
                             drect = new Rectangle((x * 64), (y * 74), 64, 74);
-                            graphics.DrawImage(Properties.Resources.DoorA_1, drect);
+                            graphics.DrawImage(DoorA, drect);
                                 }
 
                                else
                                {
                                 drect = new Rectangle((x * 64), (y * 74), 64, 74);
-                                graphics.DrawImage(Properties.Resources.DoorA_12, drect);
+                                graphics.DrawImage(DoorB, drect);
                                }
                             break;
+
+                        case "gate2":
+
+                            if (switche[x, y] == "close")
+                            {
+                                drect = new Rectangle((x * 64), (y * 74), 64, 74);
+                                graphics.DrawImage(DoorB, drect);
+                            }
+
+                            else
+                            {
+                                drect = new Rectangle((x * 64), (y * 74), 64, 74);
+                                graphics.DrawImage(DoorA, drect);
+                            }
+                            break;
+
                         case "chomper":
 
                             drect = new Rectangle((x * 64), (y * 74), 64, 74);
-                            graphics.DrawImage(Properties.Resources.ChomperA_0, drect);
+                            graphics.DrawImage(Chomper, drect);
 
 
                             break;
@@ -343,23 +524,40 @@ namespace PrinceEditor
                         case "lava":
 
                             drect = new Rectangle((x * 64), (y * 74), 64, 74);
-                            graphics.DrawImage(Properties.Resources.LavaA1, drect);
+                            graphics.DrawImage(Lava, drect);
 
 
                             break;
 
-                        case "exit":
+                        case "exit1":
 
                             if (switche[x, y] == "exit_close_right")
                             {
                                 drect = new Rectangle((x * 64), (y * 74), 64, 74);
-                                graphics.DrawImage(Properties.Resources.ExitA_Right, drect);
+                                graphics.DrawImage(ExitRight, drect);
                             }
 
                             else if (switche[x, y] == "exit_close_left")
                             {
                                 drect = new Rectangle((x * 64), (y * 74), 64, 74);
-                                graphics.DrawImage(Properties.Resources.ExitA_Left, drect);
+                                graphics.DrawImage(ExitLeft, drect);
+                            }
+
+
+                            break;
+
+                        case "exit2":
+
+                            if (switche[x, y] == "exit_close_right")
+                            {
+                                drect = new Rectangle((x * 64), (y * 74), 64, 74);
+                                graphics.DrawImage(ExitRight, drect);
+                            }
+
+                            else if (switche[x, y] == "exit_close_left")
+                            {
+                                drect = new Rectangle((x * 64), (y * 74), 64, 74);
+                                graphics.DrawImage(ExitLeft, drect);
                             }
 
 
@@ -374,9 +572,9 @@ namespace PrinceEditor
 
                             Player.Bounds = new Rectangle(Player.X * 64, Player.Y * 74, 64, 74);
                             if (Player.Flip == true)
-                                graphics.DrawImage(Properties.Resources.Kid_2, Player.Bounds);
+                                graphics.DrawImage(Kid, Player.Bounds);
                             else
-                                graphics.DrawImage(Properties.Resources.Kid_1, Player.Bounds);
+                                graphics.DrawImage(Kid2, Player.Bounds);
 
                             break;
                         case "guard":
@@ -384,9 +582,9 @@ namespace PrinceEditor
 
                             Guard.Bounds = new Rectangle(Guard.X * 64, Guard.Y * 74, 64, 74);
                             if (Guard.Flip == true)
-                                graphics.DrawImage(Properties.Resources.Guard2, Guard.Bounds);
+                                graphics.DrawImage(GuardA1, Guard.Bounds);
                             else
-                                graphics.DrawImage(Properties.Resources.Guard, Guard.Bounds); 
+                                graphics.DrawImage(GuardA2, Guard.Bounds); 
 
 
                             break;
@@ -395,9 +593,9 @@ namespace PrinceEditor
 
                             Guard.Bounds = new Rectangle(Guard.X * 64, Guard.Y * 74, 64, 74);
                             if (Guard.Flip == true)
-                                graphics.DrawImage(Properties.Resources.Skeleton2, Guard.Bounds);
+                                graphics.DrawImage(Skeleton1, Guard.Bounds);
                             else
-                                graphics.DrawImage(Properties.Resources.Skeleton, Guard.Bounds); 
+                                graphics.DrawImage(Skeleton2, Guard.Bounds); 
 
                             break;
 
@@ -437,7 +635,7 @@ namespace PrinceEditor
                         case "sword":
 
                             drect = new Rectangle((x * 64), (y * 74), 64, 74);
-                            graphics.DrawImage(Properties.Resources.Sword_1, drect);
+                            graphics.DrawImage(Properties.Resources.Sword, drect);
 
                             break;
                         default:
@@ -448,7 +646,7 @@ namespace PrinceEditor
 
                     }
 
-                    graphics.DrawImage(Properties.Resources.Selection2, (mouseX * 64), (mouseY * 74), 64, 74);
+                    graphics.DrawImage(Properties.Resources.Selection, (mouseX * 64), (mouseY * 74), 64, 74);
                     //graphics.DrawRectangle(Pens.Red, );
                 }
             }
@@ -473,6 +671,8 @@ namespace PrinceEditor
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
+
+            
 
             if (mouseX >= 0)
                 mMapX = mouseX;
@@ -532,7 +732,7 @@ namespace PrinceEditor
 
                     case 7:
 
-                        block[mMapX, mMapY] = "block";
+                        block[mMapX, mMapY] = "mirror";
 
                         break;
                     case 8:
@@ -571,12 +771,14 @@ namespace PrinceEditor
                         break;
                     case 14:
 
-                        block[mMapX, mMapY] = "exit";
+                        block[mMapX, mMapY] = "exit1";
+                        switche[mMapX, mMapY] = "exit_close_left";
 
                         break;
                     case 15:
 
-                        block[mMapX, mMapY] = "exit";
+                        block[mMapX, mMapY] = "exit2";
+                        switche[mMapX, mMapY] = "exit_close_right";
 
                         break;
 
@@ -810,9 +1012,21 @@ namespace PrinceEditor
 
             mouseY = (int)Math.Floor(Y / 74);
 
+            if (mouseX < 0)
+                mouseX = 0;
+
+            if (mouseY < 0)
+                mouseY = 0;
+
+
 
             Label9.Text = mouseX.ToString();
             Label10.Text = mouseY.ToString();
+            Label22.Text = block[mouseX, mouseY];
+            Label21.Text = item[mouseX, mouseY];
+
+
+
 
         }
 
@@ -822,7 +1036,7 @@ namespace PrinceEditor
             selectedtile = 0;
             selectedsprite = 0;
             selecteditem = 0;
-            this.TextBox3.Text = "Blackspace";
+            this.label33.Text = "Blackspace";
         }
 
         private void PictureBox2_Click(object sender, EventArgs e)
@@ -831,7 +1045,7 @@ namespace PrinceEditor
             selectedtile = 1;
             selectedsprite = 0;
             selecteditem = 0;
-            this.TextBox3.Text = "Floor";
+            this.label33.Text = "Floor";
         }
 
         private void PictureBox6_Click(object sender, EventArgs e)
@@ -840,7 +1054,7 @@ namespace PrinceEditor
             selectedtile = 2;
             selectedsprite = 0;
             selecteditem = 0;
-            this.TextBox3.Text = "Torch";
+            this.label33.Text = "Torch";
         }
 
         private void PictureBox7_Click(object sender, EventArgs e)
@@ -849,7 +1063,7 @@ namespace PrinceEditor
             selectedtile = 3;
             selectedsprite = 0;
             selecteditem = 0;
-            this.TextBox3.Text = "Loose";
+            this.label33.Text = "Loose";
         }
 
         private void PictureBox8_Click(object sender, EventArgs e)
@@ -858,7 +1072,7 @@ namespace PrinceEditor
             selectedtile = 4;
             selectedsprite = 0;
             selecteditem = 0;
-            this.TextBox3.Text = "Spikes";
+            this.label33.Text = "Spikes";
         }
 
         private void PictureBox9_Click(object sender, EventArgs e)      
@@ -867,7 +1081,7 @@ namespace PrinceEditor
             selectedtile = 5;
             selectedsprite = 0;
             selecteditem = 0;
-            this.TextBox3.Text = "Posts";
+            this.label33.Text = "Posts";
         }
 
         private void PictureBox10_Click(object sender, EventArgs e)
@@ -876,7 +1090,7 @@ namespace PrinceEditor
             selectedtile = 6;
             selectedsprite = 0;
             selecteditem = 0;
-            this.TextBox3.Text = "Wall";
+            this.label33.Text = "Block";
         }
 
         private void PictureBox11_Click(object sender, EventArgs e)
@@ -885,7 +1099,7 @@ namespace PrinceEditor
             selectedtile = 7;
             selectedsprite = 0;
             selecteditem = 0;
-            this.TextBox3.Text = "Block";
+            this.label33.Text = "Mirror";
         }
 
         private void PictureBox4_Click(object sender, EventArgs e)
@@ -893,7 +1107,7 @@ namespace PrinceEditor
             selectedsprite = 1;
             selectedtile = 1;
             selecteditem = 0;
-            this.TextBox3.Text = "Kid";
+            this.label33.Text = "Kid";
         }
 
         private void PictureBox5_Click(object sender, EventArgs e)
@@ -901,7 +1115,7 @@ namespace PrinceEditor
             selectedsprite = 2;
             selectedtile = 1;
             selecteditem = 0;
-            this.TextBox3.Text = "Guard";
+            this.label33.Text = "Guard";
         }
 
         private void PictureBox12_Click(object sender, EventArgs e)
@@ -909,7 +1123,7 @@ namespace PrinceEditor
             selecteditem = 1;
             selectedsprite = 0;
             selectedtile = 1;
-            this.TextBox3.Text = "Flask big";
+            this.label33.Text = "Flask big";
         }
 
         private void PictureBox13_Click(object sender, EventArgs e)
@@ -917,7 +1131,7 @@ namespace PrinceEditor
             selecteditem = 2;
             selectedsprite = 0;
             selectedtile = 1;
-            this.TextBox3.Text = "Flask";
+            this.label33.Text = "Flask";
         }
 
         private void PictureBox14_Click(object sender, EventArgs e)
@@ -925,12 +1139,13 @@ namespace PrinceEditor
             selecteditem = 3;
             selectedsprite = 0;
             selectedtile = 1;
-            this.TextBox3.Text = "Sword";
+            this.label33.Text = "Sword";
         }
 
         private void LoadRoom(string path)
         {
-            GenerateNewMap();
+            richTextBox1.Clear();
+            
 
             System.Xml.Serialization.XmlSerializer ax = default(System.Xml.Serialization.XmlSerializer);
             Stream txtReader = File.Open(path, FileMode.Open);
@@ -1023,6 +1238,7 @@ namespace PrinceEditor
 
         }
 
+     
         private void LoadStartRoom()
          {
             
@@ -1031,10 +1247,10 @@ namespace PrinceEditor
 
             string current = currentRoom.roomIndex.ToString();
             //MessageBox.Show(currentRoom.roomIndex + "," + currentRoom.roomName + "x=" + currentRoom.roomX + " y=" + currentRoom.roomY);
-
+            
             string path = AppDomain.CurrentDomain.BaseDirectory + "Content/Rooms/MAP_dungeon_prison_" + current + ".xml";
 
-            ComboBox1.SelectedIndex = currentRoom.roomIndex;
+            //ComboBox1.SelectedIndex = currentRoom.roomIndex;
 
             if (File.Exists(path))
                 LoadRoom(path);
@@ -1082,8 +1298,9 @@ namespace PrinceEditor
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             ComboBox2.Items.Clear();
-            ComboBox1.Items.Clear();
             ClearLevel();
+            GenerateNewMap();
+            LoadImages();
 
             if (listBox1.SelectedItem != null)
                 {
@@ -1128,16 +1345,31 @@ namespace PrinceEditor
                 
             }
 
-            foreach (Room r in rooms)
-                if (r.roomIndex == x)
-                    currentRoom = r;
+          
 
-            string path = AppDomain.CurrentDomain.BaseDirectory + "Content/Rooms/MAP_dungeon_prison_" + current + ".xml";
+            if (checkBox1.Checked == false)
+                {
+                    string path = AppDomain.CurrentDomain.BaseDirectory + "Content/Rooms/MAP_dungeon_prison_" + current + ".xml";
 
-            if (File.Exists(path))
-            LoadRoom(path);
+                    if (map != null)
+                    foreach (Room r in rooms)
+                        if (r.roomIndex == x)
+                            currentRoom = r;
+                
 
-        }
+                    if (File.Exists(path))
+                        LoadRoom(path);
+
+
+                    if (currentRoom.startRoom)
+                        button8.Visible = true;
+                    else
+                        button8.Visible = false;
+
+                }
+
+           
+        } 
 
         private void pictureBox21_Click(object sender, EventArgs e)
         {
@@ -1145,7 +1377,7 @@ namespace PrinceEditor
             selectedtile = 8;
             selectedsprite = 0;
             selecteditem = 0;
-            this.TextBox3.Text = "Switch Open";
+            this.label33.Text = "Switch Open";
         }
 
         private void pictureBox22_Click(object sender, EventArgs e)
@@ -1154,7 +1386,7 @@ namespace PrinceEditor
             selectedtile = 9;
             selectedsprite = 0;
             selecteditem = 0;
-            this.TextBox3.Text = "Switch Close";
+            this.label33.Text = "Switch Close";
         }
 
         private void pictureBox20_Click(object sender, EventArgs e)
@@ -1163,7 +1395,7 @@ namespace PrinceEditor
             selectedtile = 10;
             selectedsprite = 0;
             selecteditem = 0;
-            this.TextBox3.Text = "Door Open";
+            this.label33.Text = "Door Open";
         }
 
         private void pictureBox19_Click(object sender, EventArgs e)
@@ -1172,7 +1404,7 @@ namespace PrinceEditor
             selectedtile = 11;
             selectedsprite = 0;
             selecteditem = 0;
-            this.TextBox3.Text = "Door Close";
+            this.label33.Text = "Door Close";
         }
 
         private void pictureBox18_Click(object sender, EventArgs e)
@@ -1181,7 +1413,7 @@ namespace PrinceEditor
             selectedtile = 12;
             selectedsprite = 0;
             selecteditem = 0;
-            this.TextBox3.Text = "Chomper";
+            this.label33.Text = "Chomper";
         }
 
         private void pictureBox17_Click(object sender, EventArgs e)
@@ -1190,7 +1422,7 @@ namespace PrinceEditor
             selectedtile = 13;
             selectedsprite = 0;
             selecteditem = 0;
-            this.TextBox3.Text = "Lava";
+            this.label33.Text = "Lava";
         }
 
         private void pictureBox16_Click(object sender, EventArgs e)
@@ -1199,7 +1431,7 @@ namespace PrinceEditor
             selectedtile = 14;
             selectedsprite = 0;
             selecteditem = 0;
-            this.TextBox3.Text = "Exit Left";
+            this.label33.Text = "Exit Left";
         }
 
         private void pictureBox15_Click(object sender, EventArgs e)
@@ -1208,7 +1440,7 @@ namespace PrinceEditor
             selectedtile = 15;
             selectedsprite = 0;
             selecteditem = 0;
-            this.TextBox3.Text = "Exit Right";
+            this.label33.Text = "Exit Right";
         }
 
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1216,8 +1448,9 @@ namespace PrinceEditor
             DialogResult result = MessageBox.Show("Do you want to create new map?", "New Map", MessageBoxButtons.YesNo);
             if(result == DialogResult.Yes)
                  {
-               GenerateNewMap();
-               ClearLevel();
+                     ClearLevel();
+                    GenerateNewMap();
+              
 
                  }
         }
@@ -1378,7 +1611,7 @@ namespace PrinceEditor
             selectedsprite = 3;
             selectedtile = 1;
             selecteditem = 0;
-            this.TextBox3.Text = "Skeleton";
+            this.label33.Text = "Skeleton";
         }
 
         private void pictureBox24_Click(object sender, EventArgs e)
@@ -1386,7 +1619,7 @@ namespace PrinceEditor
             selectedsprite = 4;
             selectedtile = 1;
             selecteditem = 0;
-            this.TextBox3.Text = "Serpent";
+            this.label33.Text = "Serpent";
         }
 
         private void button8_Click(object sender, EventArgs e)
@@ -1466,12 +1699,26 @@ namespace PrinceEditor
 
         }
 
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Prince Monogame created by salvadorc17. Prince of Persia original by Jordan Mechner");
+        }
+
+        private void checkBox2_CheckedChanged(object sender, EventArgs e)
+        {
+
+            AlternateGraphics = !AlternateGraphics;
+
+            if (level != null)
+                LoadImages();
 
 
 
+        }
 
 
-               
 
-    }
+    }       
+
+     
 }

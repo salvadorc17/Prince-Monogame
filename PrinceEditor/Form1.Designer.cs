@@ -42,8 +42,8 @@
             this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pasteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.testGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -53,6 +53,9 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.TextBox33 = new System.Windows.Forms.TextBox();
             this.TextBox32 = new System.Windows.Forms.TextBox();
             this.Label29 = new System.Windows.Forms.Label();
@@ -121,6 +124,7 @@
             this.PictureBox12 = new System.Windows.Forms.PictureBox();
             this.label11 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.label33 = new System.Windows.Forms.Label();
             this.button9 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             this.label31 = new System.Windows.Forms.Label();
@@ -150,11 +154,14 @@
             this.Label8 = new System.Windows.Forms.Label();
             this.Label7 = new System.Windows.Forms.Label();
             this.Label6 = new System.Windows.Forms.Label();
-            this.TextBox3 = new System.Windows.Forms.TextBox();
             this.Label5 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.listBox3 = new System.Windows.Forms.ListBox();
+            this.listBox2 = new System.Windows.Forms.ListBox();
+            this.label32 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.label24 = new System.Windows.Forms.Label();
@@ -162,11 +169,13 @@
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.pictureBox25 = new System.Windows.Forms.PictureBox();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.panel4.SuspendLayout();
             this.TabControl2.SuspendLayout();
@@ -200,7 +209,9 @@
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabPage3.SuspendLayout();
+            this.panel6.SuspendLayout();
             this.panel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox25)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -209,8 +220,8 @@
             this.fileToolStripMenuItem,
             this.levelToolStripMenuItem,
             this.roomToolStripMenuItem,
-            this.aboutToolStripMenuItem,
-            this.testGameToolStripMenuItem});
+            this.testGameToolStripMenuItem,
+            this.aboutToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(920, 24);
@@ -256,7 +267,6 @@
             this.levelToolStripMenuItem.Name = "levelToolStripMenuItem";
             this.levelToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
             this.levelToolStripMenuItem.Text = "Level";
-            this.levelToolStripMenuItem.Visible = false;
             // 
             // clearToolStripMenuItem
             // 
@@ -287,43 +297,45 @@
             // clearToolStripMenuItem1
             // 
             this.clearToolStripMenuItem1.Name = "clearToolStripMenuItem1";
-            this.clearToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.clearToolStripMenuItem1.Size = new System.Drawing.Size(107, 22);
             this.clearToolStripMenuItem1.Text = "Clear";
             this.clearToolStripMenuItem1.Click += new System.EventHandler(this.clearToolStripMenuItem1_Click);
             // 
             // copyToolStripMenuItem
             // 
             this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
-            this.copyToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.copyToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.copyToolStripMenuItem.Text = "Copy";
             this.copyToolStripMenuItem.Click += new System.EventHandler(this.copyToolStripMenuItem_Click);
             // 
             // pasteToolStripMenuItem
             // 
             this.pasteToolStripMenuItem.Name = "pasteToolStripMenuItem";
-            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.pasteToolStripMenuItem.Text = "Paste";
             this.pasteToolStripMenuItem.Click += new System.EventHandler(this.pasteToolStripMenuItem_Click);
             // 
             // exportToolStripMenuItem
             // 
             this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
-            this.exportToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exportToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.exportToolStripMenuItem.Text = "Export";
             this.exportToolStripMenuItem.Click += new System.EventHandler(this.exportToolStripMenuItem_Click);
-            // 
-            // aboutToolStripMenuItem
-            // 
-            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
-            this.aboutToolStripMenuItem.Text = "About";
             // 
             // testGameToolStripMenuItem
             // 
             this.testGameToolStripMenuItem.Name = "testGameToolStripMenuItem";
             this.testGameToolStripMenuItem.Size = new System.Drawing.Size(75, 20);
             this.testGameToolStripMenuItem.Text = "Test Game";
+            this.testGameToolStripMenuItem.Visible = false;
             this.testGameToolStripMenuItem.Click += new System.EventHandler(this.testGameToolStripMenuItem_Click);
+            // 
+            // aboutToolStripMenuItem
+            // 
+            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
+            this.aboutToolStripMenuItem.Text = "About";
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
             // tabControl1
             // 
@@ -409,6 +421,7 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.groupBox1);
             this.panel1.Controls.Add(this.TextBox33);
             this.panel1.Controls.Add(this.TextBox32);
             this.panel1.Controls.Add(this.Label29);
@@ -450,9 +463,41 @@
             this.panel1.Size = new System.Drawing.Size(678, 495);
             this.panel1.TabIndex = 0;
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.checkBox2);
+            this.groupBox1.Controls.Add(this.checkBox1);
+            this.groupBox1.Location = new System.Drawing.Point(332, 91);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(255, 171);
+            this.groupBox1.TabIndex = 112;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Level Flags";
+            // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Location = new System.Drawing.Point(44, 93);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(113, 17);
+            this.checkBox2.TabIndex = 1;
+            this.checkBox2.Text = "Alternate Graphics";
+            this.checkBox2.UseVisualStyleBackColor = true;
+            this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(44, 40);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(69, 17);
+            this.checkBox1.TabIndex = 0;
+            this.checkBox1.Text = "Apoplexy";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
             // TextBox33
             // 
-            this.TextBox33.Location = new System.Drawing.Point(417, 112);
+            this.TextBox33.Location = new System.Drawing.Point(217, 160);
             this.TextBox33.Name = "TextBox33";
             this.TextBox33.Size = new System.Drawing.Size(50, 20);
             this.TextBox33.TabIndex = 111;
@@ -467,7 +512,7 @@
             // Label29
             // 
             this.Label29.AutoSize = true;
-            this.Label29.Location = new System.Drawing.Point(353, 115);
+            this.Label29.Location = new System.Drawing.Point(147, 160);
             this.Label29.Name = "Label29";
             this.Label29.Size = new System.Drawing.Size(47, 13);
             this.Label29.TabIndex = 109;
@@ -485,7 +530,7 @@
             // Label27
             // 
             this.Label27.AutoSize = true;
-            this.Label27.Location = new System.Drawing.Point(42, 115);
+            this.Label27.Location = new System.Drawing.Point(42, 119);
             this.Label27.Name = "Label27";
             this.Label27.Size = new System.Drawing.Size(69, 13);
             this.Label27.TabIndex = 107;
@@ -713,7 +758,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(38, 206);
+            this.label14.Location = new System.Drawing.Point(42, 249);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(79, 13);
             this.label14.TabIndex = 76;
@@ -774,7 +819,6 @@
             // PictureBox11
             // 
             this.PictureBox11.BackColor = System.Drawing.SystemColors.Control;
-            this.PictureBox11.BackgroundImage = global::PrinceEditor.Properties.Resources.Block_centre;
             this.PictureBox11.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.PictureBox11.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.PictureBox11.Location = new System.Drawing.Point(105, 304);
@@ -782,13 +826,12 @@
             this.PictureBox11.Size = new System.Drawing.Size(64, 74);
             this.PictureBox11.TabIndex = 11;
             this.PictureBox11.TabStop = false;
-            this.toolTip1.SetToolTip(this.PictureBox11, "Block");
+            this.toolTip1.SetToolTip(this.PictureBox11, "Mirror");
             this.PictureBox11.Click += new System.EventHandler(this.PictureBox11_Click);
             // 
             // PictureBox10
             // 
             this.PictureBox10.BackColor = System.Drawing.SystemColors.Control;
-            this.PictureBox10.BackgroundImage = global::PrinceEditor.Properties.Resources.Block_single;
             this.PictureBox10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.PictureBox10.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.PictureBox10.Location = new System.Drawing.Point(19, 304);
@@ -802,7 +845,6 @@
             // PictureBox9
             // 
             this.PictureBox9.BackColor = System.Drawing.SystemColors.Control;
-            this.PictureBox9.BackgroundImage = global::PrinceEditor.Properties.Resources.PostsA;
             this.PictureBox9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.PictureBox9.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.PictureBox9.Location = new System.Drawing.Point(105, 212);
@@ -816,7 +858,6 @@
             // PictureBox8
             // 
             this.PictureBox8.BackColor = System.Drawing.SystemColors.Control;
-            this.PictureBox8.BackgroundImage = global::PrinceEditor.Properties.Resources.SpikeA_5b;
             this.PictureBox8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.PictureBox8.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.PictureBox8.Location = new System.Drawing.Point(19, 212);
@@ -830,7 +871,6 @@
             // PictureBox7
             // 
             this.PictureBox7.BackColor = System.Drawing.SystemColors.Control;
-            this.PictureBox7.BackgroundImage = global::PrinceEditor.Properties.Resources.FloorLooseA_1;
             this.PictureBox7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.PictureBox7.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.PictureBox7.Location = new System.Drawing.Point(105, 120);
@@ -844,7 +884,6 @@
             // PictureBox6
             // 
             this.PictureBox6.BackColor = System.Drawing.SystemColors.Control;
-            this.PictureBox6.BackgroundImage = global::PrinceEditor.Properties.Resources.FloorB_1;
             this.PictureBox6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.PictureBox6.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.PictureBox6.Location = new System.Drawing.Point(19, 120);
@@ -872,7 +911,6 @@
             // PictureBox2
             // 
             this.PictureBox2.BackColor = System.Drawing.SystemColors.Control;
-            this.PictureBox2.BackgroundImage = global::PrinceEditor.Properties.Resources.FloorA;
             this.PictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.PictureBox2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.PictureBox2.Location = new System.Drawing.Point(105, 36);
@@ -903,7 +941,6 @@
             // pictureBox15
             // 
             this.pictureBox15.BackColor = System.Drawing.SystemColors.Control;
-            this.pictureBox15.BackgroundImage = global::PrinceEditor.Properties.Resources.ExitA_Right;
             this.pictureBox15.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox15.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pictureBox15.Location = new System.Drawing.Point(103, 300);
@@ -917,7 +954,6 @@
             // pictureBox16
             // 
             this.pictureBox16.BackColor = System.Drawing.SystemColors.Control;
-            this.pictureBox16.BackgroundImage = global::PrinceEditor.Properties.Resources.ExitA_Left;
             this.pictureBox16.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox16.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pictureBox16.Location = new System.Drawing.Point(17, 300);
@@ -931,7 +967,6 @@
             // pictureBox17
             // 
             this.pictureBox17.BackColor = System.Drawing.SystemColors.Control;
-            this.pictureBox17.BackgroundImage = global::PrinceEditor.Properties.Resources.LavaA1;
             this.pictureBox17.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox17.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pictureBox17.Location = new System.Drawing.Point(103, 208);
@@ -945,7 +980,6 @@
             // pictureBox18
             // 
             this.pictureBox18.BackColor = System.Drawing.SystemColors.Control;
-            this.pictureBox18.BackgroundImage = global::PrinceEditor.Properties.Resources.ChomperA_0;
             this.pictureBox18.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox18.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pictureBox18.Location = new System.Drawing.Point(17, 208);
@@ -959,7 +993,6 @@
             // pictureBox19
             // 
             this.pictureBox19.BackColor = System.Drawing.SystemColors.Control;
-            this.pictureBox19.BackgroundImage = global::PrinceEditor.Properties.Resources.DoorA_12;
             this.pictureBox19.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox19.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pictureBox19.Location = new System.Drawing.Point(103, 116);
@@ -973,7 +1006,6 @@
             // pictureBox20
             // 
             this.pictureBox20.BackColor = System.Drawing.SystemColors.Control;
-            this.pictureBox20.BackgroundImage = global::PrinceEditor.Properties.Resources.DoorA_1;
             this.pictureBox20.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox20.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pictureBox20.Location = new System.Drawing.Point(17, 116);
@@ -987,7 +1019,6 @@
             // pictureBox21
             // 
             this.pictureBox21.BackColor = System.Drawing.SystemColors.Control;
-            this.pictureBox21.BackgroundImage = global::PrinceEditor.Properties.Resources.FloorC1;
             this.pictureBox21.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox21.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pictureBox21.Location = new System.Drawing.Point(17, 32);
@@ -1001,7 +1032,6 @@
             // pictureBox22
             // 
             this.pictureBox22.BackColor = System.Drawing.SystemColors.Control;
-            this.pictureBox22.BackgroundImage = global::PrinceEditor.Properties.Resources.FloorC2;
             this.pictureBox22.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox22.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pictureBox22.Location = new System.Drawing.Point(103, 32);
@@ -1029,7 +1059,6 @@
             // pictureBox24
             // 
             this.pictureBox24.BackColor = System.Drawing.SystemColors.Control;
-            this.pictureBox24.BackgroundImage = global::PrinceEditor.Properties.Resources.Serpent;
             this.pictureBox24.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox24.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pictureBox24.Location = new System.Drawing.Point(117, 115);
@@ -1043,7 +1072,6 @@
             // pictureBox23
             // 
             this.pictureBox23.BackColor = System.Drawing.SystemColors.Control;
-            this.pictureBox23.BackgroundImage = global::PrinceEditor.Properties.Resources.Skeleton;
             this.pictureBox23.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox23.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pictureBox23.Location = new System.Drawing.Point(20, 115);
@@ -1057,7 +1085,6 @@
             // PictureBox5
             // 
             this.PictureBox5.BackColor = System.Drawing.SystemColors.Control;
-            this.PictureBox5.BackgroundImage = global::PrinceEditor.Properties.Resources.Guard;
             this.PictureBox5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.PictureBox5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.PictureBox5.Location = new System.Drawing.Point(117, 36);
@@ -1071,7 +1098,6 @@
             // PictureBox4
             // 
             this.PictureBox4.BackColor = System.Drawing.SystemColors.Control;
-            this.PictureBox4.BackgroundImage = global::PrinceEditor.Properties.Resources.Kid_1;
             this.PictureBox4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.PictureBox4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.PictureBox4.Location = new System.Drawing.Point(19, 36);
@@ -1085,6 +1111,7 @@
             // TabPage6
             // 
             this.TabPage6.BackColor = System.Drawing.Color.LightGray;
+            this.TabPage6.Controls.Add(this.pictureBox25);
             this.TabPage6.Controls.Add(this.PictureBox14);
             this.TabPage6.Controls.Add(this.PictureBox13);
             this.TabPage6.Controls.Add(this.PictureBox12);
@@ -1097,7 +1124,6 @@
             // PictureBox14
             // 
             this.PictureBox14.BackColor = System.Drawing.SystemColors.ControlText;
-            this.PictureBox14.BackgroundImage = global::PrinceEditor.Properties.Resources.Sword_1;
             this.PictureBox14.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.PictureBox14.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.PictureBox14.Location = new System.Drawing.Point(19, 122);
@@ -1111,7 +1137,6 @@
             // PictureBox13
             // 
             this.PictureBox13.BackColor = System.Drawing.SystemColors.ControlText;
-            this.PictureBox13.BackgroundImage = global::PrinceEditor.Properties.Resources.Flask_small;
             this.PictureBox13.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.PictureBox13.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.PictureBox13.Location = new System.Drawing.Point(121, 36);
@@ -1125,7 +1150,6 @@
             // PictureBox12
             // 
             this.PictureBox12.BackColor = System.Drawing.SystemColors.ControlText;
-            this.PictureBox12.BackgroundImage = global::PrinceEditor.Properties.Resources.Flask_big;
             this.PictureBox12.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.PictureBox12.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.PictureBox12.Location = new System.Drawing.Point(19, 36);
@@ -1149,6 +1173,7 @@
             // 
             this.panel3.AutoScroll = true;
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel3.Controls.Add(this.label33);
             this.panel3.Controls.Add(this.button9);
             this.panel3.Controls.Add(this.button8);
             this.panel3.Controls.Add(this.label31);
@@ -1178,7 +1203,6 @@
             this.panel3.Controls.Add(this.Label8);
             this.panel3.Controls.Add(this.Label7);
             this.panel3.Controls.Add(this.Label6);
-            this.panel3.Controls.Add(this.TextBox3);
             this.panel3.Controls.Add(this.Label5);
             this.panel3.Controls.Add(this.label3);
             this.panel3.Controls.Add(this.pictureBox1);
@@ -1186,6 +1210,15 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(674, 496);
             this.panel3.TabIndex = 1;
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Location = new System.Drawing.Point(616, 163);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(33, 13);
+            this.label33.TabIndex = 116;
+            this.label33.Text = "None";
             // 
             // button9
             // 
@@ -1205,12 +1238,13 @@
             this.button8.TabIndex = 114;
             this.button8.Text = "Flip";
             this.button8.UseVisualStyleBackColor = true;
+            this.button8.Visible = false;
             this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
             // label31
             // 
             this.label31.AutoSize = true;
-            this.label31.Location = new System.Drawing.Point(639, 110);
+            this.label31.Location = new System.Drawing.Point(495, 182);
             this.label31.Name = "label31";
             this.label31.Size = new System.Drawing.Size(19, 13);
             this.label31.TabIndex = 113;
@@ -1219,7 +1253,7 @@
             // label30
             // 
             this.label30.AutoSize = true;
-            this.label30.Location = new System.Drawing.Point(541, 110);
+            this.label30.Location = new System.Drawing.Point(397, 182);
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(65, 13);
             this.label30.TabIndex = 112;
@@ -1228,7 +1262,7 @@
             // label26
             // 
             this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(639, 66);
+            this.label26.Location = new System.Drawing.Point(495, 138);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(19, 13);
             this.label26.TabIndex = 111;
@@ -1237,7 +1271,7 @@
             // label25
             // 
             this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(541, 66);
+            this.label25.Location = new System.Drawing.Point(397, 138);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(74, 13);
             this.label25.TabIndex = 110;
@@ -1331,7 +1365,7 @@
             // Label22
             // 
             this.Label22.AutoSize = true;
-            this.Label22.Location = new System.Drawing.Point(481, 170);
+            this.Label22.Location = new System.Drawing.Point(616, 20);
             this.Label22.Name = "Label22";
             this.Label22.Size = new System.Drawing.Size(19, 13);
             this.Label22.TabIndex = 100;
@@ -1340,7 +1374,7 @@
             // Label21
             // 
             this.Label21.AutoSize = true;
-            this.Label21.Location = new System.Drawing.Point(481, 138);
+            this.Label21.Location = new System.Drawing.Point(616, 52);
             this.Label21.Name = "Label21";
             this.Label21.Size = new System.Drawing.Size(19, 13);
             this.Label21.TabIndex = 99;
@@ -1349,29 +1383,29 @@
             // Label20
             // 
             this.Label20.AutoSize = true;
-            this.Label20.Location = new System.Drawing.Point(397, 170);
+            this.Label20.Location = new System.Drawing.Point(548, 20);
             this.Label20.Name = "Label20";
-            this.Label20.Size = new System.Drawing.Size(50, 13);
+            this.Label20.Size = new System.Drawing.Size(27, 13);
             this.Label20.TabIndex = 98;
-            this.Label20.Text = "Columns:";
+            this.Label20.Text = "Tile:";
             // 
             // Label19
             // 
             this.Label19.AutoSize = true;
-            this.Label19.Location = new System.Drawing.Point(403, 138);
+            this.Label19.Location = new System.Drawing.Point(548, 52);
             this.Label19.Name = "Label19";
             this.Label19.Size = new System.Drawing.Size(37, 13);
             this.Label19.TabIndex = 97;
-            this.Label19.Text = "Rows:";
+            this.Label19.Text = "Sprite:";
             // 
             // Label18
             // 
             this.Label18.AutoSize = true;
             this.Label18.Location = new System.Drawing.Point(294, 138);
             this.Label18.Name = "Label18";
-            this.Label18.Size = new System.Drawing.Size(74, 13);
+            this.Label18.Size = new System.Drawing.Size(73, 13);
             this.Label18.TabIndex = 96;
-            this.Label18.Text = "Room Lenght:";
+            this.Label18.Text = "Room Values:";
             // 
             // TextBox29
             // 
@@ -1410,7 +1444,7 @@
             // Label10
             // 
             this.Label10.AutoSize = true;
-            this.Label10.Location = new System.Drawing.Point(481, 90);
+            this.Label10.Location = new System.Drawing.Point(452, 52);
             this.Label10.Name = "Label10";
             this.Label10.Size = new System.Drawing.Size(19, 13);
             this.Label10.TabIndex = 91;
@@ -1419,7 +1453,7 @@
             // Label9
             // 
             this.Label9.AutoSize = true;
-            this.Label9.Location = new System.Drawing.Point(481, 63);
+            this.Label9.Location = new System.Drawing.Point(452, 20);
             this.Label9.Name = "Label9";
             this.Label9.Size = new System.Drawing.Size(19, 13);
             this.Label9.TabIndex = 90;
@@ -1428,7 +1462,7 @@
             // Label8
             // 
             this.Label8.AutoSize = true;
-            this.Label8.Location = new System.Drawing.Point(436, 90);
+            this.Label8.Location = new System.Drawing.Point(414, 52);
             this.Label8.Name = "Label8";
             this.Label8.Size = new System.Drawing.Size(17, 13);
             this.Label8.TabIndex = 89;
@@ -1437,7 +1471,7 @@
             // Label7
             // 
             this.Label7.AutoSize = true;
-            this.Label7.Location = new System.Drawing.Point(436, 63);
+            this.Label7.Location = new System.Drawing.Point(414, 20);
             this.Label7.Name = "Label7";
             this.Label7.Size = new System.Drawing.Size(17, 13);
             this.Label7.TabIndex = 88;
@@ -1446,24 +1480,16 @@
             // Label6
             // 
             this.Label6.AutoSize = true;
-            this.Label6.Location = new System.Drawing.Point(289, 63);
+            this.Label6.Location = new System.Drawing.Point(294, 20);
             this.Label6.Name = "Label6";
             this.Label6.Size = new System.Drawing.Size(74, 13);
             this.Label6.TabIndex = 87;
             this.Label6.Text = "Room Coords:";
             // 
-            // TextBox3
-            // 
-            this.TextBox3.Location = new System.Drawing.Point(400, 13);
-            this.TextBox3.Name = "TextBox3";
-            this.TextBox3.ReadOnly = true;
-            this.TextBox3.Size = new System.Drawing.Size(100, 20);
-            this.TextBox3.TabIndex = 86;
-            // 
             // Label5
             // 
             this.Label5.AutoSize = true;
-            this.Label5.Location = new System.Drawing.Point(289, 16);
+            this.Label5.Location = new System.Drawing.Point(577, 138);
             this.Label5.Name = "Label5";
             this.Label5.Size = new System.Drawing.Size(72, 13);
             this.Label5.TabIndex = 85;
@@ -1492,12 +1518,49 @@
             // tabPage3
             // 
             this.tabPage3.BackColor = System.Drawing.Color.LightGray;
+            this.tabPage3.Controls.Add(this.panel6);
             this.tabPage3.Controls.Add(this.panel5);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Size = new System.Drawing.Size(912, 508);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Filemap Values";
+            // 
+            // panel6
+            // 
+            this.panel6.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel6.Controls.Add(this.listBox3);
+            this.panel6.Controls.Add(this.listBox2);
+            this.panel6.Controls.Add(this.label32);
+            this.panel6.Location = new System.Drawing.Point(420, 3);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(484, 498);
+            this.panel6.TabIndex = 1;
+            // 
+            // listBox3
+            // 
+            this.listBox3.FormattingEnabled = true;
+            this.listBox3.Location = new System.Drawing.Point(189, 51);
+            this.listBox3.Name = "listBox3";
+            this.listBox3.Size = new System.Drawing.Size(77, 303);
+            this.listBox3.TabIndex = 2;
+            // 
+            // listBox2
+            // 
+            this.listBox2.FormattingEnabled = true;
+            this.listBox2.Location = new System.Drawing.Point(25, 51);
+            this.listBox2.Name = "listBox2";
+            this.listBox2.Size = new System.Drawing.Size(77, 303);
+            this.listBox2.TabIndex = 1;
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Location = new System.Drawing.Point(81, 14);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(60, 13);
+            this.label32.TabIndex = 0;
+            this.label32.Text = "Snes Data:";
             // 
             // panel5
             // 
@@ -1506,14 +1569,14 @@
             this.panel5.Controls.Add(this.label24);
             this.panel5.Location = new System.Drawing.Point(8, 3);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(539, 502);
+            this.panel5.Size = new System.Drawing.Size(391, 502);
             this.panel5.TabIndex = 0;
             // 
             // richTextBox1
             // 
             this.richTextBox1.Location = new System.Drawing.Point(26, 51);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(445, 410);
+            this.richTextBox1.Size = new System.Drawing.Size(323, 410);
             this.richTextBox1.TabIndex = 1;
             this.richTextBox1.Text = "";
             // 
@@ -1537,6 +1600,18 @@
             this.toolTip1.InitialDelay = 100;
             this.toolTip1.ReshowDelay = 100;
             // 
+            // pictureBox25
+            // 
+            this.pictureBox25.BackColor = System.Drawing.SystemColors.ControlText;
+            this.pictureBox25.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox25.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pictureBox25.Location = new System.Drawing.Point(121, 122);
+            this.pictureBox25.Name = "pictureBox25";
+            this.pictureBox25.Size = new System.Drawing.Size(57, 57);
+            this.pictureBox25.TabIndex = 10;
+            this.pictureBox25.TabStop = false;
+            this.toolTip1.SetToolTip(this.pictureBox25, "Sword");
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1557,6 +1632,8 @@
             this.panel2.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
@@ -1592,8 +1669,11 @@
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tabPage3.ResumeLayout(false);
+            this.panel6.ResumeLayout(false);
+            this.panel6.PerformLayout();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox25)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1634,7 +1714,6 @@
         internal System.Windows.Forms.Label Label8;
         internal System.Windows.Forms.Label Label7;
         internal System.Windows.Forms.Label Label6;
-        internal System.Windows.Forms.TextBox TextBox3;
         internal System.Windows.Forms.Label Label5;
         internal System.Windows.Forms.Label label3;
         internal System.Windows.Forms.Label label4;
@@ -1734,6 +1813,15 @@
         private System.Windows.Forms.ToolStripMenuItem copyToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pasteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exportToolStripMenuItem;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.ListBox listBox3;
+        private System.Windows.Forms.ListBox listBox2;
+        private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox checkBox2;
+        internal System.Windows.Forms.Label label33;
+        internal System.Windows.Forms.PictureBox pictureBox25;
     }
 }
 
