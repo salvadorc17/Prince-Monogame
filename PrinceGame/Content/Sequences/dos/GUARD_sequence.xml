@@ -17,55 +17,19 @@
     <name>STAND</name>
   </Sequence>
 
-  <!-- ENGARDE
-  <Sequence>
-  <config_type>CONFIG_sprite_guard</config_type>
-    <frames>
-      <Frame>
-        <type>SPRITE</type>
-        <name>ENGARDE</name>
-        <value>Guard_207</value>
-        <stoppable>true</stoppable>
-        <xOffSet>0</xOffSet>
-        <yOffSet>0</yOffSet>
-      </Frame>
-      <Frame>
-        <type>SPRITE</type>
-        <value>Guard_208</value>
-        <stoppable>true</stoppable>
-        <xOffSet>0</xOffSet>
-        <yOffSet>0</yOffSet>
-      </Frame>
-      <Frame>
-        <type>SPRITE</type>
-        <value>Guard_209</value>
-        <stoppable>true</stoppable>
-        <xOffSet>0</xOffSet>
-        <yOffSet>0</yOffSet>
-      </Frame>
-      <Frame>
-        <type>SPRITE</type>
-        <value>Guard_210</value>
-        <stoppable>true</stoppable>
-        <xOffSet>0</xOffSet>
-        <yOffSet>0</yOffSet>
-      </Frame>
-
-      <Frame>
-        <type>COMMAND</type>
-        <name>GOTOSEQUENCE</name>
-        <parameter>READY</parameter>
-        <stoppable>false</stoppable>
-      </Frame>
-    </frames>
-    <name>ENGARDE</name>
-  </Sequence>
--->
-
-  <!-- GUARDENGARDE only for compatibility with the original macII source code-->
+  <!-- GUARDENGARDE only for compatibility with the original source code-->
   <Sequence>
     <config_type>CONFIG_sprite_guard</config_type>
     <frames>
+		<Frame>
+        <type>SPRITE</type>
+        <name>ENGARDE</name>
+        <value>Guard_121</value>
+        <stoppable>true</stoppable>
+        <delay>0.5</delay>
+        <xOffSet>0</xOffSet>
+        <yOffSet>0</yOffSet>
+      </Frame>
        <Frame>
         <type>COMMAND</type>
         <name>GOTOSEQUENCE</name>

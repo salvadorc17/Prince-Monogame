@@ -135,7 +135,7 @@
       <Frame>
         <type>SPRITE</type>
         <name>ALERTSTAND</name>
-        <value>Kid_166</value>
+        <value>Kid_165</value>
         <stoppable>true</stoppable>
         <xOffSet>0</xOffSet>
         <yOffSet>0</yOffSet>
@@ -181,7 +181,7 @@
       <Frame>
         <type>SPRITE</type>
         <name>ARISE</name>
-        <value>Kid_166</value>
+        <value>Kid_165</value>
         <stoppable>false</stoppable>
         <xOffSet>0</xOffSet>
         <yOffSet>0</yOffSet>
