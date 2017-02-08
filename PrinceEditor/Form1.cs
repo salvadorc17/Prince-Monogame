@@ -1275,11 +1275,33 @@ namespace PrinceEditor
                     Label22.Text = i.ToString();
 
                     map.rows[r].columns[i].tileType = (Enumeration.TileType)Enum.Parse(typeof(Enumeration.TileType), block[i, r]);
-                    map.rows[r].columns[i].spriteType = (Enumeration.SpriteType)Enum.Parse(typeof(Enumeration.SpriteType), sprite[i, r]);
-                    map.rows[r].columns[i].item = (Enumeration.Items)Enum.Parse(typeof(Enumeration.Items), item[i, r]);
 
-                    if (switche[i, r] != null)
-                        map.rows[r].columns[i].state = (Enumeration.StateTile)Enum.Parse(typeof(Enumeration.StateTile), switche[i, r]);
+                    Enumeration.SpriteType SprType = (Enumeration.SpriteType)Enum.Parse(typeof(Enumeration.SpriteType), sprite[i, r], false);
+
+                    if (SprType != Enumeration.SpriteType.nothing)
+                        {
+
+                            map.rows[r].columns[i].spriteType = SprType;
+                        
+                        }
+
+                    Enumeration.Items Item = (Enumeration.Items)Enum.Parse(typeof(Enumeration.Items), item[i, r]);
+
+                    if (Item != Enumeration.Items.nothing)
+                        {
+
+                            map.rows[r].columns[i].item = Item;
+
+                        }
+
+                    Enumeration.StateTile State = (Enumeration.StateTile)Enum.Parse(typeof(Enumeration.StateTile), switche[i, r]);
+
+                    if (State != Enumeration.StateTile.normal)
+                        {
+
+                            map.rows[r].columns[i].state = State;
+
+                        }
                 }
 
             }
