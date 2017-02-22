@@ -19,6 +19,7 @@ namespace PrinceGame
 public class Player : Sprite
 {
 
+    public RoomNew StartRoom = null;
     /// <summary>
     /// Constructors a new player.
     /// </summary>
@@ -26,6 +27,7 @@ public class Player : Sprite
     {
         graphicsDevice = GraphicsDevice__1;
         SpriteRoom = room;
+        StartRoom = SpriteRoom;
         _roomcord = roomcoords;
         LoadContent();
 
@@ -100,8 +102,7 @@ public class Player : Sprite
     /// <param name="position">The position to come to life at.</param>
     public void Reset(Vector2 position, SpriteEffects spriteEffect)
     {
-        startPosition = position;
-
+        m_spriteRoom = StartRoom;
         _position = new Position(new Vector2(graphicsDevice.Viewport.Width, graphicsDevice.Viewport.Height), new Vector2(Player.SPRITE_SIZE_X, Player.SPRITE_SIZE_Y));
         _position.X = position.X;
         _position.Y = position.Y;
@@ -118,23 +119,7 @@ public class Player : Sprite
 
     }
 
-    ///// <summary>
-    ///// Start position the player to life.
-    ///// </summary>
-    ///// <param name="position">The position to come to life at.</param>
-    public void Start(Vector2 position)
-    {
-        _position.X = position.X;
-        _position.Y = position.Y;
-        Velocity = Vector2.Zero;
-        Energy = PrinceOfPersiaGame.CONFIG_KID_START_ENERGY;
 
-
-        spriteState.Clear();
-
-        Stand();
-
-    }
 
     /// <summary>
     /// Handles input, performs physics, and animates the player sprite.
@@ -160,10 +145,7 @@ public class Player : Sprite
         //ApplyPhysicsNew(gameTime);
         HandleCollisionsNew();
 
-
-
         float elapsed = Convert.ToSingle(gameTime.ElapsedGameTime.TotalSeconds);
-        // TODO: Add your game logic here.
         sprite.UpdateFrame(elapsed, ref _position, ref flip, ref spriteState);
     }
 
@@ -185,54 +167,54 @@ public class Player : Sprite
                 {
                     case Enumeration.State.none:
                         Stand(spriteState.Value().Priority);
-                        break; // TODO: might not be correct. Was : Exit Select
+                        break;
 
                     case Enumeration.State.stand:
                         Stand(spriteState.Value().Priority);
-                        break; // TODO: might not be correct. Was : Exit Select
+                        break;
 
                     case Enumeration.State.startrun:
                         RunStop();
-                        break; // TODO: might not be correct. Was : Exit Select
+                        break;
 
                     case Enumeration.State.running:
                         RunStop();
-                        break; // TODO: might not be correct. Was : Exit Select
+                        break;
 
    
                     case Enumeration.State.step1:
                         Stand();
-                        break; // TODO: might not be correct. Was : Exit Select
+                        break;
 
                     case Enumeration.State.stepfall:
                         StepFall(spriteState.Value().Priority, spriteState.Value().OffSet);
-                        break; // TODO: might not be correct. Was : Exit Select
+                        break;
 
                     case Enumeration.State.crouch:
                         StandUp();
-                        break; // TODO: might not be correct. Was : Exit Select
+                        break;
 
                     case Enumeration.State.highjump:
                         Stand();
-                        break; // TODO: might not be correct. Was : Exit Select
+                        break;
 
  
                     case Enumeration.State.hangstraight:
                     case Enumeration.State.hang:
                         HangDrop();
-                        break; // TODO: might not be correct. Was : Exit Select
+                        break;
 
                     case Enumeration.State.bump:
                         Bump(spriteState.Value().Priority);
-                        break; // TODO: might not be correct. Was : Exit Select
+                        break;
 
 
                     default:
 
-                        break; // TODO: might not be correct. Was : Exit Select
+                        break;
 
                 }
-                break; // TODO: might not be correct. Was : Exit Select
+                break;
 
 
             //LEFT//////////////////////
@@ -248,12 +230,12 @@ public class Player : Sprite
                         {
                             StartRunning();
                         }
-                        break; // TODO: might not be correct. Was : Exit Select
+                        break; 
 
 
                     case Enumeration.State.step1:
                         StartRunning();
-                        break; // TODO: might not be correct. Was : Exit Select
+                        break;
 
 
                     case Enumeration.State.crouch:
@@ -262,12 +244,12 @@ public class Player : Sprite
                             return;
                         }
                         Crawl();
-                        break; // TODO: might not be correct. Was : Exit Select
+                        break; 
 
 
                     case Enumeration.State.stepfall:
                         StepFall();
-                        break; // TODO: might not be correct. Was : Exit Select
+                        break; 
 
 
                     case Enumeration.State.startrun:
@@ -275,14 +257,14 @@ public class Player : Sprite
                         {
                             RunTurn();
                         }
-                        break; // TODO: might not be correct. Was : Exit Select
+                        break; 
 
-                    //case Enumeration.State.hang:
-                    //    HangDrop();
-                    //    break;
+                    case Enumeration.State.hang:
+                        HangDrop();
+                        break;
                     case Enumeration.State.bump:
                         Bump(spriteState.Value().Priority);
-                        break; // TODO: might not be correct. Was : Exit Select
+                        break;
 
 
                     case Enumeration.State.ready:
@@ -294,14 +276,14 @@ public class Player : Sprite
                         {
                             Advance();
                         }
-                        break; // TODO: might not be correct. Was : Exit Select
+                        break;
 
                     default:
 
-                        break; // TODO: might not be correct. Was : Exit Select
+                        break;
 
                 }
-                break; // TODO: might not be correct. Was : Exit Select
+                break;
 
 
             //SHIFTLEFT//////////////////////
@@ -317,29 +299,29 @@ public class Player : Sprite
                         {
                             StepForward();
                         }
-                        break; // TODO: might not be correct. Was : Exit Select
+                        break;
 
                     case Enumeration.State.hangstraight:
                     case Enumeration.State.hang:
                         Hang();
-                        break; // TODO: might not be correct. Was : Exit Select
+                        break;
 
 
                     case Enumeration.State.bump:
                         Bump(spriteState.Value().Priority);
-                        break; // TODO: might not be correct. Was : Exit Select
+                        break;
 
                     case Enumeration.State.ready:
                         Strike(spriteState.Value().Priority);
-                        break; // TODO: might not be correct. Was : Exit Select
+                        break;
 
                     default:
 
 
-                        break; // TODO: might not be correct. Was : Exit Select
+                        break;
 
                 }
-                break; // TODO: might not be correct. Was : Exit Select
+                break;
 
             //LEFTDOWN//////////////////////
             case Enumeration.Input.leftdown:
@@ -350,19 +332,19 @@ public class Player : Sprite
                         {
                             Crawl();
                         }
-                        break; // TODO: might not be correct. Was : Exit Select
+                        break; 
 
                     case Enumeration.State.startrun:
                         Stoop(new Vector2(5, 0));
-                        break; // TODO: might not be correct. Was : Exit Select
+                        break;
 
 
                     default:
-                        break; // TODO: might not be correct. Was : Exit Select
+                        break;
 
 
                 }
-                break; // TODO: might not be correct. Was : Exit Select
+                break;
 
             //LEFTUP//////////////////////
             case Enumeration.Input.leftup:
@@ -370,22 +352,22 @@ public class Player : Sprite
                 {
                     case Enumeration.State.stand:
                         StandJump();
-                        break; // TODO: might not be correct. Was : Exit Select
+                        break;
 
                     case Enumeration.State.startrun:
                         RunJump();
-                        break; // TODO: might not be correct. Was : Exit Select
+                        break;
 
                     case Enumeration.State.stepfall:
                         StepFall();
-                        break; // TODO: might not be correct. Was : Exit Select
+                        break;
 
 
                     default:
-                        break; // TODO: might not be correct. Was : Exit Select
+                        break;
 
                 }
-                break; // TODO: might not be correct. Was : Exit Select
+                break;
 
 
             //RIGHT//////////////////////
@@ -401,11 +383,11 @@ public class Player : Sprite
                         {
                             StartRunning();
                         }
-                        break; // TODO: might not be correct. Was : Exit Select
+                        break;
 
                     case Enumeration.State.step1:
                         StartRunning();
-                        break; // TODO: might not be correct. Was : Exit Select
+                        break; 
 
 
                     case Enumeration.State.crouch:
@@ -414,19 +396,19 @@ public class Player : Sprite
                             return;
                         }
                         Crawl();
-                        break; // TODO: might not be correct. Was : Exit Select
+                        break;
 
 
                     case Enumeration.State.stepfall:
                         StepFall();
-                        break; // TODO: might not be correct. Was : Exit Select
+                        break;
 
                     case Enumeration.State.startrun:
                         if (flip == SpriteEffects.None)
                         {
                             RunTurn();
                         }
-                        break; // TODO: might not be correct. Was : Exit Select
+                        break;
 
                     case Enumeration.State.ready:
                         if (flip == SpriteEffects.FlipHorizontally)
@@ -437,14 +419,14 @@ public class Player : Sprite
                         {
                             Retreat();
                         }
-                        break; // TODO: might not be correct. Was : Exit Select
+                        break;
 
                     default:
 
-                        break; // TODO: might not be correct. Was : Exit Select
+                        break;
 
                 }
-                break; // TODO: might not be correct. Was : Exit Select
+                break;
 
             //SHIFTRIGHT//////////////////////
             case Enumeration.Input.rightshift:
@@ -459,24 +441,24 @@ public class Player : Sprite
                         {
                             StepForward();
                         }
-                        break; // TODO: might not be correct. Was : Exit Select
+                        break;
 
 
                     case Enumeration.State.hang:
                         Hang();
-                        break; // TODO: might not be correct. Was : Exit Select
+                        break;
 
 
                     case Enumeration.State.ready:
                         Strike(spriteState.Value().Priority);
-                        break; // TODO: might not be correct. Was : Exit Select
+                        break;
 
                     default:
 
-                        break; // TODO: might not be correct. Was : Exit Select
+                        break;
 
                 }
-                break; // TODO: might not be correct. Was : Exit Select
+                break;
 
             //RIGHTDOWN//////////////////////
             case Enumeration.Input.righdown:
@@ -487,25 +469,25 @@ public class Player : Sprite
                         {
                             Crawl();
                         }
-                        break; // TODO: might not be correct. Was : Exit Select
+                        break;
 
 
                     case Enumeration.State.hang:
                         ClimbFail();
-                        break; // TODO: might not be correct. Was : Exit Select
+                        break;
 
 
                     case Enumeration.State.startrun:
                         Stoop(new Vector2(5, 0));
-                        break; // TODO: might not be correct. Was : Exit Select
+                        break;
 
 
                     default:
-                        break; // TODO: might not be correct. Was : Exit Select
+                        break;
 
 
                 }
-                break; // TODO: might not be correct. Was : Exit Select
+                break;
 
 
             //RIGHTUP//////////////////////
@@ -514,24 +496,24 @@ public class Player : Sprite
                 {
                     case Enumeration.State.stand:
                         StandJump();
-                        break; // TODO: might not be correct. Was : Exit Select
+                        break;
 
 
                     case Enumeration.State.startrun:
                         RunJump();
-                        break; // TODO: might not be correct. Was : Exit Select
+                        break;
 
 
                     case Enumeration.State.stepfall:
                         StepFall();
-                        break; // TODO: might not be correct. Was : Exit Select
+                        break;
 
                     default:
-                        break; // TODO: might not be correct. Was : Exit Select
+                        break;
 
 
                 }
-                break; // TODO: might not be correct. Was : Exit Select
+                break;
 
 
             //DOWN//////////////////////
@@ -540,26 +522,26 @@ public class Player : Sprite
                 {
                     case Enumeration.State.stand:
                         Stoop();
-                        break; // TODO: might not be correct. Was : Exit Select
+                        break;
 
                     case Enumeration.State.hang:
                     case Enumeration.State.hangstraight:
                         HangDrop();
-                        break; // TODO: might not be correct. Was : Exit Select
+                        break;
 
 
                     case Enumeration.State.startrun:
                         Stoop(new Vector2(5, 0));
-                        break; // TODO: might not be correct. Was : Exit Select
+                        break;
 
 
                     default:
 
-                        break; // TODO: might not be correct. Was : Exit Select
+                        break;
 
 
                 }
-                break; // TODO: might not be correct. Was : Exit Select
+                break;
 
 
             //UP//////////////////////
@@ -569,26 +551,28 @@ public class Player : Sprite
                     case Enumeration.State.running:
                     case Enumeration.State.startrun:
                         RunStop();
-                        break; // TODO: might not be correct. Was : Exit Select
+                        break;
 
 
                     case Enumeration.State.stand:
                         HighJump();
-                        break; // TODO: might not be correct. Was : Exit Select
+                        break;
 
                     case Enumeration.State.jumphangLong:
                     case Enumeration.State.jumphangMed:
                     case Enumeration.State.hang:
                     case Enumeration.State.hangstraight:
                         ClimbUp();
-                        break; // TODO: might not be correct. Was : Exit Select
+                        if (input == Enumeration.Input.upshift)
+                            Hang();
+                        break;
 
                     default:
 
-                        break; // TODO: might not be correct. Was : Exit Select
+                        break;
 
                 }
-                break; // TODO: might not be correct. Was : Exit Select
+                break;
 
 
             //SHIFT/////////////////////////
@@ -601,24 +585,28 @@ public class Player : Sprite
                     case Enumeration.State.jumphangLong:
                     case Enumeration.State.jumphangMed:
                         Hang();
-                        break; // TODO: might not be correct. Was : Exit Select
+                        break; 
 
                     case Enumeration.State.ready:
                         Strike(spriteState.Value().Priority);
-                        break; // TODO: might not be correct. Was : Exit Select
-
+                        break;
+                    case Enumeration.State.stepfall:
+                    case Enumeration.State.freefall:
+                        if (isHangable() == true)
+                            Hang();
+                        break;
 
                     default:
                         CheckItemOnFloor();
-                        break; // TODO: might not be correct. Was : Exit Select
+                        break;
 
                 }
-                break; // TODO: might not be correct. Was : Exit Select
+                break;
 
 
             default:
 
-                break; // TODO: might not be correct. Was : Exit Select
+                break;
 
         }
 
@@ -632,19 +620,11 @@ public class Player : Sprite
     private Enumeration.Input GetInput(KeyboardState keyboardState, GamePadState gamePadState, TouchCollection touchState, AccelerometerState accelState, DisplayOrientation orientation)
     {
 
-        ///Dim status As AForge.Controls.Joystick.Status = _
-        ///joy.GetCurrentStatus()
-
 
         if (spriteState.Value().Priority == Enumeration.PriorityState.Force)
         {
             return Enumeration.Input.none;
         }
-
-        ///If status.IsButtonPressed _
-        ///(AForge.Controls.Joystick.Buttons.Button1) = True Then
-        ///Maze.NextLevel()
-        ///End If
 
 
         if (PrinceOfPersiaGame.CONFIG_DEBUG == true)
@@ -1954,6 +1934,84 @@ public class Player : Sprite
 
     }
 
+
+    protected bool isHangable()
+    {
+        // Get the player's bounding rectangle and find neighboring tiles.
+        Rectangle playerBounds = _position.Bounding;
+        Vector2 v2 = m_spriteRoom.getCenterTilePosition(playerBounds);
+
+        int x = (int)v2.X;
+        int y = (int)v2.Y;
+
+        Enumeration.TileCollision tileCollision;
+
+        if (face == SpriteEffects.FlipHorizontally)
+            tileCollision = m_spriteRoom.GetCollision(x, y - 1);
+        else
+            tileCollision = m_spriteRoom.GetCollision(x - 1, y);
+
+
+        if (tileCollision == Enumeration.TileCollision.Platform)
+        {
+            //CHECK KID IS UNDER THE FLOOR CHECK NEXT TILE
+            if (face == SpriteEffects.FlipHorizontally)
+            { x = x - 1; y = y - 1; }
+
+
+            tileCollision = m_spriteRoom.GetCollision(x, y);
+            if (tileCollision != Enumeration.TileCollision.Passable)
+                return false;
+
+            x = ((int)v2.X); //THE FLOOR FOR CLIMB UP
+        }
+        else if (tileCollision == Enumeration.TileCollision.Passable)
+        {
+            if (face == SpriteEffects.FlipHorizontally)
+            { x = x + 1; }
+            else
+            { x = x - 1; }
+
+            tileCollision = m_spriteRoom.GetCollision(x, y - 1);
+            if (tileCollision != Enumeration.TileCollision.Platform)
+                return false;
+        }
+        else
+            return false;
+
+        //check is platform or gate forward up
+        int xOffSet = 0;
+        int yOffSet = 0;
+        if (face == SpriteEffects.FlipHorizontally)
+        { xOffSet = -Tile.REALWIDTH + Tile.PERSPECTIVE; }
+
+        if (face == SpriteEffects.FlipHorizontally)
+            tileCollision = m_spriteRoom.GetCollision(x, y - 1);
+        else
+            tileCollision = m_spriteRoom.GetCollision(x - 1, y);
+
+        Rectangle tileBounds;
+
+        if (tileCollision == Enumeration.TileCollision.Platform & face != SpriteEffects.FlipHorizontally)
+        {
+            tileBounds = m_spriteRoom.GetBounds(x - 1, y);
+            yOffSet = -10;
+            _position.Value = new Vector2(tileBounds.Left + 10, tileBounds.Bottom + yOffSet);
+            return true;
+        }
+
+        if (tileCollision == Enumeration.TileCollision.Platform & face == SpriteEffects.FlipHorizontally)
+        {
+            tileBounds = m_spriteRoom.GetBounds(x, y - 1);
+            yOffSet = -10;
+            _position.Value = new Vector2(tileBounds.Left - 50, tileBounds.Bottom + yOffSet);
+
+            return true;
+        }
+        return false;
+    }
+
+
     /// <summary>
     /// Remnber: for example the top gate is x=3 y=1
     /// first row bottom = 2 the top row = 0..
@@ -2272,7 +2330,7 @@ public class Player : Sprite
                 return;
             default:
 
-                break; // TODO: might not be correct. Was : Exit Select
+                break;
 
         }
 
@@ -2452,10 +2510,10 @@ public class Player : Sprite
     }
 
 
-    public void Strike()
-    {
-        Strike(Enumeration.PriorityState.Normal);
-    }
+    //public void Strike()
+    //{
+        //Strike(Enumeration.PriorityState.Normal);
+    //}
     public void Strike(Enumeration.PriorityState priority)
     {
         spriteState.Add(Enumeration.State.strike, priority);
@@ -2463,12 +2521,6 @@ public class Player : Sprite
     }
 
 
-    public void Retreat()
-    {
-        spriteState.Add(Enumeration.State.retreat, Enumeration.PriorityState.Normal);
-        sprite.PlayAnimation(spriteSequence, spriteState.Value());
-
-    }
 
     public void Question()
     {

@@ -302,6 +302,36 @@ namespace PrinceGame
 
         }
 
+        /// <summary>
+        /// This is used when sprite is grapped on the platform edge 
+        /// and want to climbup the platform over he.
+        /// </summary>
+        /// <returns>
+        /// the state ClimbUp or ClimbFail (if there isn't space like a gate closed)
+        /// </returns>
+        private Enumeration.State isHoldOn()
+        {
+            Rectangle playerBounds = _position.Bounding;
+            Vector2 v2 = m_spriteRoom.getCenterTilePosition(playerBounds);
+
+            int x = (int)v2.X;
+            int y = (int)v2.Y;
+
+            if (face == SpriteEffects.FlipHorizontally)
+            { x = x + 1; }
+            else
+            { x = x - 1; }
+
+            Tile t = m_spriteRoom.GetTile(new Vector2(x, y));
+            if (t.Type == Enumeration.TileType.gate & t.tileState.Value().state == Enumeration.StateTile.closed)
+            {
+                return Enumeration.State.climbfail;
+            }
+            else
+                return Enumeration.State.climbup;
+        }
+
+
         public void DeadFall()
         {
             spriteState.Add(Enumeration.State.deadfall, Enumeration.PriorityState.Force);
