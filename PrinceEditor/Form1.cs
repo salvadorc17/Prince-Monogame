@@ -65,6 +65,8 @@ namespace PrinceEditor
 
             AlternateGraphics = false;
 
+            LoadImages();
+
             if (graphics != null)
                 timer1.Enabled = true;
 
@@ -750,7 +752,7 @@ namespace PrinceEditor
                     case 10:
 
                         block[mMapX, mMapY] = "gate";
-                        switche[mMapX, mMapY] = "open";
+                        switche[mMapX, mMapY] = "opened";
                         
                         break;
                     case 11:
@@ -1174,9 +1176,11 @@ namespace PrinceEditor
                     
                     //Load gate switch state
                     if (block[i, r] == "gate" && map.rows[r].columns[i].state == Enumeration.StateTile.opened)
-                        switche[i, r] = "open";
+                        switche[i, r] = "opened";
                     else if (block[i, r] == "gate" && map.rows[r].columns[i].state == Enumeration.StateTile.closed)
                         switche[i, r] = "closed";
+                    else if (block[i, r] == "gate" && map.rows[r].columns[i].state == Enumeration.StateTile.open)
+                        switche[i, r] = "open";
 
                     //Load exit switch state
                     if (block[i, r] == "exit" && map.rows[r].columns[i].state == Enumeration.StateTile.exit_close_left)
@@ -1210,16 +1214,22 @@ namespace PrinceEditor
 
                     if ((sprite[r, i] != null))
                     {
-                        richTextBox1.AppendText("<spriteType>" + sprite[r, i] + "</spriteType>" + Environment.NewLine);
+                        richTextBox1.AppendText("<spriteType>" + sprite[i, r] + "</spriteType>" + Environment.NewLine);
 
                     }
 
                     if ((item[r, i] != null))
                     {
-                        richTextBox1.AppendText("<item>" + item[r, i] + "</item>" + Environment.NewLine);
+                        richTextBox1.AppendText("<item>" + item[i, r] + "</item>" + Environment.NewLine);
 
                     }
-                    richTextBox1.AppendText("<tileType>" + block[r, i] + "</tileType>" + Environment.NewLine);
+
+                    if ((switche[r, i] != null))
+                    {
+                        richTextBox1.AppendText("<state>" + switche[i, r] + "</state>" + Environment.NewLine);
+
+                    }
+                    richTextBox1.AppendText("<tileType>" + block[i, r] + "</tileType>" + Environment.NewLine);
                     richTextBox1.AppendText("</Column>" + Environment.NewLine);
 
                 }
@@ -1250,7 +1260,7 @@ namespace PrinceEditor
             
             string path = AppDomain.CurrentDomain.BaseDirectory + "Content/Rooms/MAP_dungeon_prison_" + current + ".xml";
 
-            //ComboBox1.SelectedIndex = currentRoom.roomIndex;
+            ComboBox1.SelectedIndex = currentRoom.roomIndex;
 
             if (File.Exists(path))
                 LoadRoom(path);
@@ -1264,17 +1274,32 @@ namespace PrinceEditor
             Map map = new Map();
 
             if (rooms.Count > 0)
+            {
+
+                StreamWriter writer = new StreamWriter(path);
+
+                writer.WriteLine(Properties.Settings.Default.XmlHeader);
+
+                writer.WriteLine("<Map>");
+
+                writer.WriteLine("<rows>");
 
             for (int r = 0; r <= map.rows.Count() - 1; r++)
             {
                 Label21.Text = r.ToString();
 
+                writer.WriteLine("<Row>");
+
+                writer.WriteLine("<columns>");
 
                 for (int i = 0; i <= map.rows[r].columns.Length - 1; i++)
                 {
                     Label22.Text = i.ToString();
 
+                    writer.WriteLine("<Column>");
+
                     map.rows[r].columns[i].tileType = (Enumeration.TileType)Enum.Parse(typeof(Enumeration.TileType), block[i, r]);
+                    writer.WriteLine("<tileType>" + block[i,r] + "</tileType>");
 
                     Enumeration.SpriteType SprType = (Enumeration.SpriteType)Enum.Parse(typeof(Enumeration.SpriteType), sprite[i, r], false);
 
@@ -1282,6 +1307,7 @@ namespace PrinceEditor
                         {
 
                             map.rows[r].columns[i].spriteType = SprType;
+                            writer.WriteLine("<spriteType>" + sprite[i, r] + "</spriteType>");
                         
                         }
 
@@ -1291,6 +1317,7 @@ namespace PrinceEditor
                         {
 
                             map.rows[r].columns[i].item = Item;
+                            writer.WriteLine("<item>" + item[i, r] + "</item>");
 
                         }
 
@@ -1300,17 +1327,29 @@ namespace PrinceEditor
                         {
 
                             map.rows[r].columns[i].state = State;
+                            writer.WriteLine("<state>" + switche[i, r] + "</state>");
 
                         }
+
+                    writer.WriteLine("</Column>");
                 }
+
+                writer.WriteLine("</columns>");
+
+                writer.WriteLine("</Row>");
 
             }
 
-            XmlSerializer serialize = new XmlSerializer(typeof(Map));
+            writer.WriteLine("</rows>");
 
-            using (var writer = new StreamWriter(path))
-            {
-                serialize.Serialize(writer, map);
+            writer.WriteLine("</Map>");
+
+            writer.Close();
+
+            //XmlSerializer serialize = new XmlSerializer(typeof(Map));
+
+            //serialize.Serialize(writer, map);
+
             }
 
         }
@@ -1735,6 +1774,16 @@ namespace PrinceEditor
                 LoadImages();
 
 
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
 
         }
 
