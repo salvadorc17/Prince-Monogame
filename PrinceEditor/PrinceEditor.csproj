@@ -11,7 +11,8 @@
     <RootNamespace>PrinceEditor</RootNamespace>
     <AssemblyName>PrinceEditor</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
@@ -68,18 +69,19 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
+    <None Include="app.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
@@ -87,10 +89,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\ChomperA_0.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Block_centre.png" />
+    <None Include="Resources\Block_centre2.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Block_single.png" />
@@ -105,40 +104,16 @@
     <None Include="Resources\FloorA.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\FloorB_1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\FloorC1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Guard.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Kid_1.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\PostsA.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Space.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\SpikeA_5b.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\Sword_1.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\DoorA_1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\FloorLooseA_1.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\FloorC2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\DoorA_12.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\LavaA1.png" />
@@ -159,19 +134,109 @@
     <None Include="Resources\Selection.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Selection2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Guard2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Kid_2.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\Serpent2.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Skeleton2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Block_centre.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Block_single2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ChomperA.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ChomperA2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DoorA.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DoorA2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DoorB.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DoorB2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ExitA_Left2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ExitA_Right2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FloorA2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FloorB.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FloorB2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FloorC.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FloorD.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FloorD2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FloorG.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FloorLoose.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FloorLoose2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\GuardA.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\GuardA2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\GuardB.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\GuardB2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\KidA.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\KidA2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\KidB.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\KidB2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LavaA2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MirrorA.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MirrorA2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PostsA2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SpikeA.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SpikeA2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
