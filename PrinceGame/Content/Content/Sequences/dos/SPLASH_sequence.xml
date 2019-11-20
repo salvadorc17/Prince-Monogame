@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfSequence xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+  <!-- EMPTY EFFECT-->
+  <!--
+    <Sequence>
+    <config_type>CONFIG_sprite_effects</config_type>
+    <frames>
+      <Frame>
+        <type>SPRITE</type>
+        <name>LOOP</name>
+        <value>none</value>
+        <stoppable>true</stoppable>
+        <xOffSet>0</xOffSet>
+        <yOffSet>0</yOffSet>
+      </Frame>
+      <Frame>
+        <type>COMMAND</type>
+        <name>GOTOFRAME</name>
+        <parameter>LOOP</parameter>
+        <stoppable>true</stoppable>
+      </Frame>
+    </frames>
+    <name>NONE</name>
+    <raised>false</raised>
+    <collision>Passable</collision>
+  </Sequence>
+-->
+  
+  <!-- SPLASH EFFECT-->
+  <Sequence>
+    <config_type>CONFIG_sprite_effects</config_type>
+    <frames>
+      <Frame>
+        <type>SPRITE</type>
+        <name>SPLASH_PLAYER</name>
+        <value>player_splash</value>
+        <stoppable>false</stoppable>
+        <sound>loosing a life from the enemy</sound>
+        <delay>0.2</delay>
+        <xOffSet>0</xOffSet>
+        <yOffSet>0</yOffSet>
+      </Frame>
+      <Frame>
+        <type>COMMAND</type>
+        <name>DELETE</name>
+        <parameter>NONE</parameter>
+        <stoppable>false</stoppable>
+      </Frame>
+    </frames>
+    <name>SPLASH_PLAYER</name>
+    <raised>false</raised>
+    <collision>Passable</collision>
+  </Sequence>
+
+  <!-- SPLASH EFFECT-->
+  <Sequence>
+    <config_type>CONFIG_sprite_effects</config_type>
+    <frames>
+      <Frame>
+        <type>SPRITE</type>
+        <name>SPLASH_ENEMY</name>
+        <value>enemy_splash</value>
+        <sound>taking a life to the enemy</sound>
+        <stoppable>false</stoppable>
+        <delay>0.2</delay>
+        <xOffSet>0</xOffSet>
+        <yOffSet>0</yOffSet>
+      </Frame>
+      <Frame>
+        <type>COMMAND</type>
+        <name>DELETE</name>
+        <parameter>NONE</parameter>
+        <stoppable>false</stoppable>
+      </Frame>
+    </frames>
+    <name>SPLASH_ENEMY</name>
+    <raised>false</raised>
+    <collision>Passable</collision>
+  </Sequence>
+
+</ArrayOfSequence>
+
