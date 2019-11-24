@@ -1,6 +1,10 @@
 # Prince-Monogame
 Monogame implementation of Prince of Persia 2 written in C#, code original idea by Andrea Fallapi.
 
+# Screenshots
+
+![Screenshot](preview.png)
+
 # Prerequisites
 
 -Monogame v3.4 or higher
