@@ -22,7 +22,6 @@ namespace PrinceGame
         public List<Sprite> sprites = new List<Sprite>();
 
         public int levelindex;
-        private RoomNew playerRoom;
 
         private static RoomNew blockRoom;
 
@@ -48,7 +47,7 @@ namespace PrinceGame
 			//#if ANDROID
 			//txtReader = Game.Activity.Assets.Open(@PrinceOfPersiaGame.CONFIG_PATH_CONTENT + PrinceOfPersiaGame.CONFIG_PATH_LEVELS + "LEVEL_dungeon_prison.xml");
 			//#endif
-			txtReader = Microsoft.Xna.Framework.TitleContainer.OpenStream(PrinceOfPersiaGame.CONFIG_PATH_CONTENT + PrinceOfPersiaGame.CONFIG_PATH_LEVELS + f.Name);
+			txtReader = Microsoft.Xna.Framework.TitleContainer.OpenStream(Path.Combine(PrinceOfPersiaGame.CONFIG_PATH_CONTENT, PrinceOfPersiaGame.CONFIG_PATH_LEVELS, f.Name));
 			System.Xml.Serialization.XmlSerializer ax = null;
 			ax = new System.Xml.Serialization.XmlSerializer(typeof(Level));
 
@@ -63,7 +62,7 @@ namespace PrinceGame
 
 
 		//Define and build a generic blockroom for usefull
-		blockRoom = new RoomNew(this, PrinceOfPersiaGame.CONFIG_PATH_CONTENT + PrinceOfPersiaGame.CONFIG_PATH_ROOMS + "MAP_blockroom.xml", 1, 0);
+		blockRoom = new RoomNew(this, Path.Combine(PrinceOfPersiaGame.CONFIG_PATH_CONTENT, PrinceOfPersiaGame.CONFIG_PATH_ROOMS, "MAP_blockroom.xml"), 1, 0);
 
 
 
@@ -72,12 +71,12 @@ namespace PrinceGame
 		for (int z = 0; z <= levels.Count() - 1; z++) {
 			//int newX = 1;
 			for (int y = 0; y <= levels[z].rows.Count() - 1; y++) {
-				for (int x = 0; x <= levels[z].rows[y].columns.Count() - 1; x++) {
-					if (levels[z].rows[y].columns[x].FilePath == string.Empty) {
-						levels[z].rows[y].columns[x].FilePath = "MAP_blockroom.xml";
-					}
+                    for (int x = 0; x <= levels[z].rows[y].columns.Count() - 1; x++) {
+                        if (levels[z].rows[y].columns[x].FilePath == string.Empty) {
+                            levels[z].rows[y].columns[x].FilePath = "MAP_blockroom.xml";
+                        }
 
-					RoomNew room = new RoomNew(this, PrinceOfPersiaGame.CONFIG_PATH_CONTENT + PrinceOfPersiaGame.CONFIG_PATH_ROOMS + levels[z].rows[y].columns[x].FilePath, levels[z].rows[y].columns[x].RoomIndex, levels[z].rows[y].columns[x].roomType);
+                    RoomNew room = new RoomNew(this, Path.Combine(PrinceOfPersiaGame.CONFIG_PATH_CONTENT, PrinceOfPersiaGame.CONFIG_PATH_ROOMS, levels[z].rows[y].columns[x].FilePath), levels[z].rows[y].columns[x].RoomIndex, levels[z].rows[y].columns[x].roomType);
 					//RoomNew room = new RoomNew(this, "Maze/"+ levels[z].rows[y].columns[x].FilePath);
 					room.roomStart = levels[z].rows[y].columns[x].RoomStart;
 					room.roomName = levels[z].rows[y].columns[x].FilePath;
@@ -110,7 +109,7 @@ namespace PrinceGame
 	      string key = string.Empty;
 
 	        //Load directory info, abort if none
-	         DirectoryInfo dir = new DirectoryInfo(contentManager.RootDirectory + "/" + contentFolder);
+	         DirectoryInfo dir = new DirectoryInfo(contentManager.RootDirectory + Path.DirectorySeparatorChar + contentFolder);
 	           if (!dir.Exists) {
 		           throw new DirectoryNotFoundException();
 	         }
@@ -118,7 +117,7 @@ namespace PrinceGame
 
 
 
-	        object fls = (from file in Directory.EnumerateFiles(contentManager.RootDirectory + "/" + contentFolder, "*.xnb", SearchOption.AllDirectories)
+	        object fls = (from file in Directory.EnumerateFiles(contentManager.RootDirectory + Path.DirectorySeparatorChar + contentFolder, "*.xnb", SearchOption.AllDirectories)
                                 select file);
 
             var files = Directory
@@ -153,6 +152,7 @@ namespace PrinceGame
 				        result[key.ToUpper()] = contentManager.Load<T>(key);
 			         }
 		           } catch (Exception ex) {
+                       ex = new Exception();
 			        //result[f.N.ToUpper()] = contentManager.Load<T>(sFolder + key); 
 		         }
 	            }

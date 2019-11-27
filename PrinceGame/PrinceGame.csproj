@@ -191,7 +191,7 @@
     <None Include="Content\Backgrounds\text_background.xnb" />
     <None Include="Content\Effects\SwapColor.xnb" />
     <None Include="Content\Fonts\Hud.xnb" />
-    <None Include="Content\Fonts\PoP.xnb" />
+    <None Include="Content\Fonts\Pop.xnb" />
     <None Include="Content\Items\Flask_big_1.xnb" />
     <None Include="Content\Items\Flask_big_2.xnb" />
     <None Include="Content\Items\Flask_big_3.xnb" />

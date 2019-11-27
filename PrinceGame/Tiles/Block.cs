@@ -73,7 +73,7 @@ namespace PrinceGame
             collision = Enumeration.TileCollision.Platform;
             base.room = room;
             System.Xml.Serialization.XmlSerializer ax = new System.Xml.Serialization.XmlSerializer(tileSequence.GetType());
-            Stream txtReader = Microsoft.Xna.Framework.TitleContainer.OpenStream(PrinceOfPersiaGame.CONFIG_PATH_CONTENT + PrinceOfPersiaGame.CONFIG_PATH_SEQUENCES + tileType.ToString().ToUpper() + "_sequence.xml");
+            Stream txtReader = Microsoft.Xna.Framework.TitleContainer.OpenStream(Path.Combine (PrinceOfPersiaGame.CONFIG_PATH_CONTENT, PrinceOfPersiaGame.CONFIG_PATH_SEQUENCES) + tileType.ToString().ToUpper() + "_sequence.xml");
 
 
             tileSequence = (List<Sequence>)ax.Deserialize(txtReader);

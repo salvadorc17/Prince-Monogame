@@ -8,8 +8,7 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input.Touch;
-
-
+using System.IO;
 
 namespace PrinceGame
 {
@@ -79,12 +78,12 @@ namespace PrinceGame
         private Texture2D[] layer = new Texture2D[6];
 
         private Timer Timer;
-        public static string CONFIG_PATH_CONTENT = System.AppDomain.CurrentDomain.BaseDirectory + "Content\\";
-        public static string CONFIG_PATH_APOPLEXY = "Apoplexy\\";
-        public static string CONFIG_PATH_LEVELS = "Levels\\";
-        public static string CONFIG_PATH_ROOMS = "Rooms\\";
+        public static string CONFIG_PATH_CONTENT = System.AppDomain.CurrentDomain.BaseDirectory + "Content" + Path.DirectorySeparatorChar;
+        public static string CONFIG_PATH_APOPLEXY = "Apoplexy" + Path.DirectorySeparatorChar;
+        public static string CONFIG_PATH_LEVELS = "Levels" + Path.DirectorySeparatorChar;
+        public static string CONFIG_PATH_ROOMS = "Rooms" + Path.DirectorySeparatorChar;
 
-        public static string CONFIG_PATH_SEQUENCES = "Sequences\\";
+        public static string CONFIG_PATH_SEQUENCES = "Sequences" + Path.DirectorySeparatorChar;
 
         public static int CONFIG_KID_START_ENERGY = 3;
 
@@ -118,10 +117,10 @@ namespace PrinceGame
             float.TryParse(System.Configuration.ConfigurationManager.AppSettings["CONFIG_framerate"].ToString(), out CONFIG_FRAMERATE);
 
             //READ CONTENT RESOURCES PATH
-            CONFIG_SPRITE_KID = System.Configuration.ConfigurationManager.AppSettings["CONFIG_sprite_kid"].ToString().ToUpper();
-            CONFIG_SPRITE_GUARD = System.Configuration.ConfigurationManager.AppSettings["CONFIG_sprite_guard"].ToString().ToUpper();
-            CONFIG_SPRITE_SKELETON = System.Configuration.ConfigurationManager.AppSettings["CONFIG_sprite_skeleton"].ToString().ToUpper();
-            CONFIG_SPRITE_SERPENT = System.Configuration.ConfigurationManager.AppSettings["CONFIG_sprite_serpent"].ToString().ToUpper();
+            CONFIG_SPRITE_KID = System.Configuration.ConfigurationManager.AppSettings["CONFIG_sprite_kid"].ToString();
+            CONFIG_SPRITE_GUARD = System.Configuration.ConfigurationManager.AppSettings["CONFIG_sprite_guard"].ToString();
+            CONFIG_SPRITE_SKELETON = System.Configuration.ConfigurationManager.AppSettings["CONFIG_sprite_skeleton"].ToString();
+            CONFIG_SPRITE_SERPENT = System.Configuration.ConfigurationManager.AppSettings["CONFIG_sprite_serpent"].ToString();
             CONFIG_SOUNDS = System.Configuration.ConfigurationManager.AppSettings["CONFIG_sound"].ToString().ToUpper();
             CONFIG_SONGS = System.Configuration.ConfigurationManager.AppSettings["CONFIG_songs"].ToString().ToUpper();
 
@@ -131,7 +130,7 @@ namespace PrinceGame
             CONFIG_TILES[1] = System.Configuration.ConfigurationManager.AppSettings["CONFIG_tiles2"].ToString().ToUpper();
 
             CONFIG_ITEMS = System.Configuration.ConfigurationManager.AppSettings["CONFIG_items"].ToString().ToUpper();
-            CONFIG_PATH_SEQUENCES = System.Configuration.ConfigurationManager.AppSettings["CONFIG_path_Sequences"].ToString().ToUpper();
+            CONFIG_PATH_SEQUENCES = System.Configuration.ConfigurationManager.AppSettings["CONFIG_path_Sequences"].ToString();
             CONFIG_SPRITE_EFFECTS = System.Configuration.ConfigurationManager.AppSettings["CONFIG_sprite_effects"].ToString().ToUpper();
 
 
@@ -203,7 +202,7 @@ namespace PrinceGame
         {
             // Load fonts
             hudFont = content.Load<SpriteFont>("Fonts/Hud");
-            PoPFont = content.Load<SpriteFont>("Fonts/PoP");
+            PoPFont = content.Load<SpriteFont>("Fonts/Pop");
 
             //energy...
             player_energy = content.Load<Texture2D>("Sprites/bottom/player_live_full");
@@ -579,12 +578,14 @@ namespace PrinceGame
             hudLocation.X = hudLocation.X + 180;
             hudLocation.Y = hudLocation.Y + 380;
 
-            if (CONFIG_DEBUG == false)
+            if (CONFIG_DEBUG == true)
             {
-                return;
-            }
+                
+           
+            var CurrentLvl = maze.CurrentLevel();
 
-            DrawShadowedString(hudFont, "LEVEL NAME=" + maze.CurrentLevel().levelIndex + "-" + maze.CurrentLevel().levelName + "-" + maze.levelindex, hudLocation, Color.White);
+            if (CurrentLvl != null)
+                DrawShadowedString(hudFont, "LEVEL NAME=" + CurrentLvl.levelIndex + "-" + CurrentLvl.levelName + "-" + maze.levelindex, hudLocation, Color.White);
             hudLocation.Y = hudLocation.Y + 10;
 
             
@@ -615,6 +616,7 @@ namespace PrinceGame
             if (maze.player.sprite.sequence != null)
                 DrawShadowedString(hudFont, "PLAYER STATE=" + Convert.ToString(maze.player.spriteState.Value().state) + " SEQUENCE CountOffset=" + Convert.ToString(maze.player.sprite.sequence.CountOffSet), hudLocation, Color.White);
 
+            }
 
 
             // Get the player's bounding rectangle and find neighboring tiles.

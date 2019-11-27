@@ -39,6 +39,7 @@ namespace PrinceGame
         //used for build view of romm
         public static int PERSPECTIVE = 26;
         //26 isometric shift x right
+        public static readonly int HEIGHT_VISIBLE = REALHEIGHT - HEIGHT - 6;
 
         public static readonly Vector2 Size = new Vector2(WIDTH, HEIGHT);
         public static Rectangle MASK_FLOOR = new Rectangle(0, 128, 62, 20);
