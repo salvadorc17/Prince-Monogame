@@ -104,15 +104,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Dependencies\MonoGame.Framework.dll</HintPath>
     </Reference>
-    <Reference Include="OpenTK, Version=1.1.0.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
-    <Reference Include="Tao.Sdl, Version=1.2.13.0, Culture=neutral, PublicKeyToken=9c7a200e36c0094e, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Windows\Debug\Tao.Sdl.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Levels\LEVEL_dungeon_cave.xml" />
