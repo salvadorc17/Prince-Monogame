@@ -45,6 +45,7 @@ namespace PrinceGame
             right,
             down,
             up,
+            upshift,
             leftshift,
             rightshift,
             shift,
