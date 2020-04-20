@@ -41,7 +41,7 @@ namespace PrinceGame
         /// </summary>
         protected override void Initialize()
         {
-            // TODO: Add your initialization logic here
+           
 
             base.Initialize();
         }
@@ -56,7 +56,6 @@ namespace PrinceGame
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             
-            
         }
 
         /// <summary>
@@ -65,7 +64,6 @@ namespace PrinceGame
         /// </summary>
         protected override void UnloadContent()
         {
-            
             
         }
 
@@ -80,7 +78,6 @@ namespace PrinceGame
                 Exit();
 
             
-            
 
             base.Update(gameTime);
         }
@@ -93,7 +90,6 @@ namespace PrinceGame
         {
             GraphicsDevice.Clear(Color.Black);
 
-            
             
 
             base.Draw(gameTime);

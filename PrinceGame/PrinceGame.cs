@@ -136,7 +136,7 @@ namespace PrinceGame
 
             CONFIG_KID_START_ENERGY = int.Parse(System.Configuration.ConfigurationManager.AppSettings["CONFIG_kid_start_energy"].ToString());
 
-            CONFIG_PATH_CONTENT = "Content/";
+            CONFIG_PATH_CONTENT = "Content" + Path.DirectorySeparatorChar;
 
 
             Timer = new Timer();
@@ -534,23 +534,23 @@ namespace PrinceGame
                     case 1:
 
                         spriteBatch.Draw(layer[1], rectangle, Color.White);
-                        break; // TODO: might not be correct. Was : Exit Select
+                        break; 
 
                       
                     case 2:
                         spriteBatch.Draw(layer[2], rectangle, Color.White);
-                        break; // TODO: might not be correct. Was : Exit Select
+                        break; 
 
                        
                     case 3:
 
                         spriteBatch.Draw(layer[3], rectangle, Color.White);
-                        break; // TODO: might not be correct. Was : Exit Select
+                        break; 
 
                     default:
                         spriteBatch.Draw(layer[0], rectangle, Color.White);
 
-                        break; // TODO: might not be correct. Was : Exit Select
+                        break; 
 
 
                 }
