@@ -1720,7 +1720,7 @@ namespace PrinceEditor
         {
 
 
-            if (level.levelIndex != 0)
+            if (level != null && level.levelIndex != 0)
                 level.levelIndex = 0;
 
 
