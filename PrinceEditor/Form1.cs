@@ -637,7 +637,7 @@ namespace PrinceEditor
                         case "sword":
 
                             drect = new Rectangle((x * 64), (y * 74), 64, 74);
-                            graphics.DrawImage(Properties.Resources.Sword, drect);
+                            graphics.DrawImage(Properties.Resources.Sword_1, drect);
 
                             break;
                         default:
@@ -1278,7 +1278,7 @@ namespace PrinceEditor
 
                 StreamWriter writer = new StreamWriter(path);
 
-                writer.WriteLine(Properties.Settings.Default.XmlHeader);
+                writer.WriteLine(Properties.Settings.Default);
 
                 writer.WriteLine("<Map>");
 
