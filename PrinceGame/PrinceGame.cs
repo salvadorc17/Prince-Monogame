@@ -436,7 +436,7 @@ namespace PrinceGame
             {
                 switch (s.GetType().Name)
                 {
-                    case "Guard":
+                    case "guard":
                         if (true)
                         {
                             offset = enemy_livePoints.Width + 1;
@@ -461,7 +461,7 @@ namespace PrinceGame
                             break; 
                         }
 
-                    case "Skeleton":
+                    case "skeleton":
                         if (true)
                         {
                             offset = enemy_livePoints.Width + 1;
@@ -486,7 +486,7 @@ namespace PrinceGame
                             break;
                         }
                         
-                    case "Serpent":
+                    case "serpent":
                         if (true)
                         {
                             offset = enemy_livePoints.Width + 1;

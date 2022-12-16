@@ -550,7 +550,7 @@ namespace PrinceGame
             UpdateItems(gameTime, keyboardState, gamePadState, touchState, accelState, orientation);
 
             //update spritesssss
-            //UpdateSprites(gameTime, keyboardState, gamePadState, touchState, accelState, orientation);
+            UpdateSprites(gameTime, keyboardState, gamePadState, touchState, accelState, orientation);
 
         }
 
