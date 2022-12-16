@@ -30,10 +30,10 @@ namespace PrinceEditor
         private Rectangle srect, drect;
         private Bitmap bb;
         private DirectoryInfo directory;
-        public Sprite Player, Guard;
+        public Sprite Player, Guard, Skeleton, Serpent;
         public Image Space, Floor, Wall, Spikes, Loose, DoorA, Torch, DoorB, Mirror, 
             ClosePlate, PressPlate, Chomper, ExitLeft, ExitRight, Lava, Posts,
-            Kid, Kid2, GuardA1, GuardA2, Skeleton1, Skeleton2, Potion, SmallPotion;
+            Kid, Kid2, GuardA1, GuardA2, Skeleton1, Skeleton2, Serpent1, Potion, SmallPotion;
         private Map map;
         public List<Room> rooms;
         private Room currentRoom, copyRoom;
@@ -219,6 +219,8 @@ namespace PrinceEditor
 
             Skeleton2 = Properties.Resources.Skeleton2;
 
+            Serpent1 = Properties.Resources.Serpent1;
+
             Potion = Properties.Resources.Flask_big;
 
             SmallPotion = Properties.Resources.Flask_small;
@@ -266,6 +268,10 @@ namespace PrinceEditor
 
                     GuardA2 = Properties.Resources.GuardB2;
 
+                    Skeleton1 = Properties.Resources.Skeleton1;
+
+                    Serpent1 = Properties.Resources.Serpent1;
+
                 }
 
 
@@ -305,6 +311,10 @@ namespace PrinceEditor
             PictureBox4.BackgroundImage = Kid;
 
             PictureBox5.BackgroundImage = GuardA1;
+
+            pictureBox23.BackgroundImage = Skeleton1;
+
+            pictureBox24.BackgroundImage = Serpent1;
 
             PictureBox12.BackgroundImage = Potion;
 
@@ -593,8 +603,8 @@ namespace PrinceEditor
 
                         case "skeleton":
 
-                            Guard.Bounds = new Rectangle(Guard.X * 64, Guard.Y * 74, 64, 74);
-                            if (Guard.Flip == true)
+                            Skeleton.Bounds = new Rectangle(Skeleton.X * 64, Skeleton.Y * 74, 64, 74);
+                            if (Skeleton.Flip == true)
                                 graphics.DrawImage(Skeleton1, Guard.Bounds);
                             else
                                 graphics.DrawImage(Skeleton2, Guard.Bounds); 
@@ -603,8 +613,8 @@ namespace PrinceEditor
 
                         case "serpent":
 
-                            Guard.Bounds = new Rectangle(Guard.X * 64, Guard.Y * 74, 64, 74);
-                            if (Guard.Flip == true)
+                            Serpent.Bounds = new Rectangle(Serpent.X * 64, Serpent.Y * 74, 64, 74);
+                            if (Serpent.Flip == true)
                                 graphics.DrawImage(Properties.Resources.Serpent2, Guard.Bounds);
                             else
                                 graphics.DrawImage(Properties.Resources.Serpent, Guard.Bounds); 
@@ -884,16 +894,16 @@ namespace PrinceEditor
                         break;
 
                     case 3: //Skeleton
-                        if (Guard != null)
+                        if (Skeleton != null)
                         {
-                            sprite[Guard.X, Guard.Y] = "nothing";
+                            sprite[Skeleton.X, Skeleton.Y] = "nothing";
 
                             TextBox28.Text = mMapX.ToString();
                             TextBox29.Text = mMapY.ToString();
 
 
-                            Guard.X = Convert.ToInt32(TextBox28.Text);
-                            Guard.Y = Convert.ToInt32(TextBox29.Text);
+                            Skeleton.X = Convert.ToInt32(TextBox28.Text);
+                            Skeleton.Y = Convert.ToInt32(TextBox29.Text);
 
                             sprite[mMapX, mMapY] = "skeleton";
 
@@ -902,7 +912,7 @@ namespace PrinceEditor
                         else
                         {
 
-                            Guard = new Sprite(guardcount, Enumeration.SpriteType.skeleton, 0, 0);
+                            Skeleton = new Sprite(guardcount, Enumeration.SpriteType.skeleton, 0, 0);
 
                             sprite[Guard.X, Guard.Y] = "nothing";
 
@@ -923,16 +933,16 @@ namespace PrinceEditor
                         break;
 
                     case 4: //Serpent
-                        if (Guard != null)
+                        if (Serpent != null)
                         {
-                            sprite[Guard.X, Guard.Y] = "nothing";
+                            sprite[Serpent.X, Serpent.Y] = "nothing";
 
                             TextBox28.Text = mMapX.ToString();
                             TextBox29.Text = mMapY.ToString();
 
 
-                            Guard.X = Convert.ToInt32(TextBox28.Text);
-                            Guard.Y = Convert.ToInt32(TextBox29.Text);
+                            Serpent.X = Convert.ToInt32(TextBox28.Text);
+                            Serpent.Y = Convert.ToInt32(TextBox29.Text);
 
                             sprite[mMapX, mMapY] = "serpent";
 
@@ -941,17 +951,17 @@ namespace PrinceEditor
                         else
                         {
 
-                            Guard = new Sprite(guardcount, Enumeration.SpriteType.kid, 0, 0);
+                            Serpent = new Sprite(guardcount, Enumeration.SpriteType.serpent, 0, 0);
 
-                            sprite[Guard.X, Guard.Y] = "nothing";
+                            sprite[Serpent.X, Serpent.Y] = "nothing";
 
                             TextBox28.Text = mMapX.ToString();
                             TextBox29.Text = mMapY.ToString();
 
 
 
-                            Guard.X = Convert.ToInt32(TextBox28.Text);
-                            Guard.Y = Convert.ToInt32(TextBox29.Text);
+                            Serpent.X = Convert.ToInt32(TextBox28.Text);
+                            Serpent.Y = Convert.ToInt32(TextBox29.Text);
 
                             sprite[mMapX, mMapY] = "serpent";
 
