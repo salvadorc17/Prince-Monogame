@@ -67,10 +67,10 @@ namespace PrinceGame
 
             foreach (Sprite s in maze.sprites)
             {
-                if (object.ReferenceEquals(s.SpriteRoom, this))
-                {
+                if (s.SpriteRoom.roomIndex  == roomIndex)
+               // {
                     list.Add(s);
-                }
+                //}
             }
 
 
@@ -599,24 +599,25 @@ namespace PrinceGame
 
         public void DrawSprites(GameTime gameTime, SpriteBatch spriteBatch)
         {
-            foreach (Sprite s in SpritesInRoom())
+            foreach (Sprite s in maze.sprites)
             {
-                switch (s.GetType().Name)
+                switch (s.Stype)
                 {
-                    case "Guard":
+                    
+                    case Enumeration.SpriteType.guard:
                         ((Guard)s).Draw(gameTime, spriteBatch);
                         break;
 
-                    case "Skeleton":
+                    case Enumeration.SpriteType.skeleton:
                         ((Skeleton)s).Draw(gameTime, spriteBatch);
                         break; 
 
-                    case "Serpent":
+                    case Enumeration.SpriteType.serpent:
                         ((Serpent)s).Draw(gameTime, spriteBatch);
                         break;
 
 
-                    case "Splash":
+                    case Enumeration.SpriteType.splash:
                         ((Splash)s).Draw(gameTime, spriteBatch);
                         break;
 
