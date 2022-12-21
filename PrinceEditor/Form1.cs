@@ -44,6 +44,7 @@ namespace PrinceEditor
         public static int mouseY;
         public static int mMapX;
         public static int mMapY;
+        private string Path;
 
         public Form1()
         {
@@ -582,43 +583,50 @@ namespace PrinceEditor
 
                         case "kid":
 
-                            Player.Bounds = new Rectangle(Player.X * 64, Player.Y * 74, 64, 74);
+                            if (Player != null)
+                            {
+                                Player.Bounds = new Rectangle(Player.X * 64, Player.Y * 74, 64, 74);
                             if (Player.Flip == true)
                                 graphics.DrawImage(Kid, Player.Bounds);
                             else
                                 graphics.DrawImage(Kid2, Player.Bounds);
-
+                            }
                             break;
                         case "guard":
 
-
-                            Guard.Bounds = new Rectangle(Guard.X * 64, Guard.Y * 74, 64, 74);
+                            if (Guard != null)
+                            {
+                                Guard.Bounds = new Rectangle(Guard.X * 64, Guard.Y * 74, 64, 74);
                             if (Guard.Flip == true)
                                 graphics.DrawImage(GuardA1, Guard.Bounds);
                             else
-                                graphics.DrawImage(GuardA2, Guard.Bounds); 
+                                graphics.DrawImage(GuardA2, Guard.Bounds);
 
-
+                            }
                             break;
 
                         case "skeleton":
-
-                            Skeleton.Bounds = new Rectangle(Skeleton.X * 64, Skeleton.Y * 74, 64, 74);
+                            
+                            if (Skeleton != null)
+                            {
+                                Skeleton.Bounds = new Rectangle(Skeleton.X * 64, Skeleton.Y * 74, 64, 74);
                             if (Skeleton.Flip == true)
                                 graphics.DrawImage(Skeleton1, Guard.Bounds);
                             else
-                                graphics.DrawImage(Skeleton2, Guard.Bounds); 
-
+                                graphics.DrawImage(Skeleton2, Guard.Bounds);
+                            }
                             break;
 
                         case "serpent":
 
-                            Serpent.Bounds = new Rectangle(Serpent.X * 64, Serpent.Y * 74, 64, 74);
+                            if (Serpent != null)
+                            {
+                                Serpent.Bounds = new Rectangle(Serpent.X * 64, Serpent.Y * 74, 64, 74);
                             if (Serpent.Flip == true)
                                 graphics.DrawImage(Properties.Resources.Serpent2, Guard.Bounds);
                             else
-                                graphics.DrawImage(Properties.Resources.Serpent, Guard.Bounds); 
-
+                                graphics.DrawImage(Properties.Resources.Serpent, Guard.Bounds);
+                            }
                             break;
 
                         default:
