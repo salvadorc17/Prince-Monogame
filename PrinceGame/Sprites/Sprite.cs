@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 
+
 namespace PrinceGame
 {
     public class Sprite
@@ -50,7 +51,7 @@ namespace PrinceGame
         public AnimationSequence sprite;
         public PlayerState spriteState = new PlayerState();
         public SpriteEffects startFace = SpriteEffects.None;
-
+        public Enumeration.SpriteType Stype;
         public SpriteEffects face = SpriteEffects.None;
         public bool Sword
         {

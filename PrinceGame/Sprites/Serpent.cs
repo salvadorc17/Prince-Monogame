@@ -27,7 +27,8 @@ public class Serpent : Sprite
     public Serpent(RoomNew room, Vector2 position, GraphicsDevice GraphicsDevice__1, SpriteEffects spriteEffect)
     {
         graphicsDevice = GraphicsDevice__1;
-        m_spriteRoom = room;
+            Stype = Enumeration.SpriteType.serpent;
+            m_spriteRoom = room;
         LoadContent();
 
 

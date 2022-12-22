@@ -28,7 +28,8 @@ public class Skeleton : Sprite
     {
         graphicsDevice = GraphicsDevice__1;
         m_spriteRoom = room;
-        LoadContent();
+         Stype = Enumeration.SpriteType.skeleton;
+         LoadContent();
 
 
         //TAKE PLAYER Position

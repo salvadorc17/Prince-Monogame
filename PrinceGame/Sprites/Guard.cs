@@ -28,8 +28,9 @@ public class Guard : Sprite
     {
         graphicsDevice = GraphicsDevice__1;
         m_spriteRoom = room;
+        Stype = Enumeration.SpriteType.guard;
         LoadContent();
-
+            
 
         //TAKE PLAYER Position
         Reset(position, spriteEffect);
