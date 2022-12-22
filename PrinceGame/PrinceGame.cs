@@ -256,7 +256,7 @@ namespace PrinceGame
 
             //Other sprites update
 
-            foreach (Sprite s in maze.player.SpriteRoom.SpritesInRoom())
+            foreach (Sprite s in maze.sprites)
             {
                 switch (s.GetType().Name)
                 {
@@ -432,7 +432,7 @@ namespace PrinceGame
 
             //Draw opponent energy
             offset = 1;
-            foreach (Sprite s in maze.player.SpriteRoom.SpritesInRoom())
+            foreach (Sprite s in maze.sprites)
             {
                 switch (s.GetType().Name)
                 {
@@ -585,7 +585,7 @@ namespace PrinceGame
             var CurrentLvl = maze.CurrentLevel();
 
             if (CurrentLvl != null)
-                DrawShadowedString(hudFont, "LEVEL NAME=" + CurrentLvl.levelIndex + "-" + CurrentLvl.levelName + "-" + maze.levelindex, hudLocation, Color.White);
+                DrawShadowedString(hudFont, maze.player.SpriteRoom.SpritesInRoom().Count + " LEVEL NAME=" + CurrentLvl.levelIndex + "-" + CurrentLvl.levelName + "-" + maze.levelindex, hudLocation, Color.White);
             hudLocation.Y = hudLocation.Y + 10;
 
             

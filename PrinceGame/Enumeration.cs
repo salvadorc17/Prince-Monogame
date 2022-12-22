@@ -36,7 +36,8 @@ namespace PrinceGame
             sultan,
             guard,
             skeleton,
-            serpent
+            serpent,
+            splash
         }
 
         public enum Input
