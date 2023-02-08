@@ -67,10 +67,10 @@ namespace PrinceGame
 
             foreach (Sprite s in maze.sprites)
             {
-                if (s.SpriteRoom.roomIndex  == roomIndex)
-               // {
+                if (object.ReferenceEquals(s.SpriteRoom, this))
+                {
                     list.Add(s);
-                //}
+                }
             }
 
 
@@ -80,6 +80,18 @@ namespace PrinceGame
             }
 
             return list;
+        }
+
+        public Vector2 getCenterTilePosition(Rectangle playerBounds)
+        {
+            int leftTile = (int)(playerBounds.Center.X / Tile.WIDTH);
+            if (playerBounds.Center.X < Sprite.PLAYER_STAND_FEET)
+                leftTile = -1;
+
+            //int leftTile = (int)Math.Floor((float)playerBounds.Center.X / Tile.WIDTH);
+            //int leftTile = (int)Math.Floor((float)(playerBounds.Center.X) / Tile.WIDTH);
+            int topTile = (int)Math.Floor((float)(playerBounds.Center.Y - Tile.HEIGHT_VISIBLE) / Tile.HEIGHT); //tiles from the top screen border
+            return new Vector2(leftTile, topTile);
         }
 
 
@@ -149,16 +161,12 @@ namespace PrinceGame
 
                     tiles[x, y] = LoadTile(r.columns[ix].tileType, r.columns[ix].state, r.columns[ix].switchButton, r.columns[ix].item, nextTileType, r.columns[ix].timeOpen);
                     //tiles[x, y].tileAnimation.fra = maze.player.sprite.frameRate_background;
-                    
-
                     Rectangle rect = new Rectangle(x * Convert.ToInt32(Math.Truncate(Tile.Size.X)), y * Convert.ToInt32(Math.Truncate(Tile.Size.Y)) - BOTTOM_BORDER, Convert.ToInt32(tiles[x, y].Texture.Width), Convert.ToInt32(tiles[x, y].Texture.Height));
                     Vector2 v = new Vector2(rect.X, rect.Y);
 
                     tiles[x, y].Position = new Position(v, v);
                     tiles[x, y].Position.X = v.X;
                     tiles[x, y].Position.Y = v.Y;
-                    
-
 
                     //x+1 for avoid base zero x array, WALL POSITION 0-29
                     tiles[x, y].panelInfo = newX + roomIndex;
@@ -299,9 +307,7 @@ namespace PrinceGame
             //Play Sound presentation
             ((SoundEffect)Maze.dContentRes[PrinceOfPersiaGame.CONFIG_SOUNDS + "presentation".ToUpper()]).Play();
             maze.player.Reset(SpriteEffects.None);
-            maze.sprites.Clear();
-
-
+            //maze.sprites.Clear();
             LoadTiles();
 
         }
@@ -353,20 +359,6 @@ namespace PrinceGame
 
             return tiles[x, y].collision;
         }
-
-
-        public Vector2 getCenterTilePosition(Rectangle playerBounds)
-        {
-            int leftTile = (int)(playerBounds.Center.X / Tile.WIDTH);
-            if (playerBounds.Center.X < Sprite.PLAYER_STAND_FEET)
-                leftTile = -1;
-
-            //int leftTile = (int)Math.Floor((float)playerBounds.Center.X / Tile.WIDTH);
-            //int leftTile = (int)Math.Floor((float)(playerBounds.Center.X) / Tile.WIDTH);
-            int topTile = (int)Math.Floor((float)(playerBounds.Center.Y - Tile.HEIGHT_VISIBLE) / Tile.HEIGHT); //tiles from the top screen border
-            return new Vector2(leftTile, topTile);
-        }
-
 
         public Enumeration.TileType GetType(int x, int y)
         {
@@ -550,7 +542,7 @@ namespace PrinceGame
             UpdateItems(gameTime, keyboardState, gamePadState, touchState, accelState, orientation);
 
             //update spritesssss
-            UpdateSprites(gameTime, keyboardState, gamePadState, touchState, accelState, orientation);
+            //UpdateSprites(gameTime, keyboardState, gamePadState, touchState, accelState, orientation);
 
         }
 
@@ -599,25 +591,24 @@ namespace PrinceGame
 
         public void DrawSprites(GameTime gameTime, SpriteBatch spriteBatch)
         {
-            foreach (Sprite s in maze.sprites)
+            foreach (Sprite s in SpritesInRoom())
             {
-                switch (s.Stype)
+                switch (s.GetType().Name)
                 {
-                    
-                    case Enumeration.SpriteType.guard:
+                    case "Guard":
                         ((Guard)s).Draw(gameTime, spriteBatch);
                         break;
 
-                    case Enumeration.SpriteType.skeleton:
+                    case "Skeleton":
                         ((Skeleton)s).Draw(gameTime, spriteBatch);
                         break; 
 
-                    case Enumeration.SpriteType.serpent:
+                    case "Serpent":
                         ((Serpent)s).Draw(gameTime, spriteBatch);
                         break;
 
 
-                    case Enumeration.SpriteType.splash:
+                    case "Splash":
                         ((Splash)s).Draw(gameTime, spriteBatch);
                         break;
 
@@ -720,8 +711,6 @@ namespace PrinceGame
             }
             catch (Exception ex)
             {
-
-                ex = new Exception();
             }
         }
 
