@@ -550,7 +550,7 @@ namespace PrinceGame
                     default:
                         spriteBatch.Draw(layer[0], rectangle, Color.White);
 
-                        break;
+                        break; // TODO: might not be correct. Was : Exit Select
 
 
                 }
