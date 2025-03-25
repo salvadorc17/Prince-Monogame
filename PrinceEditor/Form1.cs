@@ -10,7 +10,7 @@ using System.IO;
 using System.Xml.Linq;
 using PrinceGame;
 using System.Xml.Serialization;
-
+using System.Diagnostics;
 
 namespace PrinceEditor
 {
@@ -1266,7 +1266,11 @@ namespace PrinceEditor
 
         }
 
-     
+        private void ComboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
         private void LoadStartRoom()
          {
             
@@ -1439,7 +1443,7 @@ namespace PrinceEditor
                     if (File.Exists(path))
                         LoadRoom(path);
 
-
+                    if  (currentRoom != null)
                     if (currentRoom.startRoom)
                         button8.Visible = true;
                     else
@@ -1776,7 +1780,21 @@ namespace PrinceEditor
         private void testGameToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
-        }
+
+            Process process = new Process();
+
+             if (File.Exists("PrinceGame.exe"))
+                {
+
+                    process.StartInfo.FileName = "PrinceGame.exe";
+                    process.StartInfo.Arguments = "-w";
+                    process.StartInfo.WindowStyle = ProcessWindowStyle.Maximized;
+                    process.Start();
+
+                }
+
+
+            }
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
