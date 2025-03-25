@@ -11,6 +11,9 @@ Monogame implementation of Prince of Persia 2 written in C#, code original idea 
     OpenGL 3.0
     SDL2 
 
+# Build
+
+Use Visual Studio 2017 or higher. Mono for Linux. Run PrinceGame.csproj to build
 
 # Screenshots
 
