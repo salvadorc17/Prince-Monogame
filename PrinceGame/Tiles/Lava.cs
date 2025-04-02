@@ -109,6 +109,11 @@ namespace PrinceGame
                 return;
             }
 
+            if (tileState.Value().state == Enumeration.StateTile.closefast)
+            {
+                return;
+            }
+
             tileState.Add(Enumeration.StateTile.close);
             tileAnimation.PlayAnimation(tileSequence, tileState.Value());
 
