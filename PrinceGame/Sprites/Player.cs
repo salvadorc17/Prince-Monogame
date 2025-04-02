@@ -718,11 +718,11 @@ public class Player : Sprite
         //////////
         //LEFT 
         //////////
-        if (keyboardState.IsKeyDown(Keys.Up) & keyboardState.IsKeyDown(Keys.Left))
+        if ((keyboardState.IsKeyDown(Keys.Up) & keyboardState.IsKeyDown(Keys.Left)) || (keyboardState.IsKeyDown(Keys.W) & keyboardState.IsKeyDown(Keys.A)))
         {
             return Enumeration.Input.leftup;
         }
-        else if (keyboardState.IsKeyDown(Keys.Down) & keyboardState.IsKeyDown(Keys.Left))
+        else if ((keyboardState.IsKeyDown(Keys.Down) & keyboardState.IsKeyDown(Keys.Left)) || (keyboardState.IsKeyDown(Keys.S) & keyboardState.IsKeyDown(Keys.A)))
         {
             return Enumeration.Input.leftdown;
         }
@@ -738,11 +738,11 @@ public class Player : Sprite
             //RIGHT 
             //////////
         }
-        else if (keyboardState.IsKeyDown(Keys.Up) & keyboardState.IsKeyDown(Keys.Right))
+        else if ((keyboardState.IsKeyDown(Keys.Up) & keyboardState.IsKeyDown(Keys.Right)) || (keyboardState.IsKeyDown(Keys.W) & keyboardState.IsKeyDown(Keys.D)))
         {
             return Enumeration.Input.rightup;
         }
-        else if (keyboardState.IsKeyDown(Keys.Down) & keyboardState.IsKeyDown(Keys.Right))
+        else if ((keyboardState.IsKeyDown(Keys.Down) & keyboardState.IsKeyDown(Keys.Right)) || (keyboardState.IsKeyDown(Keys.S) & keyboardState.IsKeyDown(Keys.D)))
         {
             return Enumeration.Input.righdown;
         }
