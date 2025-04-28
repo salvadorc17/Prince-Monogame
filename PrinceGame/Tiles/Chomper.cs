@@ -97,6 +97,20 @@ namespace PrinceGame
             tileAnimation.PlayAnimation(tileSequence, tileState.Value());
 
         }
-    }
+
+        public void CloseFast()
+        {
+            elapsedTimeOpen = 0;
+
+            if (tileState.Value().state == Enumeration.StateTile.closefast)
+            {
+                return;
+            }
+
+            tileState.Add(Enumeration.StateTile.closefast);
+            tileAnimation.PlayAnimation(tileSequence, tileState.Value());
+
+        }
+}
 
 }
