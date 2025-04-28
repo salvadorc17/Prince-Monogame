@@ -1434,7 +1434,7 @@ namespace PrinceEditor
                 {
                     string path = AppDomain.CurrentDomain.BaseDirectory + "Content/Rooms/MAP_dungeon_prison_" + current + ".xml";
 
-                    if (map != null)
+                    if (map != null && rooms != null)
                     foreach (Room r in rooms)
                         if (r.roomIndex == x)
                             currentRoom = r;
