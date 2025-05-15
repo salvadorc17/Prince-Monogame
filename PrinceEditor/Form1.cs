@@ -1660,18 +1660,26 @@ namespace PrinceEditor
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-             if (level != null)
+
+                
+
+                if (level != null)
                 {
 
-                string path = AppDomain.CurrentDomain.BaseDirectory + "Content/Rooms/";
+                    string path = AppDomain.CurrentDomain.BaseDirectory + "Content/Rooms/";
 
 
-                foreach (Room rm in rooms)
-                    if (rm.roomIndex != 0)
+                        foreach (Room rm in rooms)
+                        if (rm.roomIndex != 0)
 
-                        SaveRoom(path + rm.roomName + ".xml");
+                        
+                            SaveRoom(path + rm.roomName + ".xml");
+                            MessageBox.Show("Level saved");
+                      
 
-                 }
+                           
+                }
+
 
         }
 
@@ -1685,6 +1693,7 @@ namespace PrinceEditor
             {
 
                 SaveRoom(saveFileDialog1.FileName);
+                MessageBox.Show("Room saved");
 
             }
         }
