@@ -1551,7 +1551,7 @@ namespace PrinceEditor
                 if (!name.Contains("MAP"))
                 LoadLevel(name);
 
-                if (level != null)
+                if (level != null && !name.Contains("LEVEL"))
                     LoadStartRoom();
                
             }
@@ -1824,7 +1824,19 @@ namespace PrinceEditor
 
         private void button1_Click(object sender, EventArgs e)
         {
+            
+            openFileDialog1.InitialDirectory = AppDomain.CurrentDomain.BaseDirectory;
+            openFileDialog1.Filter = "Prince Level files (*.xml)|*.xml|All Files (*.*)|*.*";
+            openFileDialog1.FilterIndex = 1;
 
+            if ((this.openFileDialog1.ShowDialog() == DialogResult.OK))
+            {
+                string name = openFileDialog1.FileName;
+                if (!name.Contains("MAP"))
+                    LoadLevel(name);
+                listBox1.Items.Add(name);
+
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
