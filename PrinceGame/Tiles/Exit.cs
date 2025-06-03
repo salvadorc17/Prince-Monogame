@@ -37,6 +37,8 @@ namespace PrinceGame
         public int switchButton = 0;
         public float elapsedTimeOpen = 0;
         public float timeOpen = 6;
+        public bool Exited;
+
 
         public Enumeration.StateTile State
         {
@@ -142,6 +144,12 @@ namespace PrinceGame
         public void ExitLevel()
         {
             //animation exit
+            if (!Exited)
+            {
+                Exited = true;
+                Normal();
+            }
+
 
         }
 
