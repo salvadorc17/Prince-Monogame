@@ -126,7 +126,7 @@ public class ScreenManager : DrawableGameComponent
 
 		m_spriteBatch = new SpriteBatch(GraphicsDevice);
 		//AMF how can load content??
-		m_font = content.Load<SpriteFont>("Fonts/Pop");
+		m_font = content.Load<SpriteFont>("Fonts/PoP");
 
 		//blankTexture = content.Load<Texture2D>("Backgrounds/main_background");
 
