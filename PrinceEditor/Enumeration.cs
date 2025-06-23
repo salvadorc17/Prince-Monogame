@@ -86,7 +86,9 @@ namespace PrinceGame
             /// <summary>
             /// Standard floor
             /// </summary>
-            Platform = 2
+            Platform = 2,
+
+            PlatformExit = 3
         }
 
         public enum TileType
