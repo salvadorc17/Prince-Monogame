@@ -101,8 +101,9 @@ namespace PrinceGame
                     return false;
                 }
             }
+            set { IsAlive = value; }
         }
-        //set { isAlive = value; }
+        //
 
 
         //How many energy triangle sprite have
