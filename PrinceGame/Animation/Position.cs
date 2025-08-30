@@ -119,10 +119,10 @@ namespace PrinceGame
 
 
         ////example to mask a method of Vector2 structure 
-        //public static float Dot(Position value1, Position value2)
-        //{
-        //    return Vector2.Dot(value1, value2);
-        //}
+        public static float Dot(Vector2 value1, Vector2 value2)
+        {
+            return Vector2.Dot(value1, value2);
+        }
 
         ////override the cast to Vector2
         //public static implicit operator Vector2(Position value) 
