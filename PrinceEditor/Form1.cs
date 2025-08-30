@@ -1841,7 +1841,15 @@ namespace PrinceEditor
 
         private void button2_Click(object sender, EventArgs e)
         {
+			saveFileDialog1.InitialDirectory = AppDomain.CurrentDomain.BaseDirectory;
+            saveFileDialog1.Filter = "Prince Level files (*.xml)|*.xml|All Files (*.*)|*.*";
+            saveFileDialog1.FilterIndex = 1;
 
+            if ((this.saveFileDialog1.ShowDialog() == DialogResult.OK))
+            {
+                if (level != null)
+                    SaveRoom(saveFileDialog1.FileName);
+            }
         }
 
 
@@ -1850,3 +1858,4 @@ namespace PrinceEditor
 
      
 }
+
