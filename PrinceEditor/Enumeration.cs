@@ -10,6 +10,7 @@ namespace PrinceGame
 
         public enum LevelName
         {
+            dungeon_none = 0,
             dungeon_prison = 1,
             dungeon_cave = 2,
             dungeon_guards = 3,
