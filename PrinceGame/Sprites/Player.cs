@@ -2500,6 +2500,7 @@ public class Player : Sprite
         sprite.PlayAnimation(spriteSequence, spriteState.Value());
         this.LivePoints += 1;
         this.Energy = this.LivePoints;
+        ((SoundEffect)Maze.dContentRes[PrinceOfPersiaGame.CONFIG_SOUNDS + "presentation".ToUpper()]).Play();
     }
 
     public void Advance()
