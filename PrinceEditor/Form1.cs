@@ -33,7 +33,7 @@ namespace PrinceEditor
         public Sprite Player, Guard, Skeleton, Serpent;
         public Image Space, Floor, Wall, Spikes, Loose, DoorA, Torch, DoorB, Mirror, 
             ClosePlate, PressPlate, Chomper, ExitLeft, ExitRight, Lava, Posts,
-            Kid, Kid2, GuardA1, GuardA2, Skeleton1, Skeleton2, Serpent1, Potion, SmallPotion;
+            Kid, Kid2, GuardA1, GuardA2, Skeleton1, Skeleton2, Serpent1, Potion, SmallPotion, Sword;
         private Map map;
         public List<Room> rooms;
         private Room currentRoom, copyRoom;
@@ -226,6 +226,8 @@ namespace PrinceEditor
 
             SmallPotion = Properties.Resources.Flask_small;
 
+            Sword = Properties.Resources.Sword_1;
+
             if (AlternateGraphics)
                 {
 
@@ -320,6 +322,9 @@ namespace PrinceEditor
             PictureBox12.BackgroundImage = Potion;
 
             PictureBox13.BackgroundImage = SmallPotion;
+
+            PictureBox14.BackgroundImage = Sword;
+
 
         }
 
@@ -1841,7 +1846,7 @@ namespace PrinceEditor
 
         private void button2_Click(object sender, EventArgs e)
         {
-			saveFileDialog1.InitialDirectory = AppDomain.CurrentDomain.BaseDirectory;
+            saveFileDialog1.InitialDirectory = AppDomain.CurrentDomain.BaseDirectory;
             saveFileDialog1.Filter = "Prince Level files (*.xml)|*.xml|All Files (*.*)|*.*";
             saveFileDialog1.FilterIndex = 1;
 
@@ -1850,6 +1855,8 @@ namespace PrinceEditor
                 if (level != null)
                     SaveRoom(saveFileDialog1.FileName);
             }
+
+
         }
 
 
@@ -1858,4 +1865,3 @@ namespace PrinceEditor
 
      
 }
-
