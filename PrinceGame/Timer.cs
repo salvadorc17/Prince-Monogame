@@ -64,6 +64,7 @@ namespace PrinceGame
             }
             else
             {
+                this.isComplete = false;
                 this.displayValue = "Game Over";
             }
             return this.isComplete;
