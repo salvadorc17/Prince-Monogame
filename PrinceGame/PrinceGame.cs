@@ -36,8 +36,7 @@ namespace PrinceGame
         public static Texture2D enemy_livePoints;
 
         public static Texture2D enemy_energy;
-        //public static Texture2D player_splash;
-        //public static Texture2D enemy_splash;
+
 
         // Meta-level game state.
         private Level[] levels = new Level[30];
@@ -117,10 +116,10 @@ namespace PrinceGame
             float.TryParse(System.Configuration.ConfigurationManager.AppSettings["CONFIG_framerate"].ToString(), out CONFIG_FRAMERATE);
 
             //READ CONTENT RESOURCES PATH
-            CONFIG_SPRITE_KID = System.Configuration.ConfigurationManager.AppSettings["CONFIG_sprite_kid"].ToString().ToUpper();
-            CONFIG_SPRITE_GUARD = System.Configuration.ConfigurationManager.AppSettings["CONFIG_sprite_guard"].ToString().ToUpper();
-            CONFIG_SPRITE_SKELETON = System.Configuration.ConfigurationManager.AppSettings["CONFIG_sprite_skeleton"].ToString().ToUpper();
-            CONFIG_SPRITE_SERPENT = System.Configuration.ConfigurationManager.AppSettings["CONFIG_sprite_serpent"].ToString().ToUpper();
+            CONFIG_SPRITE_KID = System.Configuration.ConfigurationManager.AppSettings["CONFIG_sprite_kid"].ToString();
+            CONFIG_SPRITE_GUARD = System.Configuration.ConfigurationManager.AppSettings["CONFIG_sprite_guard"].ToString();
+            CONFIG_SPRITE_SKELETON = System.Configuration.ConfigurationManager.AppSettings["CONFIG_sprite_skeleton"].ToString();
+            CONFIG_SPRITE_SERPENT = System.Configuration.ConfigurationManager.AppSettings["CONFIG_sprite_serpent"].ToString();
             CONFIG_SOUNDS = System.Configuration.ConfigurationManager.AppSettings["CONFIG_sound"].ToString().ToUpper();
             CONFIG_SONGS = System.Configuration.ConfigurationManager.AppSettings["CONFIG_songs"].ToString().ToUpper();
 
@@ -130,13 +129,13 @@ namespace PrinceGame
             CONFIG_TILES[1] = System.Configuration.ConfigurationManager.AppSettings["CONFIG_tiles2"].ToString().ToUpper();
 
             CONFIG_ITEMS = System.Configuration.ConfigurationManager.AppSettings["CONFIG_items"].ToString().ToUpper();
-            CONFIG_PATH_SEQUENCES = System.Configuration.ConfigurationManager.AppSettings["CONFIG_path_Sequences"].ToString().ToUpper();
+            CONFIG_PATH_SEQUENCES = System.Configuration.ConfigurationManager.AppSettings["CONFIG_path_Sequences"].ToString();
             CONFIG_SPRITE_EFFECTS = System.Configuration.ConfigurationManager.AppSettings["CONFIG_sprite_effects"].ToString().ToUpper();
 
 
             CONFIG_KID_START_ENERGY = int.Parse(System.Configuration.ConfigurationManager.AppSettings["CONFIG_kid_start_energy"].ToString());
 
-            CONFIG_PATH_CONTENT = "Content/";
+            CONFIG_PATH_CONTENT = "Content" + Path.DirectorySeparatorChar;
 
 
             Timer = new Timer();
@@ -202,7 +201,7 @@ namespace PrinceGame
         {
             // Load fonts
             hudFont = content.Load<SpriteFont>("Fonts/Hud");
-            PoPFont = content.Load<SpriteFont>("Fonts/PoP");
+            PoPFont = content.Load<SpriteFont>("Fonts/Pop");
 
             //energy...
             player_energy = content.Load<Texture2D>("Sprites/bottom/player_live_full");
@@ -432,11 +431,11 @@ namespace PrinceGame
 
             //Draw opponent energy
             offset = 1;
-            foreach (Sprite s in maze.player.SpriteRoom.SpritesInRoom())
+            foreach (Sprite s in maze.sprites)
             {
                 switch (s.GetType().Name)
                 {
-                    case "Guard":
+                    case "guard":
                         if (true)
                         {
                             offset = enemy_livePoints.Width + 1;
@@ -461,7 +460,7 @@ namespace PrinceGame
                             break; 
                         }
 
-                    case "Skeleton":
+                    case "skeleton":
                         if (true)
                         {
                             offset = enemy_livePoints.Width + 1;
@@ -486,7 +485,7 @@ namespace PrinceGame
                             break;
                         }
                         
-                    case "Serpent":
+                    case "serpent":
                         if (true)
                         {
                             offset = enemy_livePoints.Width + 1;
@@ -534,23 +533,23 @@ namespace PrinceGame
                     case 1:
 
                         spriteBatch.Draw(layer[1], rectangle, Color.White);
-                        break;
+                        break; 
 
                       
                     case 2:
                         spriteBatch.Draw(layer[2], rectangle, Color.White);
-                        break;
+                        break; 
 
                        
                     case 3:
 
                         spriteBatch.Draw(layer[3], rectangle, Color.White);
-                        break;
+                        break; 
 
                     default:
                         spriteBatch.Draw(layer[0], rectangle, Color.White);
 
-                        break;
+                        break; 
 
 
                 }
@@ -578,13 +577,15 @@ namespace PrinceGame
             hudLocation.X = hudLocation.X + 180;
             hudLocation.Y = hudLocation.Y + 380;
 
-            if (CONFIG_DEBUG == false)
+            if (CONFIG_DEBUG == true)
             {
-                return;
-            }
+                
+           
+                var CurrentLvl = maze.CurrentLevel();
 
-            DrawShadowedString(hudFont, "LEVEL NAME=" + maze.CurrentLevel().levelIndex + "-" + maze.CurrentLevel().levelName + "-" + maze.levelindex, hudLocation, Color.White);
-            hudLocation.Y = hudLocation.Y + 10;
+                if (CurrentLvl != null)
+                    DrawShadowedString(hudFont, maze.player.SpriteRoom.SpritesInRoom().Count + " LEVEL NAME=" + CurrentLvl.levelIndex + "-" + CurrentLvl.levelName + "-" + maze.levelindex, hudLocation, Color.White);
+                    hudLocation.Y = hudLocation.Y + 10;
 
             
             //DrawShadowedString(hudFont, "FRAME RATE=" + AnimationSequence.frameRate.ToString(), hudLocation, Color.White);
@@ -600,7 +601,7 @@ namespace PrinceGame
                     DrawShadowedString(hudFont, "ROOM NAME=" + maze.player.SpriteRoom.roomName, hudLocation, Color.White);
                     hudLocation.Y = hudLocation.Y + 10;
 
-                    DrawShadowedString(hudFont, "POSITION X=" + maze.player.Position.X + " Y=" + maze.player.Position.Y + " TILE= " + maze.player.SpriteRoom.GetTile(CoordX, CoordY).Type.ToString(), hudLocation, Color.White);
+                    DrawShadowedString(hudFont, "POSTION X=" + maze.player.Position.X + " Y=" + maze.player.Position.Y + " TILE= " + maze.player.SpriteRoom.GetTile(CoordX, CoordY).Type.ToString(), hudLocation, Color.White);
                     hudLocation.Y = hudLocation.Y + 10;
                 
                 Rectangle playerBound = maze.player.Position.Bounding;
@@ -610,10 +611,11 @@ namespace PrinceGame
 
                 }
 
-            hudLocation.Y = hudLocation.Y + 10;
-            if (maze.player.sprite.sequence != null)
+                hudLocation.Y = hudLocation.Y + 10;
+                if (maze.player.sprite.sequence != null)
                 DrawShadowedString(hudFont, "PLAYER STATE=" + Convert.ToString(maze.player.spriteState.Value().state) + " SEQUENCE CountOffset=" + Convert.ToString(maze.player.sprite.sequence.CountOffSet), hudLocation, Color.White);
 
+            }
 
 
             // Get the player's bounding rectangle and find neighboring tiles.
