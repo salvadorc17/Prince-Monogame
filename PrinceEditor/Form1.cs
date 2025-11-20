@@ -271,9 +271,15 @@ namespace PrinceEditor
 
                     GuardA2 = Properties.Resources.GuardB2;
 
-                    Skeleton1 = Properties.Resources.Skeleton1;
+                    Skeleton1 = Properties.Resources.Skeleton2;
 
-                    Serpent1 = Properties.Resources.Serpent1;
+                    Serpent1 = Properties.Resources.Serpent2;
+
+					Potion = Properties.Resources.Flask_big;
+
+                    SmallPotion = Properties.Resources.Flask_small;
+
+                    Sword = Properties.Resources.Sword_1;
 
                 }
 
@@ -1865,3 +1871,4 @@ namespace PrinceEditor
 
      
 }
+
