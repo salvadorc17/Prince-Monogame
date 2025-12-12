@@ -42,6 +42,7 @@ namespace PrinceGame
 
         public enum Input
         {
+            none,
             left,
             right,
             down,
@@ -53,7 +54,7 @@ namespace PrinceGame
             rightup,
             leftdown,
             righdown,
-            none
+            
         }
 
         public enum PriorityState
