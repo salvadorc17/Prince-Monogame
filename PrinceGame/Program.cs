@@ -19,7 +19,8 @@ namespace PrinceGame
         /// </summary>
         [STAThread]
         static void Main()
-        {
+        { 
+            //Game default value
             using (var game = new Game1())
                 game.Run();
         }
