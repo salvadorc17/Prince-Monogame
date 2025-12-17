@@ -12,7 +12,7 @@ namespace PrinceGame
        public int Id;
        public string Name;
        public Enumeration.SpriteType Type;
-       public bool Flip;
+       public bool Flip, Enabled;
        public int X, Y, Width, Height;
        public Rectangle Bounds;
 
@@ -27,6 +27,7 @@ namespace PrinceGame
            Height = 74;
            Bounds = new Rectangle(x, y, Width, Height);
            Flip = false;
+           Enabled = false;
 
        }
     }
