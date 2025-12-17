@@ -67,7 +67,7 @@ namespace PrinceGame
                     {
 
                         
-                       Texture2D t = (Texture2D)Maze.dContentRes[System.Configuration.ConfigurationManager.AppSettings[config_type].ToString().ToUpper() + f.value.ToUpper()];
+                       Texture2D t = (Texture2D)Maze.dContentRes[path.ToUpper() + f.value.ToUpper()];
 
 
                        if (t == null)
