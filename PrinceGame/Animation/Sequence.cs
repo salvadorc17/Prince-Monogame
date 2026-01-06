@@ -61,7 +61,23 @@ namespace PrinceGame
                 try
                 {
 
-                    path = System.Configuration.ConfigurationManager.AppSettings[config_type].ToString();
+                    switch (config_type)
+                    {
+
+                        case "CONFIG_sprite_kid":
+                            path = "Sprites/player/dos/";
+                            break;
+                        case "CONFIG_sprite_guard":
+                            path = "Sprites/Guard/dos/";
+                            break;
+                        case "CONFIG_tiles":
+                            path = "Tiles/dos/";
+                            break;
+                        case "CONFIG_items":
+                            path = "Items/";
+                            break;
+
+                    }
                     //loading texture
                     if (f.value != null)
                     {
