@@ -22,8 +22,7 @@ namespace PrinceGame
 			rows[x] = new RoomRow(10);
 		}
 
-        
-
+        levelName = "Level" + levelIndex;
 
 	}
 
@@ -35,6 +34,8 @@ namespace PrinceGame
 			rows[x] = new RoomRow(sizeColumn);
 
 		}
+
+		levelName = "Level" + levelIndex;
 	}
 
     public Room DownRoom(List<Room> rooms, Room current, Level level)
