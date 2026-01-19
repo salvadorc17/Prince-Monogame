@@ -1592,7 +1592,7 @@
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
-            this.Text = "Prince Editor";
+            this.Text = "Prince Monogame Editor";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -1644,6 +1644,7 @@
             this.panel5.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
+
 
         }
 
