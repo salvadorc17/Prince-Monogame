@@ -42,7 +42,6 @@ namespace PrinceGame
             Stream txtReader = Microsoft.Xna.Framework.TitleContainer.OpenStream(PrinceOfPersiaGame.CONFIG_PATH_CONTENT + PrinceOfPersiaGame.CONFIG_PATH_SEQUENCES + Enumeration.Items.sword.ToString().ToUpper() + "_sequence.xml");
             //TextReader txtReader = File.OpenText(PrinceOfPersiaGame.CONFIG_PATH_CONTENT + PrinceOfPersiaGame.CONFIG_PATH_SEQUENCES + tileType.ToString().ToUpper() + "_sequence.xml");
 
-
             ItemSequence = (List<Sequence>)ax.Deserialize(txtReader);
 
             foreach (Sequence s in ItemSequence)
