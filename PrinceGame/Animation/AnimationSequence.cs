@@ -13,7 +13,7 @@ namespace PrinceGame
         public Sequence sequence;
         public List<Sequence> lsequence;
         private float TotalElapsed;
-        //private float time;
+        private int ElapsedTime;
         public string StateName;
 
 
@@ -119,6 +119,7 @@ namespace PrinceGame
             // Start the new animation.
             if (stateElement.Priority == Enumeration.PriorityState.Normal & this.IsStoppable == false)
             {
+                ElapsedTime = 0;
                 return;
             }
 
