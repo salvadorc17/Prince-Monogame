@@ -469,8 +469,8 @@ namespace PrinceGame
             ABOUTFACE,
             IFGOTOSEQUENCE,
             IFGOTOFRAME,
-            DELETE
-            //delete the sprite.. future implementation..??!?
+            DELETE,
+            RETURN
         }
 
         public enum SpriteEffects
