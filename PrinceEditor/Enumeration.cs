@@ -268,7 +268,8 @@ namespace PrinceGame
             sword,
             flask,
             flaskbig,
-            potion
+            potion,
+            potionbig
         }
 
         public enum StateTile
