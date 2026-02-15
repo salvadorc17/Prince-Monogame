@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyCompany("MonoPrince")]
-[assembly: AssemblyCopyright("MonoPrince 2015")]
+[assembly: AssemblyCopyright("MonoPrince 2025")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
