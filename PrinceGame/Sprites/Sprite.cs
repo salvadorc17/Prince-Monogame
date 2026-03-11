@@ -18,7 +18,7 @@ namespace PrinceGame
         public const int SPRITE_SIZE_Y = 114;
         //to be var
         public const int PLAYER_L_PENETRATION = 19;
-
+        public const int SCALE = 1;
         public const int PLAYER_R_PENETRATION = 30;
         public const int PLAYER_STAND_BORDER_FRAME = 47;
         //47+20player+47=114
