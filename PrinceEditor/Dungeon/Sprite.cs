@@ -9,7 +9,7 @@ namespace PrinceGame
    public class Sprite
     {
 
-       public int Id;
+       public int Id, Scale;
        public string Name;
        public Enumeration.SpriteType Type;
        public bool Flip, Enabled;
@@ -25,6 +25,7 @@ namespace PrinceGame
            Y = y;
            Width = 64;
            Height = 74;
+           Scale = 1;
            Bounds = new Rectangle(x, y, Width, Height);
            Flip = false;
            Enabled = false;
