@@ -7,7 +7,7 @@ namespace PrinceGame
 {
     public class Map
     {
-
+        public int RowCount;
         public Row[] rows;
         public Map(int sizeX, int sizeY)
         {
@@ -20,10 +20,11 @@ namespace PrinceGame
 
         public Map()
         {
+            RowCount = 10;
             rows = new Row[3];
             for (int x = 0; x <= rows.Length - 1; x++)
             {
-                rows[x] = new Row(10);
+                rows[x] = new Row(RowCount);
             }
         }
     }
