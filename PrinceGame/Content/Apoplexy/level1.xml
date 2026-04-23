@@ -316,41 +316,6 @@
         <TileApoplexy />
       </tiles>
     </RoomApoplexy>
-    <RoomApoplexy>
-      <number>0</number>
-      <tiles>
-        <TileApoplexy />
-        <TileApoplexy />
-        <TileApoplexy />
-        <TileApoplexy />
-        <TileApoplexy />
-        <TileApoplexy />
-        <TileApoplexy />
-        <TileApoplexy />
-        <TileApoplexy />
-        <TileApoplexy />
-        <TileApoplexy />
-        <TileApoplexy />
-        <TileApoplexy />
-        <TileApoplexy />
-        <TileApoplexy />
-        <TileApoplexy />
-        <TileApoplexy />
-        <TileApoplexy />
-        <TileApoplexy />
-        <TileApoplexy />
-        <TileApoplexy />
-        <TileApoplexy />
-        <TileApoplexy />
-        <TileApoplexy />
-        <TileApoplexy />
-        <TileApoplexy />
-        <TileApoplexy />
-        <TileApoplexy />
-        <TileApoplexy />
-        <TileApoplexy />
-      </tiles>
-    </RoomApoplexy>
   </rooms>
   <levelName>dungeon_demo</levelName>
   <number>0</number>
