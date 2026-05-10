@@ -18,14 +18,13 @@ namespace PrinceGame
         {
             
 
-          Content.RootDirectory = "Content";
+         Content.RootDirectory = "Content";
 
          graphics = new GraphicsDeviceManager(this);
          graphics.PreferredBackBufferWidth = 640;
          graphics.PreferredBackBufferHeight = 480;
          graphics.PreferredDepthStencilFormat = DepthFormat.Depth24Stencil8;
          graphics.IsFullScreen = false;
-
 
          screenManager = new ScreenManager(this);
          Components.Add(screenManager);
