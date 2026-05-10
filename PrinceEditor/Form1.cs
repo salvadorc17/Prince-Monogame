@@ -1808,7 +1808,7 @@ namespace PrinceEditor
 
                     process.StartInfo.FileName = "PrinceGame.exe";
                     process.StartInfo.Arguments = "-w";
-                    process.StartInfo.WindowStyle = ProcessWindowStyle.Maximized;
+                    process.StartInfo.WindowStyle = ProcessWindowStyle.Normal;
                     process.Start();
 
                 }
