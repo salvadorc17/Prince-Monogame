@@ -11,7 +11,7 @@
     <RootNamespace>PrinceGame</RootNamespace>
     <AssemblyName>PrinceGame</AssemblyName>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
   </PropertyGroup>
@@ -24,6 +24,7 @@
     <DefineConstants>DEBUG;TRACE;WINDOWS</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <PlatformTarget>x86</PlatformTarget>
@@ -33,6 +34,7 @@
     <DefineConstants>TRACE;WINDOWS</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>PoPicon.ico</ApplicationIcon>
@@ -106,6 +108,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
@@ -166,7 +169,9 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Content\Backgrounds\0.xnb" />
     <None Include="Content\Backgrounds\author.xnb" />
     <None Include="Content\Backgrounds\copyright.xnb" />
@@ -403,71 +408,71 @@
     <None Include="Content\Tiles\alternate\SpikeA_4.xnb" />
     <None Include="Content\Tiles\alternate\SpikeA_5.xnb" />
     <None Include="Content\Tiles\alternate\SpikeA_5b.xnb" />
-    <None Include="Content\Tiles\main\Block_centre.xnb" />
-    <None Include="Content\Tiles\main\Block_divider.xnb" />
-    <None Include="Content\Tiles\main\Block_divider2.xnb" />
-    <None Include="Content\Tiles\main\Block_left.xnb" />
-    <None Include="Content\Tiles\main\Block_random.xnb" />
-    <None Include="Content\Tiles\main\Block_right.xnb" />
-    <None Include="Content\Tiles\main\Block_single.xnb" />
-    <None Include="Content\Tiles\main\ChomperA_0.xnb" />
-    <None Include="Content\Tiles\main\ChomperA_1.xnb" />
-    <None Include="Content\Tiles\main\ChomperA_2.xnb" />
-    <None Include="Content\Tiles\main\ChomperA_3.xnb" />
-    <None Include="Content\Tiles\main\DoorA_0.xnb" />
-    <None Include="Content\Tiles\main\DoorA_1.xnb" />
-    <None Include="Content\Tiles\main\DoorA_10.xnb" />
-    <None Include="Content\Tiles\main\DoorA_11.xnb" />
-    <None Include="Content\Tiles\main\DoorA_12.xnb" />
-    <None Include="Content\Tiles\main\DoorA_13.xnb" />
-    <None Include="Content\Tiles\main\DoorA_2.xnb" />
-    <None Include="Content\Tiles\main\DoorA_3.xnb" />
-    <None Include="Content\Tiles\main\DoorA_4.xnb" />
-    <None Include="Content\Tiles\main\DoorA_5.xnb" />
-    <None Include="Content\Tiles\main\DoorA_6.xnb" />
-    <None Include="Content\Tiles\main\DoorA_7.xnb" />
-    <None Include="Content\Tiles\main\DoorA_8.xnb" />
-    <None Include="Content\Tiles\main\DoorA_9.xnb" />
-    <None Include="Content\Tiles\main\ExitA_Left.xnb" />
-    <None Include="Content\Tiles\main\ExitA_LeftUp.xnb" />
-    <None Include="Content\Tiles\main\ExitA_Right.xnb" />
-    <None Include="Content\Tiles\main\ExitA_RightUp.xnb" />
-    <None Include="Content\Tiles\main\FloorA.xnb" />
-    <None Include="Content\Tiles\main\FloorB.xnb" />
-    <None Include="Content\Tiles\main\FloorB_1.xnb" />
-    <None Include="Content\Tiles\main\FloorB_2.xnb" />
-    <None Include="Content\Tiles\main\FloorB_3.xnb" />
-    <None Include="Content\Tiles\main\FloorB_4.xnb" />
-    <None Include="Content\Tiles\main\FloorB_5.xnb" />
-    <None Include="Content\Tiles\main\FloorB_6.xnb" />
-    <None Include="Content\Tiles\main\FloorB_7.xnb" />
-    <None Include="Content\Tiles\main\FloorB_8.xnb" />
-    <None Include="Content\Tiles\main\FloorB_9.xnb" />
-    <None Include="Content\Tiles\main\FloorC.xnb" />
-    <None Include="Content\Tiles\main\FloorC1.xnb" />
-    <None Include="Content\Tiles\main\FloorC2.xnb" />
-    <None Include="Content\Tiles\main\FloorD.xnb" />
-    <None Include="Content\Tiles\main\FloorE.xnb" />
-    <None Include="Content\Tiles\main\FloorF.xnb" />
-    <None Include="Content\Tiles\main\FloorG.xnb" />
-    <None Include="Content\Tiles\main\FloorLooseA_1.xnb" />
-    <None Include="Content\Tiles\main\FloorLooseA_2.xnb" />
-    <None Include="Content\Tiles\main\LavaA1.xnb" />
-    <None Include="Content\Tiles\main\LavaA2.xnb" />
-    <None Include="Content\Tiles\main\LavaA3.xnb" />
-    <None Include="Content\Tiles\main\MirrorA.xnb" />
-    <None Include="Content\Tiles\main\MirrorB.xnb" />
-    <None Include="Content\Tiles\main\MirrorC.xnb" />
-    <None Include="Content\Tiles\main\PostsA.xnb" />
-    <None Include="Content\Tiles\main\PostsA_mask.xnb" />
-    <None Include="Content\Tiles\main\space.xnb" />
-    <None Include="Content\Tiles\main\SpaceA.xnb" />
-    <None Include="Content\Tiles\main\SpaceB.xnb" />
-    <None Include="Content\Tiles\main\SpikeA_1.xnb" />
-    <None Include="Content\Tiles\main\SpikeA_2.xnb" />
-    <None Include="Content\Tiles\main\SpikeA_3.xnb" />
-    <None Include="Content\Tiles\main\SpikeA_4.xnb" />
-    <None Include="Content\Tiles\main\SpikeA_5.xnb" />
+    <None Include="Content\Tiles\dos\Block_centre.xnb" />
+    <None Include="Content\Tiles\dos\Block_divider.xnb" />
+    <None Include="Content\Tiles\dos\Block_divider2.xnb" />
+    <None Include="Content\Tiles\dos\Block_left.xnb" />
+    <None Include="Content\Tiles\dos\Block_random.xnb" />
+    <None Include="Content\Tiles\dos\Block_right.xnb" />
+    <None Include="Content\Tiles\dos\Block_single.xnb" />
+    <None Include="Content\Tiles\dos\ChomperA_0.xnb" />
+    <None Include="Content\Tiles\dos\ChomperA_1.xnb" />
+    <None Include="Content\Tiles\dos\ChomperA_2.xnb" />
+    <None Include="Content\Tiles\dos\ChomperA_3.xnb" />
+    <None Include="Content\Tiles\dos\DoorA_0.xnb" />
+    <None Include="Content\Tiles\dos\DoorA_1.xnb" />
+    <None Include="Content\Tiles\dos\DoorA_10.xnb" />
+    <None Include="Content\Tiles\dos\DoorA_11.xnb" />
+    <None Include="Content\Tiles\dos\DoorA_12.xnb" />
+    <None Include="Content\Tiles\dos\DoorA_13.xnb" />
+    <None Include="Content\Tiles\dos\DoorA_2.xnb" />
+    <None Include="Content\Tiles\dos\DoorA_3.xnb" />
+    <None Include="Content\Tiles\dos\DoorA_4.xnb" />
+    <None Include="Content\Tiles\dos\DoorA_5.xnb" />
+    <None Include="Content\Tiles\dos\DoorA_6.xnb" />
+    <None Include="Content\Tiles\dos\DoorA_7.xnb" />
+    <None Include="Content\Tiles\dos\DoorA_8.xnb" />
+    <None Include="Content\Tiles\dos\DoorA_9.xnb" />
+    <None Include="Content\Tiles\dos\ExitA_Left.xnb" />
+    <None Include="Content\Tiles\dos\ExitA_LeftUp.xnb" />
+    <None Include="Content\Tiles\dos\ExitA_Right.xnb" />
+    <None Include="Content\Tiles\dos\ExitA_RightUp.xnb" />
+    <None Include="Content\Tiles\dos\FloorA.xnb" />
+    <None Include="Content\Tiles\dos\FloorB.xnb" />
+    <None Include="Content\Tiles\dos\FloorB_1.xnb" />
+    <None Include="Content\Tiles\dos\FloorB_2.xnb" />
+    <None Include="Content\Tiles\dos\FloorB_3.xnb" />
+    <None Include="Content\Tiles\dos\FloorB_4.xnb" />
+    <None Include="Content\Tiles\dos\FloorB_5.xnb" />
+    <None Include="Content\Tiles\dos\FloorB_6.xnb" />
+    <None Include="Content\Tiles\dos\FloorB_7.xnb" />
+    <None Include="Content\Tiles\dos\FloorB_8.xnb" />
+    <None Include="Content\Tiles\dos\FloorB_9.xnb" />
+    <None Include="Content\Tiles\dos\FloorC.xnb" />
+    <None Include="Content\Tiles\dos\FloorC1.xnb" />
+    <None Include="Content\Tiles\dos\FloorC2.xnb" />
+    <None Include="Content\Tiles\dos\FloorD.xnb" />
+    <None Include="Content\Tiles\dos\FloorE.xnb" />
+    <None Include="Content\Tiles\dos\FloorF.xnb" />
+    <None Include="Content\Tiles\dos\FloorG.xnb" />
+    <None Include="Content\Tiles\dos\FloorLooseA_1.xnb" />
+    <None Include="Content\Tiles\dos\FloorLooseA_2.xnb" />
+    <None Include="Content\Tiles\dos\LavaA1.xnb" />
+    <None Include="Content\Tiles\dos\LavaA2.xnb" />
+    <None Include="Content\Tiles\dos\LavaA3.xnb" />
+    <None Include="Content\Tiles\dos\MirrorA.xnb" />
+    <None Include="Content\Tiles\dos\MirrorB.xnb" />
+    <None Include="Content\Tiles\dos\MirrorC.xnb" />
+    <None Include="Content\Tiles\dos\PostsA.xnb" />
+    <None Include="Content\Tiles\dos\PostsA_mask.xnb" />
+    <None Include="Content\Tiles\dos\space.xnb" />
+    <None Include="Content\Tiles\dos\SpaceA.xnb" />
+    <None Include="Content\Tiles\dos\SpaceB.xnb" />
+    <None Include="Content\Tiles\dos\SpikeA_1.xnb" />
+    <None Include="Content\Tiles\dos\SpikeA_2.xnb" />
+    <None Include="Content\Tiles\dos\SpikeA_3.xnb" />
+    <None Include="Content\Tiles\dos\SpikeA_4.xnb" />
+    <None Include="Content\Tiles\dos\SpikeA_5.xnb" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
