@@ -238,11 +238,6 @@ namespace PrinceGame
             tile_torch_rubble_71 = 0x300000,
             tile_loose_72 = 0x430000
 
-            //Dog = 0x00010000,
-            //Cat = 0x00020000,
-            //Alsation = Dog | 0x00000001,
-            //Greyhound = Dog | 0x00000002,
-            //Siamese = Cat | 0x00000001
         }
 
         public enum Modifier
