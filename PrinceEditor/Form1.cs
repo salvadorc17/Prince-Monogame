@@ -1762,8 +1762,19 @@ namespace PrinceEditor
         {
 
 
-            if (level != null && level.levelIndex != 0)
+            if (level != null)
+            if (level.levelIndex != 0)
+            {
                 level.levelIndex = 0;
+                level.levelName = "Dungeon";
+
+            }
+            else if (level.levelIndex == 0)
+            {
+                    level.levelIndex = 1;
+                    level.levelName = "Palace";
+
+            }
 
 
         }
