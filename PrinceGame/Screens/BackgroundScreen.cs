@@ -31,8 +31,8 @@ namespace PrinceGame
         private Texture2D copyrightTexture;
         private Texture2D text0BackgroudTexture;
         private Texture2D text1BackgroudTexture;
-
         private Texture2D text2BackgroudTexture;
+        private Texture2D textBackground;
         private float TransitionAlphaTitle;
         private int numTexture = 0;
         private int numLoops = 2;
@@ -90,7 +90,7 @@ namespace PrinceGame
                 text0BackgroudTexture = content.Load<Texture2D>("Backgrounds/text_0_background");
                 text1BackgroudTexture = content.Load<Texture2D>("Backgrounds/text_1_background");
                 text2BackgroudTexture = content.Load<Texture2D>("Backgrounds/text_2_background");
-
+                textBackground = content.Load<Texture2D>("Backgrounds/text_background");
 
                 backgroundToDisplayTexture = backgroundTexture;
             }
