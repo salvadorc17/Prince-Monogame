@@ -275,13 +275,14 @@ namespace PrinceEditor
 
                     Serpent1 = Properties.Resources.Serpent2;
 
-					Potion = Properties.Resources.Flask_big;
+                    Potion = Properties.Resources.Flask_big;
 
                     SmallPotion = Properties.Resources.Flask_small;
 
                     Sword = Properties.Resources.Sword_1;
 
-                }
+
+            }
 
 
             PictureBox2.BackgroundImage = Floor;
@@ -634,9 +635,9 @@ namespace PrinceEditor
                             {
                                 Serpent.Bounds = new Rectangle(Serpent.X * 64, Serpent.Y * 74, 64, 74);
                             if (Serpent.Flip == true)
-                                graphics.DrawImage(Properties.Resources.Serpent2, Guard.Bounds);
-                            else
                                 graphics.DrawImage(Properties.Resources.Serpent, Guard.Bounds);
+                            else
+                                graphics.DrawImage(Properties.Resources.Serpent2, Guard.Bounds);
                             }
                             break;
 
@@ -1761,7 +1762,6 @@ namespace PrinceEditor
         private void changeTypeToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
-
             if (level != null)
             if (level.levelIndex != 0)
             {
@@ -1775,7 +1775,6 @@ namespace PrinceEditor
                     level.levelName = "Palace";
 
             }
-
 
         }
 
@@ -1882,4 +1881,3 @@ namespace PrinceEditor
 
      
 }
-
