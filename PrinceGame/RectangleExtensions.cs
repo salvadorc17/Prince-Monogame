@@ -21,7 +21,6 @@ namespace PrinceGame
         /// to push objects in order to resolve collisions.
         /// If the rectangles are not intersecting, Vector2.Zero is returned.
         /// </returns>
-
         public static Vector2 GetIntersectionDepth(Rectangle rectA, Rectangle rectB)
         {
             // Calculate half sizes.
@@ -55,7 +54,6 @@ namespace PrinceGame
         /// <summary>
         /// Gets the position of the center of the bottom edge of the rectangle.
         /// </summary>
-
         public static Vector2 GetBottomCenter(Rectangle rect)
         {
             return new Vector2(rect.X + rect.Width / 2f, rect.Bottom);
