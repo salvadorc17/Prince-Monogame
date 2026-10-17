@@ -16,7 +16,6 @@ namespace PrinceGame
         /// </summary>
         /// <param name="touchState">The current TouchCollection.</param>
         /// <returns>True if there are any touches in the Pressed or Moved state, false otherwise</returns>
-
         public static bool AnyTouch(TouchCollection touchState)
         {
             foreach (TouchLocation location in touchState)
