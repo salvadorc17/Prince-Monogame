@@ -88,9 +88,7 @@ namespace PrinceGame
             /// <summary>
             /// Standard floor
             /// </summary>
-            Platform = 2,
-
-            PlatformExit = 3
+            Platform = 2
         }
 
         public enum TileType
@@ -132,12 +130,12 @@ namespace PrinceGame
             archtop3 = 28,
             archtop4 = 29,
             tile_torch_rubble = 30,
-            //taked from apoplexy norbert
-            tile_loose = 43,
-            //taked from apoplexy norbert
-            //door = 100 //changed from apoplexy norbert
+            gatefall = 31,
             lava = 32,
-            chomper = 33
+            chomper = 33,
+            tile_loose = 43
+            
+            
         }
 
         //first 4 byte are element type the rest is the modifier, _x tells the result formula
@@ -268,8 +266,7 @@ namespace PrinceGame
             sword,
             flask,
             flaskbig,
-            potion,
-            potionbig
+            potion
         }
 
         public enum StateTile
@@ -470,8 +467,8 @@ namespace PrinceGame
             ABOUTFACE,
             IFGOTOSEQUENCE,
             IFGOTOFRAME,
-            DELETE,
-            RETURN
+            DELETE
+            //delete the sprite.. future implementation..??!?
         }
 
         public enum SpriteEffects
