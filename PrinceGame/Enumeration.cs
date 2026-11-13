@@ -10,6 +10,7 @@ namespace PrinceGame
 
         public enum LevelName
         {
+            dungeon_none = 0,
             dungeon_prison = 1,
             dungeon_cave = 2,
             dungeon_guards = 3,
@@ -130,12 +131,10 @@ namespace PrinceGame
             archtop3 = 28,
             archtop4 = 29,
             tile_torch_rubble = 30,
-            //taked from apoplexy norbert
-            tile_loose = 43,
-            //taked from apoplexy norbert
-            //door = 100 //changed from apoplexy norbert
+            gatefall = 31,
             lava = 32,
-            chomper = 33
+            chomper = 33,
+            tile_loose = 43
         }
 
         //first 4 byte are element type the rest is the modifier, _x tells the result formula
@@ -238,6 +237,11 @@ namespace PrinceGame
             tile_torch_rubble_71 = 0x300000,
             tile_loose_72 = 0x430000
 
+            //Dog = 0x00010000,
+            //Cat = 0x00020000,
+            //Alsation = Dog | 0x00000001,
+            //Greyhound = Dog | 0x00000002,
+            //Siamese = Cat | 0x00000001
         }
 
         public enum Modifier
